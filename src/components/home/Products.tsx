@@ -23,7 +23,6 @@ export default function Products() {
     <section style={{ paddingTop: 96, paddingBottom: 96, background: "#0d0d1a" }}>
       <div className="max-w-content mx-auto px-7">
         <FadeIn>
-          <span className="overline block mb-4">The engines</span>
           <h2 className="font-display font-extrabold text-white mb-14"
             style={{ fontSize: "clamp(32px, 3.5vw, 44px)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             One platform. Two engines. More to come.
@@ -33,9 +32,12 @@ export default function Products() {
           {products.map((p, i) => (
             <FadeIn key={i} delay={i * 150}>
               <div
-                style={{ borderRadius: 20, border: `1px solid rgba(${p.accent},0.15)`, background: "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))", height: "100%", display: "flex", flexDirection: "column", overflow: "hidden", transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)", cursor: "pointer" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-6px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 60px rgba(${p.accent},0.15)`; (e.currentTarget as HTMLDivElement).style.borderColor = `rgba(${p.accent},0.4)`; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; (e.currentTarget as HTMLDivElement).style.borderColor = `rgba(${p.accent},0.15)`; }}
+                style={{ height: "100%", transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(-6px)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; }}
+              >
+              <div
+                style={{ position: "relative", borderRadius: 20, border: `1px solid rgba(${p.accent},0.22)`, background: "#0d0d1a", height: "100%", display: "flex", flexDirection: "column", overflow: "hidden", cursor: "pointer" }}
               >
                 <div style={{ height: 3, background: `linear-gradient(90deg, ${p.accentHex}, transparent)` }} />
                 <div style={{ padding: 36, flex: 1, display: "flex", flexDirection: "column" }}>
@@ -68,6 +70,7 @@ export default function Products() {
                     {p.cta} <Icon name="arrowRight" size={16} />
                   </a>
                 </div>
+              </div>
               </div>
             </FadeIn>
           ))}

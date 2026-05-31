@@ -82,16 +82,17 @@
     inherits: false;
   }
 
+  /* Dark variant (for dark-bg cards) */
   .anim-border {
     position: relative;
-    border-radius: 20px;
+    border-radius: var(--anim-radius, 20px);
   }
 
   .anim-border::before {
     content: '';
     position: absolute;
     inset: -1px;
-    border-radius: 21px;
+    border-radius: calc(var(--anim-radius, 20px) + 1px);
     background: conic-gradient(
       from var(--angle),
       transparent 50%,
@@ -100,6 +101,28 @@
       transparent 85%
     );
     animation: borderSpin 5s linear infinite;
+    z-index: 0;
+  }
+
+  /* Light variant (for white-bg cards) — softer indigo, slower */
+  .anim-border-light {
+    position: relative;
+    border-radius: var(--anim-radius, 16px);
+  }
+
+  .anim-border-light::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: calc(var(--anim-radius, 16px) + 1px);
+    background: conic-gradient(
+      from var(--angle),
+      transparent 60%,
+      rgba(45, 42, 110, 0.45) 70%,
+      rgba(91, 127, 255, 0.6) 78%,
+      transparent 88%
+    );
+    animation: borderSpin 8s linear infinite;
     z-index: 0;
   }
 
@@ -195,4 +218,25 @@
 @keyframes borderSpin {
   0%   { --angle: 0deg; }
   100% { --angle: 360deg; }
+}
+
+@keyframes shootUp {
+  0%   { transform: translateY(80px); opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { transform: translateY(-80px); opacity: 0; }
+}
+
+@keyframes layerPulse {
+  0%, 100% {
+    box-shadow: 0 8px 32px rgba(91,127,255,0.04);
+  }
+  30% {
+    box-shadow: 0 8px 60px rgba(91,127,255,0.22),
+                inset 0 1px 0 rgba(255,255,255,0.12),
+                0 0 0 1px rgba(91,127,255,0.32);
+  }
+  60% {
+    box-shadow: 0 8px 32px rgba(91,127,255,0.04);
+  }
 }

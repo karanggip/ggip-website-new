@@ -3,7 +3,6 @@ import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Hero from "../components/home/Hero";
-import TrustStrip from "../components/home/TrustStrip";
 import DocketShowcase from "../components/home/DocketShowcase";
 import Problem from "../components/home/Problem";
 import Architecture from "../components/home/Architecture";
@@ -21,14 +20,13 @@ import BottomCTA from "../components/home/BottomCTA";
   <Nav client:load />
   <main>
     <Hero client:load />
-    <TrustStrip client:visible />
     <DocketShowcase client:visible />
-    <Problem />
+    <Problem client:visible />
     <Architecture client:visible />
     <Products client:visible />
     <WhyUs client:visible />
     <UseCases client:visible />
-    <SocialProof />
+    <SocialProof client:visible />
     <BottomCTA client:visible />
   </main>
   <Footer />
