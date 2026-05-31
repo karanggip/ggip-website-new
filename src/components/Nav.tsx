@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react";
 import Icon from "./ui/Icon";
 import Button from "./ui/Button";
+import { url } from "../utils/url";
 
 const NAV_ITEMS = [
   { label: "Products",  key: "products"  },
-  { label: "Platform",  key: null,        href: "/platform" },
+  { label: "Platform",  key: null,        href: url("/platform") },
   { label: "Solutions", key: "solutions" },
-  { label: "Pricing",   key: null,        href: "/pricing"  },
+  { label: "Pricing",   key: null,        href: url("/pricing")  },
   { label: "Resources", key: "resources" },
   { label: "Company",   key: "company"   },
 ];
@@ -38,8 +39,8 @@ export default function Nav() {
       >
         <div className="max-w-content mx-auto px-7 h-full flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2.5 no-underline">
-            <img src="/assets/icon-white.svg" alt="" className="w-7 h-7" />
+          <a href={url("/")} className="flex items-center gap-2.5 no-underline">
+            <img src={url("/assets/icon-white.svg")} alt="" className="w-7 h-7" />
             <span className="text-base font-bold tracking-tight text-white" style={{ letterSpacing: "-0.02em" }}>
               Guarded Growth
             </span>
@@ -54,7 +55,7 @@ export default function Nav() {
                 onMouseEnter={() => item.key && setActiveDropdown(item.key)}
               >
                 <a
-                  href={item.href ?? "#"}
+                  href={url(item.href ?? "/")}
                   className="flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-medium text-white/50 hover:text-white transition-colors duration-200 no-underline"
                   style={{ background: activeDropdown === item.key ? "rgba(255,255,255,0.06)" : "transparent" }}
                   onClick={(e) => { if (item.key) e.preventDefault(); }}
@@ -69,7 +70,7 @@ export default function Nav() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Button href="/demo" className="hidden md:inline-flex !py-2 !px-5 !text-xs">
+            <Button href={url("/demo")} className="hidden md:inline-flex !py-2 !px-5 !text-xs">
               Request a Demo
             </Button>
             {/* Hamburger */}
@@ -100,8 +101,8 @@ export default function Nav() {
                 {activeDropdown === "products" && (
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 280px", minHeight: 280 }}>
                     {[
-                      { icon: "docket" as const, name: "DocketEngine", href: "/products/docketengine", color: "#5B7FFF", rgb: "91,127,255", desc: "Automated IP docketing powered by global data infrastructure. Real-time sync across 100+ IP offices.", features: ["Real-time USPTO, EUIPO, WIPO sync", "AI portfolio health insights", "Bulk import & free migration", "Competitor watch"] },
-                      { icon: "renewal" as const, name: "RenewalEngine", href: "/products/renewalengine", color: "#A78BFA", rgb: "167,139,250", desc: "IP renewals that generate margin, not just cost. Full transparency across 190+ jurisdictions.", features: ["27.7% avg savings vs providers", "50% margin capture for firms", "One-click renew/hold/lapse", "Complete cost breakdowns"] },
+                      { icon: "docket" as const, name: "DocketEngine", href: url("/products/docketengine"), color: "#5B7FFF", rgb: "91,127,255", desc: "Automated IP docketing powered by global data infrastructure. Real-time sync across 100+ IP offices.", features: ["Real-time USPTO, EUIPO, WIPO sync", "AI portfolio health insights", "Bulk import & free migration", "Competitor watch"] },
+                      { icon: "renewal" as const, name: "RenewalEngine", href: url("/products/renewalengine"), color: "#A78BFA", rgb: "167,139,250", desc: "IP renewals that generate margin, not just cost. Full transparency across 190+ jurisdictions.", features: ["27.7% avg savings vs providers", "50% margin capture for firms", "One-click renew/hold/lapse", "Complete cost breakdowns"] },
                     ].map((p, i) => (
                       <a key={i} href={p.href} style={{ padding: 28, borderRight: "1px solid rgba(255,255,255,0.06)", display: "block", textDecoration: "none", transition: "background 0.2s" }}
                         onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.03)")}
@@ -137,7 +138,7 @@ export default function Nav() {
                         ))}
                       </div>
                       <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: 14, fontFamily: "'General Sans', sans-serif" }}>Proprietary data infrastructure with AI intelligence on top.</p>
-                      <a href="/platform" className="flex items-center gap-1.5 no-underline" style={{ color: "#5B7FFF" }}>
+                      <a href={url("/platform")} className="flex items-center gap-1.5 no-underline" style={{ color: "#5B7FFF" }}>
                         <span className="text-sm font-semibold">Platform Overview</span>
                         <Icon name="arrowRight" size={14} />
                       </a>
@@ -151,10 +152,10 @@ export default function Nav() {
                       <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "rgba(255,255,255,0.25)", textTransform: "uppercase", marginBottom: 16 }}>By audience</div>
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4 }}>
                         {[
-                          { icon: "scale" as const, title: "Solo Attorneys", href: "/solutions/solo-attorneys", desc: "Professional-grade docketing without the professional-grade price tag." },
-                          { icon: "building" as const, title: "IP Law Firms", href: "/solutions/ip-law-firms", desc: "Enterprise capability. Mid-size firm economics. Built for your team." },
-                          { icon: "landmark" as const, title: "Corporate In-House", href: "/solutions/corporate-in-house", desc: "One platform for your entire portfolio. Every jurisdiction." },
-                          { icon: "graduation" as const, title: "Universities & TTOs", href: "/solutions/universities-tto", desc: "From invention disclosure to protection, managed in one place." },
+                          { icon: "scale" as const, title: "Solo Attorneys", href: url("/solutions/solo-attorneys"), desc: "Professional-grade docketing without the professional-grade price tag." },
+                          { icon: "building" as const, title: "IP Law Firms", href: url("/solutions/ip-law-firms"), desc: "Enterprise capability. Mid-size firm economics. Built for your team." },
+                          { icon: "landmark" as const, title: "Corporate In-House", href: url("/solutions/corporate-in-house"), desc: "One platform for your entire portfolio. Every jurisdiction." },
+                          { icon: "graduation" as const, title: "Universities & TTOs", href: url("/solutions/universities-tto"), desc: "From invention disclosure to protection, managed in one place." },
                         ].map((s, i) => (
                           <a key={i} href={s.href} className="flex gap-3 p-3.5 rounded-xl no-underline transition-all duration-150"
                             onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
@@ -168,7 +169,7 @@ export default function Nav() {
                         ))}
                       </div>
                       <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: 12 }}>
-                        <a href="/solutions/managed-services" className="flex items-center gap-2.5 p-3 rounded-xl no-underline transition-all duration-150 mt-3"
+                        <a href={url("/solutions/managed-services")} className="flex items-center gap-2.5 p-3 rounded-xl no-underline transition-all duration-150 mt-3"
                           onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
                           onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
                           <span className="text-accent flex"><Icon name="handshake" size={20} /></span>
@@ -193,9 +194,9 @@ export default function Nav() {
                 {activeDropdown === "resources" && (
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
                     {[
-                      { icon: "book" as const, title: "Blog & Insights", href: "/blog", desc: "Thought leadership, product updates, and IP strategy.", items: [{ label: "IP Management Trends 2026", href: "/blog" }, { label: "Why Mid-Size Firms Switch", href: "/blog" }, { label: "The Infrastructure Approach", href: "/blog" }], color: "#5B7FFF" },
-                      { icon: "file" as const, title: "Help Docs", href: "/docs", desc: "Step-by-step guides, API reference, and setup.", items: [{ label: "Getting Started Guide", href: "/docs" }, { label: "DocketEngine Setup", href: "/docs" }, { label: "API Documentation", href: "/docs" }], color: "#A78BFA" },
-                      { icon: "shield" as const, title: "Trust Center", href: "/trust", desc: "Security, compliance, and data handling.", items: [{ label: "Security Overview", href: "/trust" }, { label: "SOC2 Compliance", href: "/trust" }, { label: "Data Handling & Privacy", href: "/trust" }], color: "#4ADE80" },
+                      { icon: "book" as const, title: "Blog & Insights", href: url("/blog"), desc: "Thought leadership, product updates, and IP strategy.", items: [{ label: "IP Management Trends 2026", href: url("/blog") }, { label: "Why Mid-Size Firms Switch", href: url("/blog") }, { label: "The Infrastructure Approach", href: url("/blog") }], color: "#5B7FFF" },
+                      { icon: "file" as const, title: "Help Docs", href: url("/docs"), desc: "Step-by-step guides, API reference, and setup.", items: [{ label: "Getting Started Guide", href: url("/docs") }, { label: "DocketEngine Setup", href: url("/docs") }, { label: "API Documentation", href: url("/docs") }], color: "#A78BFA" },
+                      { icon: "shield" as const, title: "Trust Center", href: url("/trust"), desc: "Security, compliance, and data handling.", items: [{ label: "Security Overview", href: url("/trust") }, { label: "SOC2 Compliance", href: url("/trust") }, { label: "Data Handling & Privacy", href: url("/trust") }], color: "#4ADE80" },
                     ].map((r, i) => (
                       <div key={i} style={{ padding: 28, borderRight: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none" }}
                         onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.02)")}
@@ -207,7 +208,7 @@ export default function Nav() {
                         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: 16, fontFamily: "'General Sans', sans-serif" }}>{r.desc}</p>
                         <div className="flex flex-col gap-1.5">
                           {r.items.map((item, j) => (
-                            <a key={j} href={item.href} className="flex items-center gap-2 text-sm text-white/50 no-underline px-2.5 py-1.5 rounded-lg transition-all duration-150"
+                            <a key={j} href={url(item.href ?? "/")} className="flex items-center gap-2 text-sm text-white/50 no-underline px-2.5 py-1.5 rounded-lg transition-all duration-150"
                               onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
                               onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                               style={{ fontFamily: "'General Sans', sans-serif" }}>
@@ -224,8 +225,8 @@ export default function Nav() {
                 {activeDropdown === "company" && (
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 300px" }}>
                     {[
-                      { icon: "book" as const, title: "Our Story", href: "/company", desc: "Founded by an IP operations expert and a serial technology entrepreneur who saw the same gap from two directions.", cta: "Read Our Story", color: "#5B7FFF" },
-                      { icon: "briefcase" as const, title: "Careers", href: "/company/careers", desc: "Build the infrastructure the IP industry needs. We're looking for exceptional people.", cta: "View Open Positions", color: "#A78BFA" },
+                      { icon: "book" as const, title: "Our Story", href: url("/company"), desc: "Founded by an IP operations expert and a serial technology entrepreneur who saw the same gap from two directions.", cta: "Read Our Story", color: "#5B7FFF" },
+                      { icon: "briefcase" as const, title: "Careers", href: url("/company/careers"), desc: "Build the infrastructure the IP industry needs. We're looking for exceptional people.", cta: "View Open Positions", color: "#A78BFA" },
                     ].map((c, i) => (
                       <a key={i} href={c.href} style={{ padding: 28, borderRight: "1px solid rgba(255,255,255,0.06)", display: "block", textDecoration: "none", transition: "background 0.2s" }}
                         onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.02)")}
@@ -247,7 +248,7 @@ export default function Nav() {
                         <span className="text-sm font-bold text-white">Get in Touch</span>
                       </div>
                       <div className="flex flex-col gap-2.5">
-                        {[{ label: "Sales", email: "sales@guardedgrowthip.com", href: "/contact" }, { label: "Support", email: "support@guardedgrowthip.com", href: "/contact" }, { label: "General", email: "info@guardedgrowthip.com", href: "/contact" }].map((contact, i) => (
+                        {[{ label: "Sales", email: "sales@guardedgrowthip.com", href: url("/contact") }, { label: "Support", email: "support@guardedgrowthip.com", href: url("/contact") }, { label: "General", email: "info@guardedgrowthip.com", href: url("/contact") }].map((contact, i) => (
                           <a key={i} href={contact.href} style={{ padding: "10px 12px", borderRadius: 10, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", textDecoration: "none", transition: "border-color 0.15s", display: "block" }}
                             onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(91,127,255,0.2)")}
                             onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)")}>
@@ -269,8 +270,8 @@ export default function Nav() {
       {mobileOpen && (
         <div className="md:hidden fixed inset-0 z-50 flex flex-col" style={{ background: "rgba(5,5,16,0.98)", backdropFilter: "blur(20px)" }}>
           <div className="flex items-center justify-between px-6 h-16 border-b border-white/[0.06]">
-            <a href="/" className="flex items-center gap-2.5 no-underline" onClick={() => setMobileOpen(false)}>
-              <img src="/assets/icon-white.svg" alt="" className="w-7 h-7" />
+            <a href={url("/")} className="flex items-center gap-2.5 no-underline" onClick={() => setMobileOpen(false)}>
+              <img src={url("/assets/icon-white.svg")} alt="" className="w-7 h-7" />
               <span className="text-base font-bold text-white" style={{ letterSpacing: "-0.02em" }}>Guarded Growth</span>
             </a>
             <button onClick={() => setMobileOpen(false)} className="text-white/60 hover:text-white transition-colors">
@@ -295,32 +296,32 @@ export default function Nav() {
                       <div className="pl-4 pb-3 flex flex-col gap-2">
                         {item.key === "products" && (
                           <>
-                            <a href="/products/docketengine" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>DocketEngine</a>
-                            <a href="/products/renewalengine" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>RenewalEngine</a>
-                            <a href="/platform" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Platform Overview</a>
+                            <a href={url("/products/docketengine")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>DocketEngine</a>
+                            <a href={url("/products/renewalengine")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>RenewalEngine</a>
+                            <a href={url("/platform")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Platform Overview</a>
                           </>
                         )}
                         {item.key === "solutions" && (
                           <>
-                            <a href="/solutions/solo-attorneys" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Solo Attorneys</a>
-                            <a href="/solutions/ip-law-firms" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>IP Law Firms</a>
-                            <a href="/solutions/corporate-in-house" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Corporate In-House</a>
-                            <a href="/solutions/universities-tto" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Universities & TTOs</a>
-                            <a href="/solutions/managed-services" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Managed Services</a>
+                            <a href={url("/solutions/solo-attorneys")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Solo Attorneys</a>
+                            <a href={url("/solutions/ip-law-firms")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>IP Law Firms</a>
+                            <a href={url("/solutions/corporate-in-house")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Corporate In-House</a>
+                            <a href={url("/solutions/universities-tto")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Universities & TTOs</a>
+                            <a href={url("/solutions/managed-services")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Managed Services</a>
                           </>
                         )}
                         {item.key === "resources" && (
                           <>
-                            <a href="/blog" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Blog & Insights</a>
-                            <a href="/docs" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Help Docs</a>
-                            <a href="/trust" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Trust Center</a>
+                            <a href={url("/blog")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Blog & Insights</a>
+                            <a href={url("/docs")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Help Docs</a>
+                            <a href={url("/trust")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Trust Center</a>
                           </>
                         )}
                         {item.key === "company" && (
                           <>
-                            <a href="/company" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Our Story</a>
-                            <a href="/company/careers" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Careers</a>
-                            <a href="/contact" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Contact</a>
+                            <a href={url("/company")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Our Story</a>
+                            <a href={url("/company/careers")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Careers</a>
+                            <a href={url("/contact")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Contact</a>
                           </>
                         )}
                       </div>
@@ -329,7 +330,7 @@ export default function Nav() {
                   </>
                 ) : (
                   <>
-                    <a href={item.href} className="flex py-3.5 text-sm font-semibold text-white/70 hover:text-white no-underline transition-colors" onClick={() => setMobileOpen(false)}>
+                    <a href={url(item.href ?? "/")} className="flex py-3.5 text-sm font-semibold text-white/70 hover:text-white no-underline transition-colors" onClick={() => setMobileOpen(false)}>
                       {item.label}
                     </a>
                     <div className="h-px bg-white/[0.05]" />
@@ -339,7 +340,7 @@ export default function Nav() {
             ))}
           </div>
           <div className="px-6 pb-8 pt-4 border-t border-white/[0.06]">
-            <Button href="/demo" className="w-full justify-center">Request a Demo</Button>
+            <Button href={url("/demo")} className="w-full justify-center">Request a Demo</Button>
           </div>
         </div>
       )}

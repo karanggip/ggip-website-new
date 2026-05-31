@@ -1,3 +1,5 @@
+import { url } from "../../utils/url";
+
 interface ButtonProps {
   variant?: "primary" | "ghost" | "accent";
   children: React.ReactNode;
@@ -28,7 +30,7 @@ export default function Button({
 }: ButtonProps) {
   const cls = `${base} ${variants[variant]} ${className}`;
   if (href) {
-    return <a href={href} className={cls}>{children}</a>;
+    return <a href={url(href)} className={cls}>{children}</a>;
   }
   return (
     <button type={type} onClick={onClick} className={cls}>

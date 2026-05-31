@@ -1,13 +1,11 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import node from "@astrojs/node";
 
 export default defineConfig({
-  output: "hybrid",
-  adapter: node({
-    mode: "standalone",
-  }),
+  output: "static",
+  site: "https://karanggip.github.io",
+  base: "/ggip-website-new",
   integrations: [
     react(),
     tailwind({

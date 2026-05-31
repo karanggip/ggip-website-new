@@ -1,6 +1,7 @@
 import FadeIn from "../ui/FadeIn";
 import Icon from "../ui/Icon";
 import Button from "../ui/Button";
+import { url } from "../../utils/url";
 
 const sidebarItems = [
   { icon: "chart" as const, label: "Dashboard", active: true },
@@ -71,7 +72,7 @@ export default function DocketShowcase() {
                 {/* Sidebar */}
                 <div style={{ borderRight: "1px solid rgba(255,255,255,0.06)", padding: 16, background: "rgba(255,255,255,0.01)" }}>
                   <div className="flex items-center gap-2 mb-6">
-                    <img src="/assets/icon-white.svg" alt="" className="w-5 h-5" />
+                    <img src={url("/assets/icon-white.svg")} alt="" className="w-5 h-5" />
                     <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>DocketEngine</span>
                   </div>
                   {sidebarItems.map((item, i) => (

@@ -1,6 +1,7 @@
 import FadeIn from "../ui/FadeIn";
 import Button from "../ui/Button";
 import Icon from "../ui/Icon";
+import { url } from "../../utils/url";
 
 export default function BottomCTA() {
   return (
@@ -11,7 +12,7 @@ export default function BottomCTA() {
       <div className="max-w-content mx-auto px-7 relative text-center">
         <FadeIn>
           <div style={{ width: 48, height: 48, margin: "0 auto 28px", opacity: 0.5 }}>
-            <img src="/assets/icon-white.svg" alt="" className="w-full h-full" />
+            <img src={url("/assets/icon-white.svg")} alt="" className="w-full h-full" />
           </div>
           <h2 className="font-display font-extrabold text-white mx-auto mb-5"
             style={{ fontSize: "clamp(32px, 4.5vw, 52px)", letterSpacing: "-0.03em", lineHeight: 1.1, maxWidth: 640 }}>
