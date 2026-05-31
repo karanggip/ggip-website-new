@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #050510;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #0C0C0E;
+  }
+}
+
+@layer utilities {
+  /* Gradient text — animated */
+  .gradient-text {
+    background: linear-gradient(135deg, #5B7FFF 0%, #A78BFA 50%, #5B7FFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gs 4s ease-in-out infinite;
+  }
+
+  /* Section overline label */
+  .overline {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #5B7FFF;
+  }
+
+  /* Animated grid backgrounds */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(91,127,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,127,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .grid-bg-animated {
+    background-image:
+      linear-gradient(rgba(91,127,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,127,255,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridPulse 6s ease-in-out infinite;
+  }
+
+  /* Mesh gradient background */
+  .mesh-bg {
+    background: conic-gradient(
+      from 45deg at 40% 35%,
+      rgba(45,42,110,0.4),
+      rgba(91,127,255,0.1),
+      rgba(167,139,250,0.15),
+      rgba(45,42,110,0.3),
+      rgba(91,127,255,0.2)
+    );
+    background-size: 200% 200%;
+    animation: meshShift 20s ease-in-out infinite;
+  }
+
+  /* Animated conic-gradient border */
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .anim-border {
+    position: relative;
+    border-radius: 20px;
+  }
+
+  .anim-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 21px;
+    background: conic-gradient(
+      from var(--angle),
+      transparent 50%,
+      #5B7FFF 65%,
+      #A78BFA 75%,
+      transparent 85%
+    );
+    animation: borderSpin 5s linear infinite;
+    z-index: 0;
+  }
+
+  /* Hero fade-up animation classes */
+  .hero-animate {
+    animation: fu 1s cubic-bezier(0.16,1,0.3,1) forwards;
+    opacity: 0;
+  }
+  .delay-0   { animation-delay: 0ms; }
+  .delay-150 { animation-delay: 150ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-450 { animation-delay: 450ms; }
+  .delay-600 { animation-delay: 600ms; }
+}
+
+@keyframes gs {
+  0%,100% { background-position: 0% 50%; }
+  50%     { background-position: 100% 50%; }
+}
+
+@keyframes fu {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatCard {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%     { transform: translateY(-12px) rotate(1deg); }
+}
+
+@keyframes orb1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(30px,-20px) scale(1.1); }
+  66%     { transform: translate(-20px,15px) scale(0.95); }
+}
+
+@keyframes orb2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(-25px,30px) scale(0.9); }
+  66%     { transform: translate(35px,-10px) scale(1.05); }
+}
+
+@keyframes orb3 {
+  0%,100% { transform: translate(0,0) scale(1) rotate(0deg); }
+  25%     { transform: translate(40px,20px) scale(1.15) rotate(5deg); }
+  50%     { transform: translate(-30px,40px) scale(0.85) rotate(-3deg); }
+  75%     { transform: translate(20px,-30px) scale(1.05) rotate(2deg); }
+}
+
+@keyframes meshShift {
+  0%   { background-position: 0% 0%; }
+  25%  { background-position: 100% 0%; }
+  50%  { background-position: 100% 100%; }
+  75%  { background-position: 0% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes gridPulse {
+  0%,100% { opacity: 0.3; }
+  50%     { opacity: 0.7; }
+}
+
+@keyframes streak {
+  0%   { transform: translateX(-100%) translateY(100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(200%) translateY(-200%); opacity: 0; }
+}
+
+@keyframes beamRotate {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes nodeFloat {
+  0%,100% { transform: translate(0,0); }
+  25%     { transform: translate(8px,-12px); }
+  50%     { transform: translate(-5px,8px); }
+  75%     { transform: translate(12px,5px); }
+}
+
+@keyframes pulseDot {
+  0%,100% { opacity: 0.4; }
+  50%     { opacity: 1; }
+}
+
+@keyframes riseUp {
+  0%   { transform: translateY(20px); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translateY(-80px); opacity: 0; }
+}
+
+@keyframes borderSpin {
+  0%   { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}

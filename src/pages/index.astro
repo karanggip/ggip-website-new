@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import Hero from "../components/home/Hero";
+import TrustStrip from "../components/home/TrustStrip";
+import DocketShowcase from "../components/home/DocketShowcase";
+import Problem from "../components/home/Problem";
+import Architecture from "../components/home/Architecture";
+import Products from "../components/home/Products";
+import WhyUs from "../components/home/WhyUs";
+import UseCases from "../components/home/UseCases";
+import SocialProof from "../components/home/SocialProof";
+import BottomCTA from "../components/home/BottomCTA";
+---
+
+<Base
+  title="Guarded Growth · The Data Infrastructure for Global IP"
+  description="Modern IP management platform with automated docketing and renewals across 100+ jurisdictions. Purpose-built engines on a cloud-native data infrastructure."
+>
+  <Nav client:load />
+  <main>
+    <Hero client:load />
+    <TrustStrip client:visible />
+    <DocketShowcase client:visible />
+    <Problem />
+    <Architecture client:visible />
+    <Products client:visible />
+    <WhyUs client:visible />
+    <UseCases client:visible />
+    <SocialProof />
+    <BottomCTA client:visible />
+  </main>
+  <Footer />
+</Base>
