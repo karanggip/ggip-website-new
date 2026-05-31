@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Astro Dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321
+    },
+    {
+      "name": "Astro Preview (built)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview"],
+      "port": 4321
+    },
+    {
+      "name": "Tina CMS + Astro Dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "tina:dev"],
+      "port": 4321
+    }
+  ]
+}
