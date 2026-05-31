@@ -5,7 +5,6 @@ export default function Problem() {
     <section style={{ paddingTop: 64, paddingBottom: 96, background: "#fff", color: "#0C0C0E" }}>
       <div className="max-w-content mx-auto px-7" style={{ maxWidth: 720 }}>
         <FadeIn>
-          <span className="overline block mb-4">The status quo</span>
           <h2 className="font-display font-extrabold mb-7"
             style={{ fontSize: "clamp(32px, 3.5vw, 44px)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             IP management is stuck<br />in the past.

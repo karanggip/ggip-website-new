@@ -22,6 +22,32 @@ const layers = [
   },
 ];
 
+// Shooting pulses per layer — more streaks in the wider Foundation block
+const layerStreaks = [
+  // Engines (narrowest, i=0)
+  [
+    { left: "18%", h: 36, w: 1.5, dur: 2.0, delay: 0.2 },
+    { left: "48%", h: 52, w: 1,   dur: 2.6, delay: 1.1 },
+    { left: "78%", h: 32, w: 1.5, dur: 1.8, delay: 0.7 },
+  ],
+  // AI (medium, i=1)
+  [
+    { left: "12%", h: 44, w: 1,   dur: 2.2, delay: 0 },
+    { left: "32%", h: 58, w: 2,   dur: 2.8, delay: 0.8 },
+    { left: "58%", h: 38, w: 1,   dur: 2.0, delay: 1.5 },
+    { left: "82%", h: 48, w: 1.5, dur: 2.4, delay: 0.4 },
+  ],
+  // Foundation (widest, i=2)
+  [
+    { left: "6%",  h: 48, w: 1,   dur: 2.3, delay: 0.3 },
+    { left: "20%", h: 38, w: 2,   dur: 1.9, delay: 1.0 },
+    { left: "36%", h: 60, w: 1,   dur: 2.7, delay: 0 },
+    { left: "54%", h: 44, w: 1.5, dur: 2.1, delay: 1.4 },
+    { left: "70%", h: 52, w: 1,   dur: 2.5, delay: 0.6 },
+    { left: "86%", h: 36, w: 2,   dur: 1.8, delay: 1.8 },
+  ],
+];
+
 export default function Architecture() {
   return (
     <section style={{ paddingTop: 100, paddingBottom: 100, position: "relative", overflow: "hidden" }}>
@@ -31,7 +57,6 @@ export default function Architecture() {
       <div className="max-w-content mx-auto px-7 relative">
         <FadeIn>
           <div className="text-center mb-16">
-            <span className="overline block mb-4">A different approach</span>
             <h2 className="font-display font-extrabold text-white mx-auto mb-5"
               style={{ fontSize: "clamp(32px, 3.5vw, 44px)", letterSpacing: "-0.03em", lineHeight: 1.1, maxWidth: 600 }}>
               Infrastructure first.<br />
@@ -45,19 +70,37 @@ export default function Architecture() {
         </FadeIn>
 
         <div style={{ maxWidth: 760, margin: "0 auto", position: "relative" }}>
-          {/* Rising data particles */}
-          {Array.from({ length: 12 }, (_, i) => (
-            <div key={`p-${i}`} style={{ position: "absolute", left: `${20 + (i * 5) % 60}%`, bottom: "5%", width: 3, height: 3, borderRadius: "50%", background: "rgba(91,127,255,0.6)", boxShadow: "0 0 8px rgba(91,127,255,0.5)", animation: `riseUp ${3 + (i % 4)}s ease-in ${(i * 0.4) % 4}s infinite`, zIndex: 0 }} />
-          ))}
-
           {layers.map((layer, i) => (
             <FadeIn key={i} delay={layer.delay}>
               <div style={{ width: layer.w, margin: "0 auto 12px", position: "relative", zIndex: 2 }}>
-                <div style={{ background: layer.grad, backdropFilter: "blur(16px)", border: `1px solid ${layer.bc}`, borderRadius: 16, padding: "24px 28px", display: "flex", alignItems: "center", gap: 18, boxShadow: `0 8px 32px rgba(91,127,255,${0.05 + (2 - i) * 0.03})` }}>
-                  <div style={{ width: 48, height: 48, borderRadius: 12, background: "rgba(0,0,0,0.25)", border: `1px solid ${layer.bc}`, display: "flex", alignItems: "center", justifyContent: "center", color: layer.tc, flexShrink: 0 }}>
+                <div style={{
+                  position: "relative", background: layer.grad, backdropFilter: "blur(16px)",
+                  border: `1px solid ${layer.bc}`, borderRadius: 16, padding: "24px 28px",
+                  display: "flex", alignItems: "center", gap: 18, overflow: "hidden",
+                }}>
+                  {/* Shooting pulses */}
+                  {layerStreaks[i].map((s, j) => (
+                    <div key={j} style={{
+                      position: "absolute",
+                      left: s.left,
+                      top: 0,
+                      width: s.w,
+                      height: s.h,
+                      borderRadius: 9999,
+                      background: `linear-gradient(to top, transparent 0%, ${layer.tc}cc 60%, ${layer.tc} 100%)`,
+                      animation: `shootUp ${s.dur}s linear ${s.delay}s infinite`,
+                      zIndex: 0,
+                      filter: `blur(0.5px) drop-shadow(0 0 3px ${layer.tc})`,
+                    }} />
+                  ))}
+
+                  {/* Icon */}
+                  <div style={{ position: "relative", zIndex: 1, width: 48, height: 48, borderRadius: 12, background: "rgba(0,0,0,0.25)", border: `1px solid ${layer.bc}`, display: "flex", alignItems: "center", justifyContent: "center", color: layer.tc, flexShrink: 0 }}>
                     <Icon name={layer.icon} size={24} />
                   </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
+
+                  {/* Text */}
+                  <div style={{ position: "relative", zIndex: 1, flex: 1, minWidth: 0 }}>
                     <div className="flex items-center gap-2.5 mb-1 flex-wrap">
                       <span style={{ fontSize: 17, fontWeight: 700, color: "#fff" }}>{layer.label}</span>
                       <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", color: layer.tc, padding: "3px 8px", borderRadius: 5, background: "rgba(0,0,0,0.3)", border: `1px solid ${layer.bc}` }}>{layer.tag}</span>

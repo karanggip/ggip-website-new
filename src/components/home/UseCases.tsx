@@ -17,7 +17,6 @@ export default function UseCases() {
       <div className="max-w-content mx-auto px-7 relative">
         <FadeIn>
           <div className="text-center mb-14">
-            <span className="overline block mb-4">Solutions</span>
             <h2 className="font-display font-extrabold text-white"
               style={{ fontSize: "clamp(32px, 3.5vw, 44px)", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
               Built for how you work.

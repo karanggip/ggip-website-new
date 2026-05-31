@@ -42,7 +42,7 @@ export default function DocketShowcase() {
         <FadeIn>
           <div className="text-center mb-4">
             <span style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 9999, background: "rgba(91,127,255,0.1)", border: "1px solid rgba(91,127,255,0.2)", fontSize: 12, fontWeight: 700, color: "#5B7FFF", letterSpacing: "0.05em", marginBottom: 20 }}>
-              <Icon name="sparkles" size={14} /> FLAGSHIP PRODUCT
+              <Icon name="sparkles" size={14} /> FLAGSHIP
             </span>
             <h2 className="font-display font-extrabold text-white mx-auto mb-4"
               style={{ fontSize: "clamp(32px, 4vw, 48px)", letterSpacing: "-0.03em", lineHeight: 1.1, maxWidth: 680 }}>
