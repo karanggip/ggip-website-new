@@ -7,7 +7,7 @@ export default function BottomCTA() {
   return (
     <section style={{ paddingTop: 120, paddingBottom: 120, position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", width: 800, height: 800, borderRadius: "50%", background: "radial-gradient(circle, rgba(91,127,255,0.12) 0%, transparent 60%)", top: "-20%", left: "50%", transform: "translateX(-50%)", filter: "blur(80px)" }} />
-      <div className="grid-bg absolute inset-0 opacity-30" />
+      <div className="grid-bg-animated absolute inset-0" />
 
       <div className="max-w-content mx-auto px-7 relative text-center">
         <FadeIn>

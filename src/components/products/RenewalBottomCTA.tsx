@@ -7,7 +7,7 @@ export default function RenewalBottomCTA() {
   return (
     <section style={{ paddingTop: 120, paddingBottom: 120, position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(167,139,250,0.1) 0%, transparent 60%)", top: "-20%", left: "50%", transform: "translateX(-50%)", filter: "blur(80px)" }} />
-      <div className="grid-bg absolute inset-0 opacity-25" />
+      <div className="grid-bg-animated absolute inset-0" />
 
       <div className="max-w-content mx-auto px-7 relative text-center">
         <FadeIn>
