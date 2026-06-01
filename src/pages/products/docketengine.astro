@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+import DocketHero from "../../components/products/DocketHero";
+import DocketFeatures from "../../components/products/DocketFeatures";
+import DocketHowItWorks from "../../components/products/DocketHowItWorks";
+import DocketCompare from "../../components/products/DocketCompare";
+import DocketPricing from "../../components/products/DocketPricing";
+import DocketBottomCTA from "../../components/products/DocketBottomCTA";
+---
+
+<Base
+  title="DocketEngine · Automated IP Docketing Across 100+ Jurisdictions"
+  description="Automated trademark and patent docketing with real-time sync across USPTO, EUIPO, WIPO, and 100+ IP offices. AI-powered portfolio insights. Free migration."
+>
+  <Nav client:load />
+  <main>
+    <DocketHero client:load />
+    <DocketFeatures client:visible />
+    <DocketHowItWorks client:visible />
+    <DocketCompare client:visible />
+    <DocketPricing client:visible />
+    <DocketBottomCTA client:visible />
+  </main>
+  <Footer />
+</Base>
