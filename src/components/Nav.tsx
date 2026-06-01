@@ -9,7 +9,7 @@ const NAV_ITEMS = [
   { label: "Products",  key: "products"  },
 
   { label: "Solutions", key: "solutions" },
-  { label: "Pricing",   key: null,        href: url("/pricing")  },
+  { label: "Pricing",   key: null,        href: "/pricing"  },
   { label: "Resources", key: "resources" },
   { label: "Company",   key: "company"   },
 ];
