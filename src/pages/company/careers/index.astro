@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+import Nav from "../../../components/Nav";
+import Footer from "../../../components/Footer";
+import CareersHero from "../../../components/company/CareersHero";
+import WhyJoin from "../../../components/company/WhyJoin";
+import HowWeWork from "../../../components/company/HowWeWork";
+import OpenRoles from "../../../components/company/OpenRoles";
+import CareersCTA from "../../../components/company/CareersCTA";
+
+const jobs = await getCollection("jobs", ({ data }) => data.published);
+// Sort: newest posted first
+const roles = jobs
+  .sort((a, b) => b.data.posted.getTime() - a.data.posted.getTime())
+  .map((j) => ({
+    slug:       j.slug,
+    title:      j.data.title,
+    department: j.data.department,
+    location:   j.data.location,
+    type:       j.data.type,
+    summary:    j.data.summary,
+  }));
+---
+
+<Base
+  title="Careers · Build the Infrastructure the IP Industry Needs"
+  description="Join Guarded Growth — early-stage impact, modern stack, practitioner × technologist team. We're always looking for exceptional people across engineering, product, GTM, and IP ops."
+>
+  <Nav client:load />
+  <main>
+    <CareersHero client:visible />
+    <WhyJoin client:visible />
+    <HowWeWork client:visible />
+    <OpenRoles client:visible roles={roles} />
+    <CareersCTA client:visible />
+  </main>
+  <Footer />
+</Base>

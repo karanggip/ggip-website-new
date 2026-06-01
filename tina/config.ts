@@ -20,6 +20,32 @@ export default defineConfig({
   schema: {
     collections: [
       {
+        name: "job",
+        label: "Open Roles",
+        path: "src/content/jobs",
+        format: "md",
+        fields: [
+          { type: "string",   name: "title",      label: "Role Title",     required: true, isTitle: true },
+          { type: "string",   name: "department", label: "Department",     required: true,
+            options: ["Engineering", "Product", "Design", "Go-to-Market", "IP Operations", "Operations"] },
+          { type: "string",   name: "location",   label: "Location",       description: "e.g. Remote (US / EU timezones), London, NYC" },
+          { type: "string",   name: "type",       label: "Employment Type",
+            options: ["Full-time", "Part-time", "Contract", "Internship"] },
+          { type: "string",   name: "summary",    label: "Short Summary",  required: true,
+            description: "1-2 sentences shown on the careers page tile",
+            ui: { component: "textarea" } },
+          { type: "string",   name: "applyEmail", label: "Apply Email",    description: "e.g. careers@guardedgrowthip.com — used for the Apply button mailto:" },
+          { type: "string",   name: "applyUrl",   label: "Apply URL",      description: "Optional. Overrides applyEmail if provided." },
+          { type: "datetime", name: "posted",     label: "Posted Date",    required: true },
+          { type: "boolean",  name: "published",  label: "Published",      description: "Uncheck to hide from the website" },
+          { type: "rich-text",name: "body",       label: "Full Job Description",  isBody: true },
+        ],
+        ui: {
+          dateFormat: "MMMM DD YYYY",
+          router: ({ document }) => `/company/careers/${document._sys.filename}/`,
+        },
+      },
+      {
         name: "post",
         label: "Blog Posts",
         path: "src/content/blog",
