@@ -17,7 +17,7 @@ export default function EngineIcon({
   className = "",
 }: EngineIconProps) {
   const radius = Math.round(size * 0.22);          // ~20px on 88px tile
-  const iconSize = Math.round(size * 0.62);         // 62% of tile
+  const iconSize = Math.round(size * 0.80);         // 80% of tile
 
   const bg =
     variant === "dark"
