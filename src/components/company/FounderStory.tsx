@@ -67,7 +67,7 @@ export default function FounderStory() {
             <FadeIn key={i} delay={i * 150}>
               <div style={{ padding: "40px 36px", borderRadius: 20, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", height: "100%", display: "flex", flexDirection: "column" }}>
                 {/* Photo + name */}
-                <div className="flex items-start gap-5 mb-6">
+                <div className="flex items-start gap-7 mb-6">
                   <div style={{ position: "relative", flexShrink: 0 }}>
                     <img
                       src={f.photo}
