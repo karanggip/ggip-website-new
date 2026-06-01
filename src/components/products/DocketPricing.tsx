@@ -138,7 +138,7 @@ export default function DocketPricing() {
 
         <FadeIn delay={400}>
           <p style={{ textAlign: "center", fontSize: 14, color: "#8B8B9E", marginTop: 32, fontFamily: "'General Sans', sans-serif" }}>
-            All plans include a 14-day free trial. No credit card required.{" "}
+            All plans include a 14-day free trial.{" "}
             <a href="/pricing" style={{ color: "#5B7FFF", textDecoration: "none", fontWeight: 600 }}>View full pricing details →</a>
           </p>
         </FadeIn>

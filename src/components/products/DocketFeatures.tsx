@@ -38,13 +38,11 @@ function SyncMockup() {
 function MigrationMockup() {
   const types = [
     { label: "Trademarks", count: "1,203", pct: 100 },
-    { label: "Patents",    count: "892",   pct: 100 },
-    { label: "Designs",    count: "752",   pct: 100 },
   ];
   return (
     <div style={{ background: "#0d0d1a", borderRadius: 14, padding: 20, border: "1px solid rgba(255,255,255,0.07)" }}>
       <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "rgba(255,255,255,0.3)", marginBottom: 4 }}>MIGRATION COMPLETE</div>
-      <div style={{ fontSize: 28, fontWeight: 800, color: "#fff", letterSpacing: "-0.03em", marginBottom: 16 }}>2,847 <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.4)" }}>assets</span></div>
+      <div style={{ fontSize: 28, fontWeight: 800, color: "#fff", letterSpacing: "-0.03em", marginBottom: 16 }}>1,203 <span style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.4)" }}>assets</span></div>
       <div style={{ height: 4, borderRadius: 9999, background: "rgba(255,255,255,0.06)", marginBottom: 16, overflow: "hidden" }}>
         <div style={{ height: "100%", width: "100%", borderRadius: 9999, background: "linear-gradient(90deg, #5B7FFF, #A78BFA)" }} />
       </div>
@@ -74,7 +72,7 @@ function AutomationMockup() {
     <div style={{ background: "#0d0d1a", borderRadius: 14, padding: 20, border: "1px solid rgba(255,255,255,0.07)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "rgba(255,255,255,0.3)" }}>UPCOMING DEADLINES</div>
-        <div style={{ fontSize: 10, color: "#5B7FFF", fontWeight: 600 }}>← Calendar synced</div>
+        <div style={{ fontSize: 10, color: "#5B7FFF", fontWeight: 600 }}>Calendar synced</div>
       </div>
       <div className="flex flex-col gap-2">
         {items.map((it) => (
@@ -201,23 +199,24 @@ const features = [
   {
     icon: "bell" as const,
     title: "Workflow Automation",
-    body: "Daily and weekly docket digests. Two-way calendar sync with Outlook and Google Calendar. Automated client notices. Smart reminders that escalate as deadlines approach. The administrative work runs itself.",
+    body: "Daily and weekly docket digests. Two-way calendar sync with Google Calendar. Automated client notices. Smart reminders that escalate as deadlines approach. The administrative work runs itself.",
     side: "right",
     mockupKey: "automation",
-  },
-  {
-    icon: "eye" as const,
-    title: "Competitor Watch",
-    body: "Track competitor filings and activity automatically. Know when a competitor files in your client's space before they do. Stay ahead with real-time alerts and weekly intelligence summaries.",
-    side: "left",
-    mockupKey: "competitor",
   },
   {
     icon: "user" as const,
     title: "Built for Teams",
     body: "Role-based permissions. Client-level access controls. Custom reporting for stakeholders. Scales from solo practice to 50-person IP departments without configuration headaches.",
-    side: "right",
+    side: "left",
     mockupKey: "teams",
+  },
+  {
+    icon: "eye" as const,
+    title: "Competitor Watch",
+    body: "Track competitor filings and activity automatically. Know when a competitor files in your client's space before they do. Stay ahead with real-time alerts and weekly intelligence summaries.",
+    side: "right",
+    mockupKey: "competitor",
+    inProgress: true,
   },
   {
     icon: "ai" as const,
