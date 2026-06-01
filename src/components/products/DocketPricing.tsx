@@ -126,7 +126,13 @@ export default function DocketPricing() {
             return (
               <FadeIn key={i} delay={i * 120}>
                 {tier.highlight ? (
-                  <div className="anim-border" style={{ "--anim-radius": "16px", boxShadow: "0 16px 48px rgba(45,42,110,0.25)" } as React.CSSProperties}>
+                  <div style={{
+                    padding: 2,
+                    borderRadius: 18,
+                    background: "conic-gradient(from var(--angle, 0deg), transparent 40%, #5B7FFF 55%, #A78BFA 68%, #5B7FFF 80%, transparent 90%)",
+                    animation: "borderSpin 5s linear infinite",
+                    boxShadow: "0 16px 48px rgba(45,42,110,0.3)",
+                  } as React.CSSProperties}>
                     {cardInner}
                   </div>
                 ) : cardInner}
