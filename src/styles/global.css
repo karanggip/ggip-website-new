@@ -220,6 +220,19 @@
   100% { --angle: 360deg; }
 }
 
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes pingRing {
+  0%   { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes iconGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 0.9; transform: scale(1.15); }
+}
+
 @keyframes shootUp {
   0%   { transform: translateY(80px); opacity: 0; }
   8%   { opacity: 1; }

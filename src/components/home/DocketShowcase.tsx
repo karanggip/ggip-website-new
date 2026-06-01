@@ -1,5 +1,6 @@
 import FadeIn from "../ui/FadeIn";
 import Icon from "../ui/Icon";
+import EngineIcon from "../ui/EngineIcon";
 import Button from "../ui/Button";
 import { url } from "../../utils/url";
 
@@ -41,6 +42,21 @@ export default function DocketShowcase() {
       <div className="max-w-content mx-auto px-7 relative">
         <FadeIn>
           <div className="text-center mb-4">
+            {/* Animated engine icon */}
+            <div style={{ display: "inline-flex", position: "relative", marginBottom: 28 }}>
+              {/* Soft glow backdrop */}
+              <div style={{ position: "absolute", inset: -24, borderRadius: "50%", background: "radial-gradient(circle, rgba(91,127,255,0.25) 0%, transparent 70%)", filter: "blur(12px)", animation: "iconGlow 3s ease-in-out infinite", pointerEvents: "none" }} />
+              {/* Ping rings */}
+              {[0, 0.9].map((delay, i) => (
+                <div key={i} style={{ position: "absolute", inset: -6, borderRadius: 26, border: `1px solid rgba(91,127,255,${0.45 - i * 0.15})`, animation: `pingRing 2.8s ease-out ${delay}s infinite`, pointerEvents: "none" }} />
+              ))}
+              {/* Icon — floating */}
+              <div style={{ animation: "iconFloat 4s ease-in-out infinite", position: "relative", zIndex: 1 }}>
+                <EngineIcon engine="docket" size={80} variant="dark" />
+              </div>
+            </div>
+
+            <br />
             <span style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 14px", borderRadius: 9999, background: "rgba(91,127,255,0.1)", border: "1px solid rgba(91,127,255,0.2)", fontSize: 12, fontWeight: 700, color: "#5B7FFF", letterSpacing: "0.05em", marginBottom: 20 }}>
               <Icon name="sparkles" size={14} /> FLAGSHIP
             </span>
