@@ -58,7 +58,7 @@ export default function Nav() {
                 <a
                   href={url(item.href ?? "/")}
                   className="flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-medium text-white/50 hover:text-white transition-colors duration-200 no-underline"
-                  style={{ background: activeDropdown === item.key ? "rgba(255,255,255,0.06)" : "transparent" }}
+                  style={{ background: item.key && activeDropdown === item.key ? "rgba(255,255,255,0.06)" : "transparent" }}
                   onClick={(e) => { if (item.key) e.preventDefault(); }}
                 >
                   {item.label}
