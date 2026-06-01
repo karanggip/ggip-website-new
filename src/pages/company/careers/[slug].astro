@@ -79,7 +79,7 @@ const postedFmt = data.posted.toLocaleDateString("en-US", { year: "numeric", mon
         </div>
 
         {/* Apply CTA */}
-        <div style="margin-top: 56px; padding: 32px 36px; border-radius: 16px; background: linear-gradient(135deg, #2D2A6E, #1e1b5e); color: #fff; text-align: center;">
+        <div id="apply-block" style="margin-top: 56px; padding: 32px 36px; border-radius: 16px; background: linear-gradient(135deg, #2D2A6E, #1e1b5e); color: #fff; text-align: center;">
           <h3 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px;">Interested in this role?</h3>
           <p style="font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 24px; font-family: 'General Sans', sans-serif; line-height: 1.65; max-width: 480px; margin-left: auto; margin-right: auto;">
             Send us a brief note about your background and why this role. We read every email and reply to anything that resonates.
@@ -94,6 +94,17 @@ const postedFmt = data.posted.toLocaleDateString("en-US", { year: "numeric", mon
         </div>
       </div>
     </article>
+
+    {/* Floating Apply Now button — visible while reading, fades when inline CTA scrolls into view */}
+    <div id="floating-apply" style="position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); opacity: 0; pointer-events: none; transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1); z-index: 900;">
+      <a href={applyHref}
+        style="display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; border-radius: 9999px; background: linear-gradient(135deg, #2D2A6E, #3D3A9E); color: #fff; font-size: 14px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none; box-shadow: 0 8px 24px rgba(45,42,110,0.35), 0 0 0 1px rgba(91,127,255,0.3);">
+        Apply Now
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
   </main>
 
   <Footer />
@@ -137,4 +148,51 @@ const postedFmt = data.posted.toLocaleDateString("en-US", { year: "numeric", mon
   }
   .job-body strong { color: #0C0C0E; font-weight: 600; }
   .job-body a { color: #5B7FFF; text-decoration: underline; }
+
+  /* Visible state for floating Apply button (overrides inline styles) */
+  #floating-apply.visible {
+    opacity: 1 !important;
+    transform: translateX(-50%) translateY(0) !important;
+    pointer-events: auto !important;
+  }
 </style>
+
+<script>
+  // Show the floating Apply button when scrolled past the hero,
+  // hide it when the inline Apply CTA enters the viewport (visual "merge").
+  (function () {
+    const floating = document.getElementById("floating-apply");
+    const applyBlock = document.getElementById("apply-block");
+    if (!floating || !applyBlock) return;
+
+    let pastHero = false;
+    let applyInView = false;
+
+    function update() {
+      // Show only when past hero AND the inline CTA is NOT yet in view
+      if (pastHero && !applyInView) {
+        floating.classList.add("visible");
+      } else {
+        floating.classList.remove("visible");
+      }
+    }
+
+    // Track when user scrolls past 60vh (out of the hero region)
+    function onScroll() {
+      pastHero = window.scrollY > window.innerHeight * 0.5;
+      update();
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    // Hide as soon as any part of the inline Apply block enters the viewport
+    const obs = new IntersectionObserver(
+      (entries) => {
+        applyInView = entries[0].isIntersecting;
+        update();
+      },
+      { rootMargin: "0px 0px -120px 0px", threshold: 0 }
+    );
+    obs.observe(applyBlock);
+  })();
+</script>
