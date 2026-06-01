@@ -1,0 +1,29 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import PlatformHero from "../components/platform/PlatformHero";
+import ArchitectureBig from "../components/platform/ArchitectureBig";
+import DataLayer from "../components/platform/DataLayer";
+import AILayer from "../components/platform/AILayer";
+import EnginesLayer from "../components/platform/EnginesLayer";
+import Moat from "../components/platform/Moat";
+import PlatformBottomCTA from "../components/platform/PlatformBottomCTA";
+---
+
+<Base
+  title="Platform · The Infrastructure Layer for Global IP"
+  description="Proprietary data infrastructure spanning 100+ IP offices, with AI intelligence and purpose-built product engines on top. The architecture is the moat."
+>
+  <Nav client:load />
+  <main>
+    <PlatformHero client:visible />
+    <ArchitectureBig client:visible />
+    <DataLayer client:visible />
+    <AILayer client:visible />
+    <EnginesLayer client:visible />
+    <Moat client:visible />
+    <PlatformBottomCTA client:visible />
+  </main>
+  <Footer />
+</Base>
