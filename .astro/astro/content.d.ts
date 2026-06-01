@@ -140,7 +140,44 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"jobs": {
+		"blog": {
+"building-the-infrastructure-layer.md": {
+	id: "building-the-infrastructure-layer.md";
+  slug: "building-the-infrastructure-layer";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"hidden-cost-of-legacy-platforms.md": {
+	id: "hidden-cost-of-legacy-platforms.md";
+  slug: "hidden-cost-of-legacy-platforms";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"how-automated-docketing-works.md": {
+	id: "how-automated-docketing-works.md";
+  slug: "how-automated-docketing-works";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"mid-size-firms-two-bad-options.md": {
+	id: "mid-size-firms-two-bad-options.md";
+  slug: "mid-size-firms-two-bad-options";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"renewals-as-profit-centre.md": {
+	id: "renewals-as-profit-centre.md";
+  slug: "renewals-as-profit-centre";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+};
+"jobs": {
 "founding-engineer.md": {
 	id: "founding-engineer.md";
   slug: "founding-engineer";
@@ -153,12 +190,7 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"blog": Record<string, {
-  id: string;
-  collection: "blog";
-  data: any;
-}>;
-"docs": Record<string, {
+		"docs": Record<string, {
   id: string;
   collection: "docs";
   data: any;

@@ -1,0 +1,171 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+import { getLatestPosts, getAllPosts } from "../../lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => data.published);
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const data = post.data;
+const latestPosts = await getLatestPosts(3);
+
+// Related: 2 most recent posts in the same category, excluding self
+const allPosts = await getAllPosts();
+const related = allPosts.filter(p => p.category === data.category && p.slug !== post.slug).slice(0, 2);
+
+const dateFmt = data.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+const coverGradients: Record<string, string> = {
+  indigo: "linear-gradient(135deg, #2D2A6E, #5B7FFF)",
+  violet: "linear-gradient(135deg, #5B3FA8, #A78BFA)",
+  blue:   "linear-gradient(135deg, #1E3A8A, #3B82F6)",
+  slate:  "linear-gradient(135deg, #1e1b5e, #4A47A3)",
+};
+
+const categoryAccents: Record<string, { c: string; bg: string }> = {
+  "Docketing":       { c: "#5B7FFF", bg: "rgba(91,127,255,0.15)"  },
+  "Renewals":        { c: "#A78BFA", bg: "rgba(167,139,250,0.15)" },
+  "IP Strategy":     { c: "#FFFFFF", bg: "rgba(255,255,255,0.12)" },
+  "Product Updates": { c: "#4ADE80", bg: "rgba(22,163,74,0.18)"   },
+};
+const acc = categoryAccents[data.category] || categoryAccents["IP Strategy"];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<Base
+  title={`${data.title} · Guarded Growth`}
+  description={data.excerpt}
+>
+  <Nav client:load latestPosts={latestPosts} />
+
+  <main style="background: #fff; color: #0C0C0E;">
+
+    {/* Hero band */}
+    <section style={`padding-top: 120px; padding-bottom: 80px; position: relative; overflow: hidden; background: ${coverGradients[data.coverColor] || coverGradients.indigo};`}>
+      <div class="grid-bg-animated" style="position: absolute; inset: 0; opacity: 0.4;"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(5,5,16,0.4));"></div>
+
+      <div class="max-w-content mx-auto px-7 relative" style="max-width: 800px;">
+        <a href={base + "/blog/"} style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.65); text-decoration: none; margin-bottom: 24px;">
+          ← All articles
+        </a>
+
+        <div class="flex items-center gap-3 mb-5" style="flex-wrap: wrap;">
+          <span style={`font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 9999px; background: ${acc.bg}; color: ${acc.c}; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.15);`}>{data.category}</span>
+          <time datetime={data.date.toISOString()} style="font-size: 13px; color: rgba(255,255,255,0.6); font-family: 'General Sans', sans-serif;">{dateFmt}</time>
+          <span style="font-size: 13px; color: rgba(255,255,255,0.45); font-family: 'General Sans', sans-serif;">· {data.readTime} min read</span>
+        </div>
+
+        <h1 class="font-display font-extrabold text-white" style="font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.035em; line-height: 1.1; margin-bottom: 20px;">
+          {data.title}
+        </h1>
+        <p style="font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.7); max-width: 680px; font-family: 'General Sans', sans-serif; margin-bottom: 28px;">
+          {data.excerpt}
+        </p>
+
+        <div class="flex items-center gap-3">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #fff;">
+            {data.author.split(" ").map(p => p[0]).join("").slice(0, 2)}
+          </div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600; color: #fff;">{data.author}</div>
+            <div style="font-size: 12px; color: rgba(255,255,255,0.55); font-family: 'General Sans', sans-serif;">Guarded Growth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Article body */}
+    <article style="padding: 72px 28px;">
+      <div style="max-width: 680px; margin: 0 auto;">
+        <div class="post-body">
+          <Content />
+        </div>
+      </div>
+    </article>
+
+    {/* Related */}
+    {related.length > 0 && (
+      <section style="padding: 64px 28px 96px; background: #F6F6F9; border-top: 1px solid #E2E2EA;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+          <h3 class="font-display font-bold mb-7" style="font-size: 22px; letter-spacing: -0.02em;">More from {data.category}</h3>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+            {related.map(r => (
+              <a href={base + `/blog/${r.slug}/`} style="display: block; padding: 24px 28px; border-radius: 14px; background: #fff; border: 1px solid #E2E2EA; text-decoration: none; transition: all 0.2s;">
+                <div style={`font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: ${categoryAccents[r.category]?.c === '#FFFFFF' ? '#2D2A6E' : categoryAccents[r.category]?.c}; text-transform: uppercase; margin-bottom: 6px;`}>{r.category}</div>
+                <h4 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.3; color: #0C0C0E; margin-bottom: 6px;">{r.title}</h4>
+                <p style="font-size: 13px; color: #5C5C6E; font-family: 'General Sans', sans-serif; line-height: 1.55;">{r.excerpt}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <Footer />
+</Base>
+
+<style is:global>
+  .post-body { font-family: 'General Sans', sans-serif; }
+  .post-body h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #0C0C0E;
+    margin-top: 44px;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .post-body h2:first-child { margin-top: 0; }
+  .post-body h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #0C0C0E;
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+  .post-body p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #3D3D4E;
+    margin-bottom: 18px;
+  }
+  .post-body ul, .post-body ol {
+    margin: 0 0 22px 24px;
+    padding: 0;
+  }
+  .post-body li {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #3D3D4E;
+    margin-bottom: 8px;
+  }
+  .post-body strong { color: #0C0C0E; font-weight: 600; }
+  .post-body a { color: #5B7FFF; text-decoration: underline; text-underline-offset: 3px; }
+  .post-body blockquote {
+    border-left: 3px solid #5B7FFF;
+    padding: 4px 0 4px 20px;
+    margin: 24px 0;
+    color: #5C5C6E;
+    font-style: italic;
+  }
+  .post-body code {
+    background: #F6F6F9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.92em;
+    font-family: 'JetBrains Mono', monospace;
+    color: #2D2A6E;
+  }
+</style>

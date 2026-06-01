@@ -15,4 +15,18 @@ const jobs = defineCollection({
   }),
 });
 
-export const collections = { jobs };
+const blog = defineCollection({
+  type: "content",
+  schema: z.object({
+    title:      z.string(),
+    date:       z.date(),
+    author:     z.string(),
+    category:   z.enum(["Docketing", "Renewals", "IP Strategy", "Product Updates"]),
+    excerpt:    z.string(),
+    coverColor: z.enum(["indigo", "violet", "blue", "slate"]).default("indigo"),
+    readTime:   z.number().default(5),
+    published:  z.boolean().default(true),
+  }),
+});
+
+export const collections = { jobs, blog };

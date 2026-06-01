@@ -14,7 +14,18 @@ const NAV_ITEMS = [
   { label: "Company",   key: "company"   },
 ];
 
-export default function Nav() {
+interface LatestPost { slug: string; title: string; }
+interface NavProps { latestPosts?: LatestPost[]; }
+
+const FALLBACK_POSTS: LatestPost[] = [
+  { slug: "mid-size-firms-two-bad-options", title: "Why mid-size IP firms are stuck between two bad options" },
+  { slug: "hidden-cost-of-legacy-platforms", title: "The hidden cost of legacy IP platforms" },
+  { slug: "how-automated-docketing-works",  title: "How automated docketing actually works" },
+];
+
+export default function Nav({ latestPosts }: NavProps = {}) {
+  const blogItems = (latestPosts && latestPosts.length > 0 ? latestPosts : FALLBACK_POSTS).slice(0, 3);
+
   const [scrolled, setScrolled]           = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen]       = useState(false);
@@ -193,7 +204,7 @@ export default function Nav() {
                 {activeDropdown === "resources" && (
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
                     {[
-                      { icon: "book" as const, title: "Blog & Insights", href: url("/blog"), desc: "Thought leadership, product updates, and IP strategy.", items: [{ label: "IP Management Trends 2026", href: url("/blog") }, { label: "Why Mid-Size Firms Switch", href: url("/blog") }, { label: "The Infrastructure Approach", href: url("/blog") }], color: "#5B7FFF" },
+                      { icon: "book" as const, title: "Blog & Insights", href: url("/blog"), desc: "Thought leadership, product updates, and IP strategy.", items: blogItems.map(p => ({ label: p.title, href: url(`/blog/${p.slug}/`) })), color: "#5B7FFF" },
                       { icon: "file" as const, title: "Help Docs", href: url("/docs"), desc: "Step-by-step guides, API reference, and setup.", items: [{ label: "Getting Started Guide", href: url("/docs") }, { label: "DocketEngine Setup", href: url("/docs") }, { label: "API Documentation", href: url("/docs") }], color: "#A78BFA" },
                       { icon: "shield" as const, title: "Trust Center", href: url("/trust"), desc: "Security, compliance, and data handling.", items: [{ label: "Security Overview", href: url("/trust") }, { label: "SOC2 Compliance", href: url("/trust") }, { label: "Data Handling & Privacy", href: url("/trust") }], color: "#4ADE80" },
                     ].map((r, i) => (
