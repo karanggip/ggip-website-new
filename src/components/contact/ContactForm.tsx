@@ -3,10 +3,8 @@ import { useState } from "react";
 import FadeIn from "../ui/FadeIn";
 import Icon from "../ui/Icon";
 
-// Replace this with your Formspree (or other) form ID once chosen.
-// Until then, the form falls back to opening a prefilled mailto link.
-const FORMSPREE_ID: string = "";
-
+// Form opens the user's email client with the message prefilled,
+// routing to the appropriate inbox based on the selected subject.
 const subjects = ["Sales", "Support", "Partnerships", "Press", "General"];
 
 const subjectEmail: Record<string, string> = {
@@ -40,15 +38,10 @@ const labelStyle: React.CSSProperties = {
 };
 
 export default function ContactForm() {
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted]   = useState(false);
-  const [error, setError]           = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitting(true);
-    setError(null);
-
     const form = e.currentTarget;
     const fd = new FormData(form);
     const name    = String(fd.get("name") || "");
@@ -57,29 +50,6 @@ export default function ContactForm() {
     const subject = String(fd.get("subject") || "General");
     const message = String(fd.get("message") || "");
 
-    // Path A: Formspree configured — POST to the endpoint
-    if (FORMSPREE_ID) {
-      try {
-        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-          method: "POST",
-          headers: { "Accept": "application/json", "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, company, subject, message }),
-        });
-        if (res.ok) {
-          setSubmitted(true);
-          form.reset();
-        } else {
-          setError("Something went wrong. Please email us directly using the addresses on the right.");
-        }
-      } catch {
-        setError("Network error. Please email us directly using the addresses on the right.");
-      } finally {
-        setSubmitting(false);
-      }
-      return;
-    }
-
-    // Path B: Mailto fallback — opens the user's email client with content prefilled
     const to = subjectEmail[subject] || "info@guardedgrowthip.com";
     const subjectLine = encodeURIComponent(`[${subject}] ${name ? `from ${name}` : "Inquiry"}`);
     const body = encodeURIComponent(
@@ -87,7 +57,6 @@ export default function ContactForm() {
     );
     window.location.href = `mailto:${to}?subject=${subjectLine}&body=${body}`;
     setSubmitted(true);
-    setSubmitting(false);
     form.reset();
   }
 
@@ -97,9 +66,9 @@ export default function ContactForm() {
         <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", color: "#16A34A", margin: "0 auto 18px", border: "1px solid rgba(22,163,74,0.25)" }}>
           <Icon name="check" size={26} stroke={2.5} />
         </div>
-        <h3 className="font-display font-bold mb-2" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Message sent.</h3>
+        <h3 className="font-display font-bold mb-2" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Almost there.</h3>
         <p style={{ fontSize: 15, color: "#5C5C6E", fontFamily: "'General Sans', sans-serif", lineHeight: 1.65 }}>
-          We've received your note and will reply within one business day. Talk soon.
+          Your email client should have opened with the message prefilled — just hit send. We'll reply within one business day.
         </p>
       </div>
     );
@@ -157,19 +126,13 @@ export default function ContactForm() {
         />
       </div>
 
-      {error && (
-        <div style={{ padding: "10px 14px", borderRadius: 8, background: "#FEF2F2", border: "1px solid #DC262633", color: "#DC2626", fontSize: 13, marginBottom: 14, fontFamily: "'General Sans', sans-serif" }}>
-          {error}
-        </div>
-      )}
-
-      <button type="submit" disabled={submitting}
-        style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "14px 24px", borderRadius: 10, background: submitting ? "#5C5C6E" : "linear-gradient(135deg, #2D2A6E, #3D3A9E)", color: "#fff", fontSize: 14, fontWeight: 700, fontFamily: "'Plus Jakarta Sans', sans-serif", border: "none", cursor: submitting ? "wait" : "pointer", transition: "all 0.2s", boxShadow: "0 4px 16px rgba(45,42,110,0.2)" }}>
-        {submitting ? "Sending..." : <>Send Message <Icon name="arrowRight" size={15} /></>}
+      <button type="submit"
+        style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "14px 24px", borderRadius: 10, background: "linear-gradient(135deg, #2D2A6E, #3D3A9E)", color: "#fff", fontSize: 14, fontWeight: 700, fontFamily: "'Plus Jakarta Sans', sans-serif", border: "none", cursor: "pointer", transition: "all 0.2s", boxShadow: "0 4px 16px rgba(45,42,110,0.2)" }}>
+        Send Message <Icon name="arrowRight" size={15} />
       </button>
 
       <p style={{ fontSize: 12, color: "#8B8B9E", marginTop: 14, textAlign: "center", fontFamily: "'General Sans', sans-serif" }}>
-        By submitting, you agree to our reply by email. We don't use your details for anything else.
+        Submitting opens your email client with the message ready to send.
       </p>
     </form>
   );
