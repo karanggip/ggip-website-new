@@ -127,8 +127,8 @@ export default function DocketPricing() {
               <FadeIn key={i} delay={i * 120}>
                 {tier.highlight ? (
                   <div style={{
-                    padding: 2,
-                    borderRadius: 18,
+                    padding: 3,
+                    borderRadius: 19,
                     background: "conic-gradient(from var(--angle, 0deg), transparent 40%, #5B7FFF 55%, #A78BFA 68%, #5B7FFF 80%, transparent 90%)",
                     animation: "borderSpin 5s linear infinite",
                     boxShadow: "0 16px 48px rgba(45,42,110,0.3)",

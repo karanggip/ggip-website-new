@@ -1,3 +1,4 @@
+import type React from "react";
 import EngineIcon from "../ui/EngineIcon";
 import Button from "../ui/Button";
 import Icon from "../ui/Icon";
@@ -80,8 +81,8 @@ export default function DocketHero() {
         </div>
 
         {/* Product mockup */}
-        <div className="anim-border" style={{ maxWidth: 1000, margin: "0 auto", boxShadow: "0 32px 80px rgba(0,0,0,0.5)" }}>
-        <div style={{ position: "relative", zIndex: 1, borderRadius: 20, overflow: "hidden", background: "#0d0d1a", border: "1px solid rgba(255,255,255,0.06)" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto", padding: 3, borderRadius: 23, background: "conic-gradient(from var(--angle, 0deg), transparent 40%, #5B7FFF 55%, #A78BFA 68%, #5B7FFF 80%, transparent 90%)", animation: "borderSpin 5s linear infinite", boxShadow: "0 32px 80px rgba(0,0,0,0.5)" } as React.CSSProperties}>
+        <div style={{ position: "relative", zIndex: 1, borderRadius: 20, overflow: "hidden", background: "#0d0d1a" }}>
           {/* Browser chrome */}
           <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "14px 18px", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
             <div className="flex gap-1.5">
