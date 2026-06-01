@@ -65,10 +65,16 @@ export default function DocketHero() {
 
         {/* Trust badges */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
-          {["100+ IP Offices", "Real-time Sync", "AI Portfolio Health", "Free Migration"].map((badge) => (
-            <span key={badge} style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 16px", borderRadius: 9999, background: "rgba(91,127,255,0.08)", border: "1px solid rgba(91,127,255,0.18)", fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.65)" }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#5B7FFF", display: "inline-block", flexShrink: 0 }} />
-              {badge}
+          {[
+            { label: "100+ IP Offices",     inProgress: false },
+            { label: "Real-time Sync",       inProgress: false },
+            { label: "AI Portfolio Health",  inProgress: true  },
+            { label: "Free Migration",       inProgress: false },
+          ].map((badge) => (
+            <span key={badge.label} style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 16px", borderRadius: 9999, background: badge.inProgress ? "rgba(217,119,6,0.08)" : "rgba(91,127,255,0.08)", border: `1px solid ${badge.inProgress ? "rgba(217,119,6,0.25)" : "rgba(91,127,255,0.18)"}`, fontSize: 13, fontWeight: 600, color: badge.inProgress ? "#D97706" : "rgba(255,255,255,0.65)" }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: badge.inProgress ? "#D97706" : "#5B7FFF", display: "inline-block", flexShrink: 0 }} />
+              {badge.label}
+              {badge.inProgress && <span style={{ fontSize: 9, fontWeight: 700, padding: "1px 6px", borderRadius: 9999, background: "rgba(217,119,6,0.15)", color: "#D97706", border: "1px solid rgba(217,119,6,0.25)", letterSpacing: "0.05em", marginLeft: 2 }}>IN PROGRESS</span>}
             </span>
           ))}
         </div>

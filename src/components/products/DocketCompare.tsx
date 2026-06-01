@@ -5,7 +5,7 @@ const rows = [
   { feature: "Jurisdictions covered",     docket: "100+",          altlegal: "US & Canada",    appcoll: "US & Canada",    clarivate: "100+" },
   { feature: "Pricing model",             docket: "Per matter",    altlegal: "Per user",       appcoll: "Per user",       clarivate: "Enterprise" },
   { feature: "Entry price",               docket: "$99/mo",        altlegal: "$99/user/mo",    appcoll: "$45/user/mo",    clarivate: "$50k+/yr" },
-  { feature: "AI portfolio health",       docket: true,            altlegal: false,            appcoll: false,            clarivate: "Limited" },
+  { feature: "AI portfolio health",       docket: "In progress",   altlegal: false,            appcoll: false,            clarivate: "Limited" },
   { feature: "Free migration",            docket: true,            altlegal: false,            appcoll: false,            clarivate: false },
   { feature: "Competitor watch",          docket: true,            altlegal: false,            appcoll: false,            clarivate: true },
   { feature: "Calendar sync",             docket: true,            altlegal: true,             appcoll: true,             clarivate: true },
@@ -14,6 +14,11 @@ const rows = [
 ];
 
 function Cell({ value, highlight }: { value: string | boolean; highlight?: boolean }) {
+  if (value === "In progress") return (
+    <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 9999, background: "rgba(217,119,6,0.12)", color: "#D97706", border: "1px solid rgba(217,119,6,0.28)", letterSpacing: "0.04em" }}>
+      IN PROGRESS
+    </span>
+  );
   if (value === true) return (
     <div style={{ display: "flex", justifyContent: highlight ? "center" : "center" }}>
       <span style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(22,163,74,0.15)", border: "1px solid rgba(22,163,74,0.3)", display: "flex", alignItems: "center", justifyContent: "center", color: "#16A34A" }}>
