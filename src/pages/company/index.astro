@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+import StoryHero from "../../components/company/StoryHero";
+import MissionVision from "../../components/company/MissionVision";
+import FounderStory from "../../components/company/FounderStory";
+import Values from "../../components/company/Values";
+import StoryTimeline from "../../components/company/StoryTimeline";
+import StoryBottomCTA from "../../components/company/StoryBottomCTA";
+---
+
+<Base
+  title="Our Story · Built by Practitioners, Engineered for Scale"
+  description="Founded by an IP operations expert and a serial technology entrepreneur who saw the same gap from two directions. Building the data infrastructure layer for global IP."
+>
+  <Nav client:load />
+  <main>
+    <StoryHero client:visible />
+    <MissionVision client:visible />
+    <FounderStory client:visible />
+    <Values client:visible />
+    <StoryTimeline client:visible />
+    <StoryBottomCTA client:visible />
+  </main>
+  <Footer />
+</Base>
