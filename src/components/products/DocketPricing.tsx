@@ -1,3 +1,4 @@
+import type React from "react";
 import FadeIn from "../ui/FadeIn";
 import Icon from "../ui/Icon";
 import Button from "../ui/Button";
@@ -79,18 +80,17 @@ export default function DocketPricing() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, alignItems: "start" }}
           className="max-md:grid-cols-1">
-          {tiers.map((tier, i) => (
-            <FadeIn key={i} delay={i * 120}>
+          {tiers.map((tier, i) => {
+            const cardInner = (
               <div style={{
+                position: "relative", zIndex: 1,
                 borderRadius: 16,
-                border: tier.highlight ? "1px solid #2D2A6E" : "1px solid #E2E2EA",
+                border: tier.highlight ? "none" : "1px solid #E2E2EA",
                 background: tier.highlight ? "linear-gradient(135deg, #2D2A6E, #1e1b5e)" : "#fff",
                 padding: 32,
-                position: "relative",
-                boxShadow: tier.highlight ? "0 16px 48px rgba(45,42,110,0.2)" : "none",
               }}>
                 {tier.badge && (
-                  <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: "#5B7FFF", color: "#fff", fontSize: 11, fontWeight: 700, padding: "4px 14px", borderRadius: 9999, letterSpacing: "0.05em", whiteSpace: "nowrap" }}>
+                  <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: "#5B7FFF", color: "#fff", fontSize: 11, fontWeight: 700, padding: "4px 14px", borderRadius: 9999, letterSpacing: "0.05em", whiteSpace: "nowrap", zIndex: 2 }}>
                     {tier.badge}
                   </div>
                 )}
@@ -102,13 +102,11 @@ export default function DocketPricing() {
                   </div>
                   <p style={{ fontSize: 14, color: tier.highlight ? "rgba(255,255,255,0.55)" : "#5C5C6E", lineHeight: 1.6, marginTop: 8, fontFamily: "'General Sans', sans-serif" }}>{tier.desc}</p>
                 </div>
-
                 <div style={{ padding: "12px 0", borderTop: `1px solid ${tier.highlight ? "rgba(255,255,255,0.12)" : "#E2E2EA"}`, borderBottom: `1px solid ${tier.highlight ? "rgba(255,255,255,0.12)" : "#E2E2EA"}`, marginBottom: 20 }}>
                   {[tier.matters, tier.users].map((line, j) => (
                     <div key={j} style={{ fontSize: 13, color: tier.highlight ? "rgba(255,255,255,0.7)" : "#0C0C0E", fontWeight: 600, padding: "4px 0", fontFamily: "'General Sans', sans-serif" }}>{line}</div>
                   ))}
                 </div>
-
                 <div className="flex flex-col gap-2.5 mb-8">
                   {tier.features.map((f, j) => (
                     <div key={j} className="flex items-start gap-2.5">
@@ -119,21 +117,22 @@ export default function DocketPricing() {
                     </div>
                   ))}
                 </div>
-
                 <a href={tier.cta === "Talk to Sales" ? "/contact" : "/demo"}
-                  style={{
-                    display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                    width: "100%", padding: "13px 24px", borderRadius: 10,
-                    fontSize: 14, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    textDecoration: "none", transition: "all 0.2s",
-                    background: tier.highlight ? "#fff" : "#2D2A6E",
-                    color: tier.highlight ? "#2D2A6E" : "#fff",
-                  }}>
+                  style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "13px 24px", borderRadius: 10, fontSize: 14, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", transition: "all 0.2s", background: tier.highlight ? "#fff" : "#2D2A6E", color: tier.highlight ? "#2D2A6E" : "#fff" }}>
                   {tier.cta} <Icon name="arrowRight" size={15} />
                 </a>
               </div>
-            </FadeIn>
-          ))}
+            );
+            return (
+              <FadeIn key={i} delay={i * 120}>
+                {tier.highlight ? (
+                  <div className="anim-border" style={{ "--anim-radius": "16px", boxShadow: "0 16px 48px rgba(45,42,110,0.25)" } as React.CSSProperties}>
+                    {cardInner}
+                  </div>
+                ) : cardInner}
+              </FadeIn>
+            );
+          })}
         </div>
 
         <FadeIn delay={400}>

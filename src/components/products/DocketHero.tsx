@@ -80,7 +80,8 @@ export default function DocketHero() {
         </div>
 
         {/* Product mockup */}
-        <div style={{ maxWidth: 1000, margin: "0 auto", borderRadius: 20, overflow: "hidden", background: "#0d0d1a", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "0 32px 80px rgba(0,0,0,0.5)" }}>
+        <div className="anim-border" style={{ maxWidth: 1000, margin: "0 auto", boxShadow: "0 32px 80px rgba(0,0,0,0.5)" }}>
+        <div style={{ position: "relative", zIndex: 1, borderRadius: 20, overflow: "hidden", background: "#0d0d1a", border: "1px solid rgba(255,255,255,0.06)" }}>
           {/* Browser chrome */}
           <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "14px 18px", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
             <div className="flex gap-1.5">
@@ -133,7 +134,8 @@ export default function DocketHero() {
               </div>
             </div>
           </div>
-        </div>
+        </div>{/* inner zIndex:1 */}
+        </div>{/* anim-border */}
       </div>
     </section>
   );
