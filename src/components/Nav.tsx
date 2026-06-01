@@ -7,7 +7,7 @@ import { url } from "../utils/url";
 
 const NAV_ITEMS = [
   { label: "Products",  key: "products"  },
-  { label: "Platform",  key: null,        href: url("/platform") },
+
   { label: "Solutions", key: "solutions" },
   { label: "Pricing",   key: null,        href: url("/pricing")  },
   { label: "Resources", key: "resources" },
