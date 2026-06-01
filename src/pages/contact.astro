@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import ContactHero from "../components/contact/ContactHero";
+import ContactForm from "../components/contact/ContactForm";
+import ContactInfo from "../components/contact/ContactInfo";
+import ContactFAQ from "../components/contact/ContactFAQ";
+---
+
+<Base
+  title="Contact · Guarded Growth"
+  description="Get in touch — sales, support, partnerships, press. We typically respond within one business day."
+>
+  <Nav client:load />
+  <main>
+    <ContactHero client:visible />
+
+    {/* Form + info section */}
+    <section style="padding-top: 64px; padding-bottom: 56px; background: #fff; color: #0C0C0E;">
+      <div class="max-w-content mx-auto px-7">
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: start;" class="max-md:!grid-cols-1 max-md:!gap-10">
+          <ContactForm client:load />
+          <ContactInfo client:visible />
+        </div>
+      </div>
+    </section>
+
+    <ContactFAQ client:load />
+  </main>
+  <Footer />
+</Base>
