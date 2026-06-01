@@ -88,7 +88,7 @@ export default function DocketShowcase() {
                 {/* Sidebar */}
                 <div style={{ borderRight: "1px solid rgba(255,255,255,0.06)", padding: 16, background: "rgba(255,255,255,0.01)" }}>
                   <div className="flex items-center gap-2 mb-6">
-                    <img src={url("/assets/icon-white.svg")} alt="" className="w-5 h-5" />
+                    <EngineIcon engine="docket" size={24} variant="dark" />
                     <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>DocketEngine</span>
                   </div>
                   {sidebarItems.map((item, i) => (
