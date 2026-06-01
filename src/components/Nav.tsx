@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Icon from "./ui/Icon";
+import EngineIcon from "./ui/EngineIcon";
 import Button from "./ui/Button";
 import { url } from "../utils/url";
 
@@ -101,16 +102,14 @@ export default function Nav() {
                 {activeDropdown === "products" && (
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 280px", minHeight: 280 }}>
                     {[
-                      { icon: "docket" as const, name: "DocketEngine", href: url("/products/docketengine"), color: "#5B7FFF", rgb: "91,127,255", desc: "Automated IP docketing powered by global data infrastructure. Real-time sync across 100+ IP offices.", features: ["Real-time USPTO, EUIPO, WIPO sync", "AI portfolio health insights", "Bulk import & free migration", "Competitor watch"] },
-                      { icon: "renewal" as const, name: "RenewalEngine", href: url("/products/renewalengine"), color: "#A78BFA", rgb: "167,139,250", desc: "IP renewals that generate margin, not just cost. Full transparency across 190+ jurisdictions.", features: ["27.7% avg savings vs providers", "50% margin capture for firms", "One-click renew/hold/lapse", "Complete cost breakdowns"] },
+                      { engine: "docket" as const, name: "DocketEngine", href: url("/products/docketengine"), color: "#5B7FFF", desc: "Automated IP docketing powered by global data infrastructure. Real-time sync across 100+ IP offices.", features: ["Real-time USPTO, EUIPO, WIPO sync", "AI portfolio health insights", "Bulk import & free migration", "Competitor watch"] },
+                      { engine: "renewal" as const, name: "RenewalEngine", href: url("/products/renewalengine"), color: "#A78BFA", desc: "IP renewals that generate margin, not just cost. Full transparency across 190+ jurisdictions.", features: ["27.7% avg savings vs providers", "50% margin capture for firms", "One-click renew/hold/lapse", "Complete cost breakdowns"] },
                     ].map((p, i) => (
                       <a key={i} href={p.href} style={{ padding: 28, borderRight: "1px solid rgba(255,255,255,0.06)", display: "block", textDecoration: "none", transition: "background 0.2s" }}
                         onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.03)")}
                         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
                         <div className="flex items-center gap-2.5 mb-3.5">
-                          <div style={{ width: 36, height: 36, borderRadius: 10, background: `rgba(${p.rgb},0.12)`, border: `1px solid ${p.color}33`, display: "flex", alignItems: "center", justifyContent: "center", color: p.color }}>
-                            <Icon name={p.icon} size={18} />
-                          </div>
+                          <EngineIcon engine={p.engine} size={40} variant="dark" />
                           <div>
                             <div className="text-sm font-bold text-white">{p.name}</div>
                             <span style={{ fontSize: 9, fontWeight: 700, padding: "2px 6px", borderRadius: 4, background: "rgba(22,163,74,0.15)", color: "#4ADE80", border: "1px solid rgba(22,163,74,0.3)" }}>LIVE</span>

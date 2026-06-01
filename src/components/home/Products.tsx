@@ -1,16 +1,17 @@
 import FadeIn from "../ui/FadeIn";
 import Icon from "../ui/Icon";
+import EngineIcon from "../ui/EngineIcon";
 
 const products = [
   {
-    icon: "docket" as const, name: "DocketEngine",
+    engine: "docket" as const, name: "DocketEngine",
     tagline: "Automated IP docketing across 100+ jurisdictions.",
     desc: "Real-time sync, AI portfolio health insights, and a modern interface your team masters in hours. Built for firms that have outgrown spreadsheets but refuse to overpay for legacy suites.",
     features: ["Real-time sync with USPTO, EUIPO, WIPO, JPO, KIPO", "AI-powered portfolio health & risk scoring", "Bulk import, free migration, competitor watch"],
     accent: "91,127,255", accentHex: "#5B7FFF", cta: "Explore DocketEngine", href: "/products/docketengine",
   },
   {
-    icon: "renewal" as const, name: "RenewalEngine",
+    engine: "renewal" as const, name: "RenewalEngine",
     tagline: "IP renewals transformed from cost center to margin driver.",
     desc: "Full cost transparency across 190+ jurisdictions. Keep client ownership while running on automated infrastructure — and capture the margin yourself instead of passing it to a third party.",
     features: ["190+ jurisdictions with transparent pricing", "27.7% average savings vs traditional providers", "One-click renew/hold/lapse with forecasting"],
@@ -42,9 +43,7 @@ export default function Products() {
                 <div style={{ height: 3, background: `linear-gradient(90deg, ${p.accentHex}, transparent)` }} />
                 <div style={{ padding: 36, flex: 1, display: "flex", flexDirection: "column" }}>
                   <div className="flex items-center gap-3.5 mb-5">
-                    <div style={{ width: 52, height: 52, borderRadius: 14, background: `rgba(${p.accent},0.12)`, border: `1px solid rgba(${p.accent},0.25)`, display: "flex", alignItems: "center", justifyContent: "center", color: p.accentHex }}>
-                      <Icon name={p.icon} size={26} />
-                    </div>
+                    <EngineIcon engine={p.engine} size={52} variant="dark" />
                     <div className="flex items-center gap-2.5">
                       <span style={{ fontSize: 24, fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>{p.name}</span>
                       <span style={{ fontSize: 10, fontWeight: 700, padding: "3px 8px", borderRadius: 5, background: "rgba(22,163,74,0.15)", color: "#4ADE80", border: "1px solid rgba(22,163,74,0.3)" }}>LIVE</span>
