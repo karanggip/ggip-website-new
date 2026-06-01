@@ -59,8 +59,27 @@ export default function ContactInfo() {
         </FadeIn>
       ))}
 
-      {/* Response time block */}
+      {/* Mailing address */}
       <FadeIn delay={300}>
+        <div style={{ padding: "20px 22px", borderRadius: 14, border: "1px solid #E2E2EA", background: "#fff" }}>
+          <div className="flex items-start gap-3">
+            <div style={{ width: 38, height: 38, borderRadius: 10, background: "#EEEDFA", border: "1px solid #2D2A6E22", display: "flex", alignItems: "center", justifyContent: "center", color: "#2D2A6E", flexShrink: 0 }}>
+              <Icon name="landmark" size={18} />
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "#0C0C0E", marginBottom: 2 }}>Mailing address</div>
+              <div style={{ fontSize: 13, color: "#5C5C6E", fontFamily: "'General Sans', sans-serif", lineHeight: 1.6 }}>
+                5900 Balcones Drive #28582<br />
+                Austin, TX 78731<br />
+                United States
+              </div>
+            </div>
+          </div>
+        </div>
+      </FadeIn>
+
+      {/* Response time block */}
+      <FadeIn delay={380}>
         <div style={{ padding: "20px 22px", borderRadius: 14, background: "linear-gradient(135deg, #EEEDFA, #EEF2FF)", border: "1px solid #E2E2EA" }}>
           <div className="flex items-center gap-2 mb-2">
             <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 6px #16A34A", display: "inline-block", animation: "pulseDot 2s ease-in-out infinite" }} />

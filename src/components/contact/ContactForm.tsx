@@ -37,10 +37,13 @@ const labelStyle: React.CSSProperties = {
   fontFamily: "'Plus Jakarta Sans', sans-serif",
 };
 
-export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+type SubmitMode = "api" | "mailto" | null;
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+export default function ContactForm() {
+  const [submitted, setSubmitted] = useState<SubmitMode>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
@@ -50,25 +53,58 @@ export default function ContactForm() {
     const subject = String(fd.get("subject") || "General");
     const message = String(fd.get("message") || "");
 
+    setSubmitting(true);
+
+    // Try the API endpoint first. On Railway + Resend this delivers the email
+    // server-side. On GitHub Pages there's no API → 404 → fall through to mailto.
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ name, email, company, subject, message }),
+      });
+      // Static hosts often serve a 404 HTML page (not JSON). Check both status
+      // and content-type so we don't mistakenly count a 404 page as success.
+      const ct = res.headers.get("content-type") || "";
+      if (res.ok && ct.includes("application/json")) {
+        const data = await res.json().catch(() => ({}));
+        if (data.ok) {
+          setSubmitted("api");
+          form.reset();
+          setSubmitting(false);
+          return;
+        }
+      }
+    } catch {
+      // Network error / endpoint absent — fall through to mailto
+    }
+
+    // Fallback: open the user's email client with the message prefilled
     const to = subjectEmail[subject] || "info@guardedgrowthip.com";
     const subjectLine = encodeURIComponent(`[${subject}] ${name ? `from ${name}` : "Inquiry"}`);
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}${company ? `\nCompany: ${company}` : ""}\n\n${message}`
     );
     window.location.href = `mailto:${to}?subject=${subjectLine}&body=${body}`;
-    setSubmitted(true);
+    setSubmitted("mailto");
+    setSubmitting(false);
     form.reset();
   }
 
   if (submitted) {
+    const apiSuccess = submitted === "api";
     return (
       <div style={{ padding: "48px 36px", borderRadius: 16, border: "1px solid #E2E2EA", background: "linear-gradient(135deg, #EEEDFA, #EEF2FF)", textAlign: "center" }}>
         <div style={{ width: 56, height: 56, borderRadius: "50%", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", color: "#16A34A", margin: "0 auto 18px", border: "1px solid rgba(22,163,74,0.25)" }}>
           <Icon name="check" size={26} stroke={2.5} />
         </div>
-        <h3 className="font-display font-bold mb-2" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Almost there.</h3>
+        <h3 className="font-display font-bold mb-2" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>
+          {apiSuccess ? "Message sent." : "Almost there."}
+        </h3>
         <p style={{ fontSize: 15, color: "#5C5C6E", fontFamily: "'General Sans', sans-serif", lineHeight: 1.65 }}>
-          Your email client should have opened with the message prefilled — just hit send. We'll reply within one business day.
+          {apiSuccess
+            ? "We've received your note and will reply within one business day. Talk soon."
+            : "Your email client should have opened with the message prefilled — just hit send. We'll reply within one business day."}
         </p>
       </div>
     );
@@ -126,14 +162,10 @@ export default function ContactForm() {
         />
       </div>
 
-      <button type="submit"
-        style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "14px 24px", borderRadius: 10, background: "linear-gradient(135deg, #2D2A6E, #3D3A9E)", color: "#fff", fontSize: 14, fontWeight: 700, fontFamily: "'Plus Jakarta Sans', sans-serif", border: "none", cursor: "pointer", transition: "all 0.2s", boxShadow: "0 4px 16px rgba(45,42,110,0.2)" }}>
-        Send Message <Icon name="arrowRight" size={15} />
+      <button type="submit" disabled={submitting}
+        style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "14px 24px", borderRadius: 10, background: submitting ? "#5C5C6E" : "linear-gradient(135deg, #2D2A6E, #3D3A9E)", color: "#fff", fontSize: 14, fontWeight: 700, fontFamily: "'Plus Jakarta Sans', sans-serif", border: "none", cursor: submitting ? "wait" : "pointer", transition: "all 0.2s", boxShadow: "0 4px 16px rgba(45,42,110,0.2)" }}>
+        {submitting ? "Sending..." : <>Send Message <Icon name="arrowRight" size={15} /></>}
       </button>
-
-      <p style={{ fontSize: 12, color: "#8B8B9E", marginTop: 14, textAlign: "center", fontFamily: "'General Sans', sans-serif" }}>
-        Submitting opens your email client with the message ready to send.
-      </p>
     </form>
   );
 }
