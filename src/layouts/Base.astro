@@ -6,16 +6,67 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  ogType?: "website" | "article" | "product";
+  noindex?: boolean;
+  /** Additional schema.org JSON-LD objects for the current page (rendered alongside the
+   *  global Organization + WebSite schemas that appear on every page). */
+  jsonLd?: object | object[];
 }
 
 const {
   title = "Guarded Growth · The Data Infrastructure for Global IP",
   description = "Modern IP management platform with automated docketing and renewals across 100+ jurisdictions. Purpose-built engines on a cloud-native data infrastructure.",
-  ogImage = "/assets/og-default.png",
+  ogImage,
+  ogType = "website",
+  noindex = false,
+  jsonLd,
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const faviconHref = `${base}/assets/icon-color.svg`;
+
+// Build absolute canonical URL for the current page
+const siteOrigin = (Astro.site?.toString() || "https://karanggip.github.io").replace(/\/$/, "");
+const canonical = `${siteOrigin}${Astro.url.pathname}`;
+const ogImageUrl = ogImage
+  ? (ogImage.startsWith("http") ? ogImage : `${siteOrigin}${ogImage}`)
+  : `${siteOrigin}${base}/assets/icon-color.svg`;
+
+// Global schemas — present on every page
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Guarded Growth IP",
+  "legalName": "Guarded Growth IP LLC",
+  "url": `${siteOrigin}${base}/`,
+  "logo": `${siteOrigin}${base}/assets/icon-color.svg`,
+  "email": "info@guardedgrowthip.com",
+  "foundingDate": "2024",
+  "description": "Modern IP management platform — the data infrastructure layer for global intellectual property.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5900 Balcones Drive #28582",
+    "addressLocality": "Austin",
+    "addressRegion": "TX",
+    "postalCode": "78731",
+    "addressCountry": "US",
+  },
+  "founder": [
+    { "@type": "Person", "name": "Valli S Challa", "jobTitle": "Co-founder, LegalOps & Program Management", "sameAs": "https://www.linkedin.com/in/vallischalla/" },
+    { "@type": "Person", "name": "Karan S Kumar",  "jobTitle": "Co-founder, Product & Technology",         "sameAs": "https://www.linkedin.com/in/karanskumar/" },
+  ],
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Guarded Growth IP",
+  "url": `${siteOrigin}${base}/`,
+  "publisher": { "@type": "Organization", "name": "Guarded Growth IP" },
+};
+
+const extraLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const allLd = [organizationLd, websiteLd, ...extraLd];
 ---
 
 <!doctype html>
@@ -23,15 +74,37 @@ const faviconHref = `${base}/assets/icon-color.svg`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/svg+xml" href={faviconHref} />
-    <link rel="apple-touch-icon" href={faviconHref} />
+    <meta name="generator" content={Astro.generator} />
+
+    {/* Primary */}
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    {/* Open Graph */}
+    <meta property="og:type"        content={ogType} />
+    <meta property="og:site_name"   content="Guarded Growth IP" />
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:image"       content={ogImageUrl} />
+    <meta property="og:locale"      content="en_US" />
+
+    {/* Twitter */}
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImageUrl} />
+
+    {/* Favicons */}
+    <link rel="icon"            type="image/svg+xml" href={faviconHref} />
+    <link rel="apple-touch-icon" href={faviconHref} />
+
+    {/* JSON-LD structured data */}
+    {allLd.map((obj) => (
+      <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+    ))}
   </head>
   <body>
     <slot />

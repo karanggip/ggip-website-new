@@ -37,11 +37,29 @@ const categoryAccents: Record<string, { c: string; bg: string }> = {
 const acc = categoryAccents[data.category] || categoryAccents["IP Strategy"];
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const siteOrigin = (Astro.site?.toString() || "https://karanggip.github.io").replace(/\/$/, "");
+
+const articleLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": data.title,
+  "description": data.excerpt,
+  "datePublished": data.date.toISOString(),
+  "dateModified":  data.date.toISOString(),
+  "author":    { "@type": "Person",       "name": data.author },
+  "publisher": { "@type": "Organization", "name": "Guarded Growth IP", "logo": { "@type": "ImageObject", "url": `${siteOrigin}${base}/assets/icon-color.svg` } },
+  "url": `${siteOrigin}${base}/blog/${post.slug}/`,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `${siteOrigin}${base}/blog/${post.slug}/` },
+  "articleSection": data.category,
+  "keywords": [data.category, "IP management", "intellectual property", "Guarded Growth"].join(", "),
+};
 ---
 
 <Base
   title={`${data.title} · Guarded Growth`}
   description={data.excerpt}
+  ogType="article"
+  jsonLd={articleLd}
 >
   <Nav client:load latestPosts={latestPosts} />
 

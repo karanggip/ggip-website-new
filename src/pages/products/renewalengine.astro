@@ -7,11 +7,38 @@ import RenewalFlip from "../../components/products/RenewalFlip";
 import RenewalFeatures from "../../components/products/RenewalFeatures";
 import RenewalCompare from "../../components/products/RenewalCompare";
 import RenewalBottomCTA from "../../components/products/RenewalBottomCTA";
+
+const siteOrigin = (Astro.site?.toString() || "https://karanggip.github.io").replace(/\/$/, "");
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const productLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RenewalEngine",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Intellectual Property Renewals",
+  "operatingSystem": "Web (cloud-based)",
+  "url": `${siteOrigin}${base}/products/renewalengine/`,
+  "description": "Automated IP renewals across 190+ jurisdictions with full cost transparency. 27.7% average savings vs traditional providers. 50% margin capture for the firm.",
+  "brand": { "@type": "Brand", "name": "Guarded Growth IP" },
+  "publisher": { "@type": "Organization", "name": "Guarded Growth IP" },
+  "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "description": "Portfolio-based custom pricing", "priceCurrency": "USD", "price": "0" },
+  "featureList": [
+    "190+ jurisdictions covered",
+    "Full per-jurisdiction cost transparency",
+    "One-click renew / hold / lapse",
+    "27.7% average savings vs traditional providers",
+    "Forecasting & budgeting",
+    "Enterprise-grade security",
+  ],
+};
 ---
 
 <Base
   title="RenewalEngine · IP Renewals That Generate Margin"
   description="Automated IP renewals across 190+ jurisdictions. Full cost transparency. 27.7% average savings vs traditional providers. Keep client ownership — run on automated infrastructure."
+  ogType="product"
+  jsonLd={productLd}
 >
   <Nav client:load />
   <main>

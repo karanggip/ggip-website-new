@@ -29,4 +29,16 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { jobs, blog };
+const legal = defineCollection({
+  type: "content",
+  schema: z.object({
+    title:         z.string(),
+    subtitle:      z.string().optional(),
+    effectiveDate: z.string().optional(),
+    published:     z.boolean().default(true),
+    seoTitle:      z.string().optional(),
+    seoDescription:z.string().optional(),
+  }),
+});
+
+export const collections = { jobs, blog, legal };

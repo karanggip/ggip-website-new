@@ -7,11 +7,37 @@ import PricingPlans from "../components/pricing/PricingPlans";
 import RenewalPricing from "../components/pricing/RenewalPricing";
 import PricingFAQ from "../components/pricing/PricingFAQ";
 import PricingBottomCTA from "../components/pricing/PricingBottomCTA";
+
+// FAQPage structured data — directly powers Google rich results and gives AI answer
+// engines clean Q/A pairs to surface. Mirror the questions in PricingFAQ.tsx.
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What counts as a matter?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A matter is a single IP asset — one trademark, one patent, or one design registration. It doesn't matter how many jurisdictions that asset is filed in; each unique IP asset counts as one matter. For example, a trademark filed in 5 countries counts as 1 matter." } },
+    { "@type": "Question", "name": "Is there really a 14-day free trial?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — all DocketEngine plans include a 14-day free trial with full access to every feature on your chosen plan. No credit card required to start. You can import your portfolio, test the sync, and explore the platform before committing." } },
+    { "@type": "Question", "name": "What's included in the free migration?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Our team handles the full data transfer from your current system — whether that's AltLegal, AppColl, a spreadsheet, or a legacy platform. We clean, format, and import your portfolio data with no downtime. Most firms are fully onboarded within a week." } },
+    { "@type": "Question", "name": "Can I switch plans at any time?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can upgrade or downgrade your plan at any time. Upgrades take effect immediately. Downgrades apply at the start of the next billing period. There are no penalties or lock-in periods." } },
+    { "@type": "Question", "name": "Do you offer annual billing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Annual billing is available on all plans and saves you the equivalent of 2 months (a ~17% discount versus monthly billing). Contact us to set up annual billing." } },
+    { "@type": "Question", "name": "What happens if I exceed my matter limit?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We'll notify you as you approach your plan's matter limit. You won't be cut off — but we'll work with you to move to the appropriate plan. We never charge overage fees without notice." } },
+    { "@type": "Question", "name": "When will AI Portfolio Health and Competitor Watch be available?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Both features are currently in active development. AI Portfolio Health and Competitor Watch are available on the Growth and Scale plans — and will activate automatically for all qualifying subscribers when they launch. No plan changes or additional fees required." } },
+    { "@type": "Question", "name": "Can I use both DocketEngine and RenewalEngine together?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — and that's how they're designed to work. Both engines run on the same shared data infrastructure, so your portfolio data syncs seamlessly between them. Contact us for bundled pricing if you're interested in both." } },
+  ],
+};
 ---
 
 <Base
   title="Pricing · Transparent Plans That Scale With Your Practice"
   description="DocketEngine starts at $99/mo for up to 100 matters. RenewalEngine pricing based on portfolio. 14-day free trial. No hidden fees."
+  jsonLd={faqLd}
 >
   <Nav client:load />
   <main>

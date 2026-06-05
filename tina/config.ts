@@ -71,6 +71,28 @@ export default defineConfig({
         },
       },
       {
+        name: "legal",
+        label: "Legal Pages",
+        path: "src/content/legal",
+        format: "md",
+        fields: [
+          { type: "string",   name: "title",          label: "Title",           required: true, isTitle: true,
+            description: "Page heading, e.g. \"Privacy Policy\"" },
+          { type: "string",   name: "subtitle",       label: "Subtitle",
+            description: "Optional. e.g. \"Guarded Growth IP LLC\"" },
+          { type: "string",   name: "effectiveDate",  label: "Effective Date",
+            description: "Free text, e.g. \"February 16, 2026\"" },
+          { type: "boolean",  name: "published",      label: "Published" },
+          { type: "string",   name: "seoTitle",       label: "SEO Title (browser tab)" },
+          { type: "string",   name: "seoDescription", label: "SEO Description",
+            ui: { component: "textarea" } },
+          { type: "rich-text",name: "body",           label: "Body",            isBody: true },
+        ],
+        ui: {
+          router: ({ document }) => `/${document._sys.filename}/`,
+        },
+      },
+      {
         name: "doc",
         label: "Help Docs",
         path: "src/content/docs",

@@ -8,11 +8,44 @@ import DocketHowItWorks from "../../components/products/DocketHowItWorks";
 import DocketCompare from "../../components/products/DocketCompare";
 import DocketPricing from "../../components/products/DocketPricing";
 import DocketBottomCTA from "../../components/products/DocketBottomCTA";
+
+const siteOrigin = (Astro.site?.toString() || "https://karanggip.github.io").replace(/\/$/, "");
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const productLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "DocketEngine",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Intellectual Property Management",
+  "operatingSystem": "Web (cloud-based)",
+  "url": `${siteOrigin}${base}/products/docketengine/`,
+  "description": "Automated IP docketing across 100+ jurisdictions. Real-time sync with USPTO, EUIPO, WIPO, JPO, KIPO and every major IP office.",
+  "brand": { "@type": "Brand", "name": "Guarded Growth IP" },
+  "publisher": { "@type": "Organization", "name": "Guarded Growth IP" },
+  "offers": [
+    { "@type": "Offer", "name": "Start",  "price": "99",  "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "99",  "priceCurrency": "USD", "unitText": "MONTH" }, "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "Growth", "price": "399", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "399", "priceCurrency": "USD", "unitText": "MONTH" }, "availability": "https://schema.org/InStock" },
+    { "@type": "Offer", "name": "Scale",                                                                                                                                                                  "availability": "https://schema.org/InStock", "description": "Custom enterprise pricing" },
+  ],
+  "featureList": [
+    "Real-time sync with 100+ IP offices",
+    "Automated deadline tracking & alerts",
+    "Bulk import & free migration",
+    "Calendar sync (Google Calendar)",
+    "AI portfolio health scoring (in progress)",
+    "Competitor watch (in progress)",
+    "API access (Growth+)",
+    "SSO/SAML (Scale)",
+  ],
+};
 ---
 
 <Base
   title="DocketEngine · Automated IP Docketing Across 100+ Jurisdictions"
   description="Automated trademark and patent docketing with real-time sync across USPTO, EUIPO, WIPO, and 100+ IP offices. AI-powered portfolio insights. Free migration."
+  ogType="product"
+  jsonLd={productLd}
 >
   <Nav client:load />
   <main>

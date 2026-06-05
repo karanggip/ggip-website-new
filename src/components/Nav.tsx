@@ -82,7 +82,7 @@ export default function Nav({ latestPosts }: NavProps = {}) {
           </div>
 
           <div className="flex items-center gap-3">
-            <Button href={url("/demo")} className="hidden md:inline-flex !py-2 !px-5 !text-xs">
+            <Button href="/demo" className="hidden md:inline-flex !py-2 !px-5 !text-xs">
               Request a Demo
             </Button>
             {/* Hamburger */}
@@ -331,7 +331,7 @@ export default function Nav({ latestPosts }: NavProps = {}) {
             ))}
           </div>
           <div className="px-6 pb-8 pt-4 border-t border-white/[0.06]">
-            <Button href={url("/demo")} className="w-full justify-center">Request a Demo</Button>
+            <Button href="/demo" className="w-full justify-center">Request a Demo</Button>
           </div>
         </div>
       )}

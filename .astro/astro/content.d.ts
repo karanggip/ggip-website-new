@@ -186,6 +186,22 @@ declare module 'astro:content' {
   data: InferEntrySchema<"jobs">
 } & { render(): Render[".md"] };
 };
+"legal": {
+"privacy-policy.md": {
+	id: "privacy-policy.md";
+  slug: "privacy-policy";
+  body: string;
+  collection: "legal";
+  data: InferEntrySchema<"legal">
+} & { render(): Render[".md"] };
+"terms.md": {
+	id: "terms.md";
+  slug: "terms";
+  body: string;
+  collection: "legal";
+  data: InferEntrySchema<"legal">
+} & { render(): Render[".md"] };
+};
 
 	};
 

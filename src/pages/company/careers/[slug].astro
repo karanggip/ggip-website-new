@@ -21,11 +21,45 @@ const applyHref =
     : "mailto:careers@guardedgrowthip.com";
 
 const postedFmt = data.posted.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const siteOrigin = (Astro.site?.toString() || "https://karanggip.github.io").replace(/\/$/, "");
+
+const employmentTypeMap: Record<string, string> = {
+  "Full-time":  "FULL_TIME",
+  "Part-time":  "PART_TIME",
+  "Contract":   "CONTRACTOR",
+  "Internship": "INTERN",
+};
+
+const jobPostingLd = {
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": data.title,
+  "description": data.summary,
+  "datePosted": data.posted.toISOString(),
+  "employmentType": employmentTypeMap[data.type] || "FULL_TIME",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "Guarded Growth IP",
+    "sameAs": `${siteOrigin}${base}/`,
+    "logo": `${siteOrigin}${base}/assets/icon-color.svg`,
+  },
+  "jobLocationType": data.location.toLowerCase().includes("remote") ? "TELECOMMUTE" : undefined,
+  "applicantLocationRequirements": { "@type": "Country", "name": "US" },
+  "jobLocation": {
+    "@type": "Place",
+    "address": { "@type": "PostalAddress", "addressLocality": "Austin", "addressRegion": "TX", "postalCode": "78731", "addressCountry": "US" },
+  },
+  "url": `${siteOrigin}${base}/company/careers/${job.slug}/`,
+  "directApply": false,
+};
 ---
 
 <Base
   title={`${data.title} · Careers at Guarded Growth`}
   description={data.summary}
+  jsonLd={jobPostingLd}
 >
   <Nav client:load />
 

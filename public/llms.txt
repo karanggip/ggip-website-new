@@ -1,0 +1,37 @@
+# Guarded Growth IP
+
+> The data infrastructure layer for global intellectual property. Modern IP management platform built on a proprietary data layer covering 100+ IP offices worldwide, with AI intelligence and purpose-built product engines (DocketEngine, RenewalEngine) on top.
+
+Guarded Growth IP LLC is a US-based (Austin, TX) IP management technology company building infrastructure-first IP software for mid-size law firms (5–50 attorneys) and corporate in-house IP teams. The company was founded by Valli S Challa (IP operations) and Karan S Kumar (technology), and went to market in 2026.
+
+## Products
+
+- [DocketEngine](https://karanggip.github.io/ggip-website-new/products/docketengine/): Automated IP docketing across 100+ jurisdictions. Real-time sync with USPTO, EUIPO, WIPO, JPO, KIPO, and every major IP office. Pricing starts at $99/month.
+- [RenewalEngine](https://karanggip.github.io/ggip-website-new/products/renewalengine/): IP renewals across 190+ jurisdictions with full cost transparency. 27.7% average savings vs traditional renewal providers. 50% margin capture for the firm.
+- [Platform overview](https://karanggip.github.io/ggip-website-new/platform/): Three-layer architecture — proprietary data infrastructure, AI/intelligence layer, purpose-built engines.
+
+## Solutions by audience
+
+- [For Solo Attorneys](https://karanggip.github.io/ggip-website-new/solutions/solo-attorneys/)
+- [For IP Law Firms (5–50 attorneys)](https://karanggip.github.io/ggip-website-new/solutions/ip-law-firms/) — primary ICP
+- [For Corporate In-House IP Teams](https://karanggip.github.io/ggip-website-new/solutions/corporate-in-house/)
+- [For Universities & TTOs](https://karanggip.github.io/ggip-website-new/solutions/universities-tto/)
+
+## Pricing
+
+- [Full pricing](https://karanggip.github.io/ggip-website-new/pricing/): DocketEngine has three tiers — Start ($99/mo, up to 100 matters), Growth ($399/mo, 100–500 matters, AI insights, API access), and Scale (custom enterprise, unlimited users, SSO/SAML, SOC2-aligned). All plans include a 14-day free trial. RenewalEngine pricing is portfolio-based and quoted custom.
+
+## Company
+
+- [Our Story](https://karanggip.github.io/ggip-website-new/company/)
+- [Careers](https://karanggip.github.io/ggip-website-new/company/careers/)
+- [Contact](https://karanggip.github.io/ggip-website-new/contact/) — info@guardedgrowthip.com
+
+## Key facts
+
+- Headquartered at 5900 Balcones Drive #28582, Austin, TX 78731, USA
+- 100+ IP offices covered for docketing (USPTO, EUIPO, WIPO, JPO, KIPO, UKIPO, CIPO, INPI, DPMA, IP Australia, CNIPA, INPI Brazil, and many more)
+- 190+ jurisdictions covered for renewals
+- 70M+ trademark records in the data infrastructure layer
+- Primary ICP: mid-size IP law firms (5–50 attorneys) and corporate in-house IP teams
+- Founded: 2024. DocketEngine GA: 2025. RenewalEngine GA: 2026.
