@@ -178,17 +178,6 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                           </a>
                         ))}
                       </div>
-                      <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: 12 }}>
-                        <a href={url("/solutions/managed-services")} className="flex items-center gap-2.5 p-3 rounded-xl no-underline transition-all duration-150 mt-3"
-                          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
-                          onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
-                          <span className="text-accent flex"><Icon name="handshake" size={20} /></span>
-                          <div>
-                            <div className="text-sm font-semibold text-accent">Managed Services</div>
-                            <div style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", fontFamily: "'General Sans', sans-serif" }}>Let us run your IP operations infrastructure.</div>
-                          </div>
-                        </a>
-                      </div>
                     </div>
                     <div style={{ padding: 28, borderLeft: "1px solid rgba(255,255,255,0.06)", background: "rgba(91,127,255,0.04)" }}>
                       <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "rgba(255,255,255,0.25)", textTransform: "uppercase", marginBottom: 16 }}>The mid-market gap</div>
@@ -202,33 +191,28 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                 )}
 
                 {activeDropdown === "resources" && (
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
-                    {[
-                      { icon: "book" as const, title: "Blog & Insights", href: url("/blog/"), desc: "Thought leadership, product updates, and IP strategy.", items: blogItems.map(p => ({ label: p.title, href: url(`/blog/${p.slug}/`) })), color: "#5B7FFF" },
-                      { icon: "file" as const, title: "Help Docs", href: url("/docs"), desc: "Step-by-step guides, API reference, and setup.", items: [{ label: "Getting Started Guide", href: url("/docs") }, { label: "DocketEngine Setup", href: url("/docs") }, { label: "API Documentation", href: url("/docs") }], color: "#A78BFA" },
-                      { icon: "shield" as const, title: "Trust Center", href: url("/trust"), desc: "Security, compliance, and data handling.", items: [{ label: "Security Overview", href: url("/trust") }, { label: "SOC2 Compliance", href: url("/trust") }, { label: "Data Handling & Privacy", href: url("/trust") }], color: "#4ADE80" },
-                    ].map((r, i) => (
-                      <div key={i} style={{ padding: 28, borderRight: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none" }}
-                        onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.02)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
-                        <div className="flex items-center gap-2.5 mb-3">
-                          <span style={{ color: r.color, display: "flex" }}><Icon name={r.icon} size={22} /></span>
-                          <span className="text-sm font-bold text-white">{r.title}</span>
-                        </div>
-                        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: 16, fontFamily: "'General Sans', sans-serif" }}>{r.desc}</p>
-                        <div className="flex flex-col gap-1.5">
-                          {r.items.map((item, j) => (
-                            <a key={j} href={url(item.href ?? "/")} className="flex items-center gap-2 text-sm text-white/50 no-underline px-2.5 py-1.5 rounded-lg transition-all duration-150"
-                              onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
-                              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                              style={{ fontFamily: "'General Sans', sans-serif" }}>
-                              <span style={{ color: r.color, display: "flex" }}><Icon name="arrowRight" size={12} /></span>
-                              {item.label}
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
+                  <div style={{ padding: 28 }}>
+                    <a href={url("/blog/")} className="flex items-center gap-2.5 mb-4 no-underline" style={{ color: "inherit" }}>
+                      <span style={{ color: "#5B7FFF", display: "flex" }}><Icon name="book" size={22} /></span>
+                      <span className="text-sm font-bold text-white">Blog & Insights</span>
+                    </a>
+                    <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: 16, fontFamily: "'General Sans', sans-serif" }}>
+                      Thought leadership, product updates, and IP strategy from our team.
+                    </p>
+                    <div className="flex flex-col gap-1.5">
+                      {blogItems.map((p, j) => (
+                        <a key={j} href={url(`/blog/${p.slug}/`)} className="flex items-center gap-2 text-sm text-white/50 no-underline px-2.5 py-1.5 rounded-lg transition-all duration-150"
+                          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
+                          onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                          style={{ fontFamily: "'General Sans', sans-serif" }}>
+                          <span style={{ color: "#5B7FFF", display: "flex" }}><Icon name="arrowRight" size={12} /></span>
+                          {p.title}
+                        </a>
+                      ))}
+                    </div>
+                    <a href={url("/blog/")} className="inline-flex items-center gap-1.5 mt-4 px-2.5 text-sm font-semibold no-underline" style={{ color: "#5B7FFF" }}>
+                      See all articles <Icon name="arrowRight" size={13} />
+                    </a>
                   </div>
                 )}
 
@@ -317,14 +301,11 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                             <a href={url("/solutions/ip-law-firms")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>IP Law Firms</a>
                             <a href={url("/solutions/corporate-in-house")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Corporate In-House</a>
                             <a href={url("/solutions/universities-tto")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Universities & TTOs</a>
-                            <a href={url("/solutions/managed-services")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Managed Services</a>
                           </>
                         )}
                         {item.key === "resources" && (
                           <>
                             <a href={url("/blog/")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Blog & Insights</a>
-                            <a href={url("/docs")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Help Docs</a>
-                            <a href={url("/trust")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Trust Center</a>
                           </>
                         )}
                         {item.key === "company" && (
