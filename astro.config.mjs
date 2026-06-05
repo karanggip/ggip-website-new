@@ -7,7 +7,10 @@ export default defineConfig({
   output: "static",
   site: "https://karanggip.github.io",
   base: "/ggip-website-new",
-  trailingSlash: "always",
+  // "ignore" lets the server serve /foo and /foo/ as the same page (dev + most
+  // static hosts). Canonical URL in Base.astro is normalized to always include
+  // the trailing slash, so SEO sees one form regardless of how it was typed.
+  trailingSlash: "ignore",
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),

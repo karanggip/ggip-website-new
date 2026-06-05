@@ -25,9 +25,15 @@ const {
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const faviconHref = `${base}/assets/icon-color.svg`;
 
-// Build absolute canonical URL for the current page
+// Build absolute canonical URL for the current page — always trailing-slashed
+// (regardless of how the URL was requested) so search engines see one canonical form.
 const siteOrigin = (Astro.site?.toString() || "https://karanggip.github.io").replace(/\/$/, "");
-const canonical = `${siteOrigin}${Astro.url.pathname}`;
+const pathname = Astro.url.pathname;
+const lastSeg = pathname.split("/").filter(Boolean).pop() || "";
+const canonicalPath = pathname.endsWith("/") || lastSeg.includes(".")
+  ? pathname
+  : `${pathname}/`;
+const canonical = `${siteOrigin}${canonicalPath}`;
 const ogImageUrl = ogImage
   ? (ogImage.startsWith("http") ? ogImage : `${siteOrigin}${base}${ogImage}`)
   : `${siteOrigin}${base}/assets/og-home.png`;
