@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
+import { url } from "../utils/url";
 
 const STORAGE_KEY = "ggip-cookie-consent";
-const PRIVACY_URL = "https://guardedgrowthip.com/privacy-policy";
+const PRIVACY_URL = url("/privacy-policy/");
 
 // Read window.gtag / analytics tools should check localStorage.getItem("ggip-cookie-consent") === "accepted"
 // before initialising. Necessary cookies (e.g. session) load unconditionally.
@@ -72,7 +73,7 @@ export default function CookieBanner() {
             </div>
             <p style={{ fontSize: 13, lineHeight: 1.6, color: "rgba(255,255,255,0.6)", fontFamily: "'General Sans', sans-serif", margin: 0 }}>
               We use essential cookies to run this site and (with your consent) analytics cookies to understand how it's used. You can change your choice anytime in{" "}
-              <a href={PRIVACY_URL} target="_blank" rel="noopener noreferrer" style={{ color: "#5B7FFF", textDecoration: "underline" }}>cookie settings</a>.
+              <a href={PRIVACY_URL} style={{ color: "#5B7FFF", textDecoration: "underline" }}>cookie settings</a>.
             </p>
           </div>
           <div style={{ display: "flex", gap: 8, flexShrink: 0, flexWrap: "wrap" }}>

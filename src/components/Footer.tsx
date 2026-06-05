@@ -24,9 +24,9 @@ const COLUMNS = [
 ];
 
 const legalLinks = [
-  { label: "Privacy Policy",            href: "https://guardedgrowthip.com/privacy-policy", external: true },
-  { label: "Terms of Use (DocketEngine)", href: url("/terms/"), external: false },
-  { label: "Cookie Settings",           href: "https://guardedgrowthip.com/privacy-policy", external: true },
+  { label: "Privacy Policy",              href: url("/privacy-policy/"), external: false },
+  { label: "Terms of Use (DocketEngine)", href: url("/terms/"),          external: false },
+  { label: "Cookie Settings",             href: url("/privacy-policy/"), external: false },
 ];
 
 export default function Footer() {
