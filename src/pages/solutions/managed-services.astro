@@ -1,0 +1,17 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+import ManagedServices from "../../components/solutions/ManagedServices";
+---
+
+<Base
+  title="Managed Services · Let Us Run Your IP Operations"
+  description="Full-service IP operations infrastructure. Migration, ongoing portfolio management, custom reporting, dedicated CSM. For firms transitioning from legacy systems or without in-house IP ops staff."
+>
+  <Nav client:load />
+  <main>
+    <ManagedServices client:visible />
+  </main>
+  <Footer />
+</Base>

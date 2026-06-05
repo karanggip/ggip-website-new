@@ -1,0 +1,91 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+import SolutionTemplate from "../../components/solutions/SolutionTemplate";
+---
+
+<Base
+  title="For Corporate In-House IP Teams · One Platform, Every Jurisdiction"
+  description="A unified platform for corporate IP teams managing global portfolios across business units, outside counsel, and reporting lines. SSO, SOC2-aligned, custom integrations."
+>
+  <Nav client:load />
+  <main>
+    <SolutionTemplate client:visible config={{
+      audienceIcon: "landmark",
+      eyebrow: "For Corporate In-House Teams",
+      headline: "One platform for your entire IP portfolio. Every jurisdiction. Every asset type.",
+      subheadline: "Built for corporate IP teams managing global portfolios across business units, outside counsel, and reporting lines — with the security, controls, and integrations enterprise IT requires.",
+      accent: { c: "#A78BFA", rgb: "167,139,250", gradFrom: "#F0EDFF", gradTo: "#E8E0FA" },
+      painPoints: [
+        {
+          icon: "layers",
+          title: "Outside counsel's system doesn't reconcile with yours.",
+          body: "Status drift, data discrepancies, manual reconciliation. Your inside view and your firm's view are always out of sync — and nobody knows which is current.",
+        },
+        {
+          icon: "globe",
+          title: "No unified view across regions.",
+          body: "Different counsel in different countries, different docketing systems, different reports. Quarterly portfolio reviews require pulling from five systems and reconciling by hand.",
+        },
+        {
+          icon: "chart",
+          title: "Executive reporting takes weeks.",
+          body: "Finance wants cost projections. Legal wants risk views. Leadership wants strategic posture. Every report is bespoke and stale by the time it lands.",
+        },
+      ],
+      solution: {
+        headline: "A single source of truth, with controls IT will approve.",
+        intro: "Run your global portfolio on shared infrastructure. Give outside counsel scoped access. Generate stakeholder reports in minutes. SSO, SOC2-aligned controls, and APIs that connect to your ERP and finance stack.",
+        capabilities: [
+          {
+            icon: "globe",
+            title: "Global, unified view",
+            body: "Every matter, every office, every asset type — in one live database. No reconciliation between regional systems because there's only one system.",
+          },
+          {
+            icon: "handshake",
+            title: "Outside counsel access, scoped",
+            body: "Role-based permissions let your outside counsel work in the same system with access limited to their matters. No more email threads with spreadsheet attachments.",
+          },
+          {
+            icon: "shield",
+            title: "Enterprise security",
+            body: "SSO / SAML, SOC2-aligned controls, full audit trail, role-based permissions. Built for the compliance requirements corporate IT actually evaluates against.",
+          },
+          {
+            icon: "data",
+            title: "API for your stack",
+            body: "Push portfolio data into your ERP, finance system, or BI tools. Pull invoices and disbursements into your AP workflow. Built for the integration work corporate teams actually need.",
+          },
+        ],
+      },
+      proofPoints: [
+        { value: "100+",  label: "IP offices covered" },
+        { value: "190+",  label: "Jurisdictions for renewals" },
+        { value: "SOC2",  label: "Aligned controls (in progress)" },
+        { value: "∞",     label: "Users + outside counsel seats" },
+      ],
+      recommendation: {
+        plan: "Scale",
+        price: "Custom",
+        reasoning: "For corporate IP departments and multi-office practices needing enterprise controls, integrations, and unlimited scale. Includes dedicated CSM and tailored pricing.",
+        href: "/pricing",
+        bullets: [
+          "Everything in Growth, plus:",
+          "SSO / SAML authentication",
+          "SOC2-aligned security controls",
+          "Dedicated Customer Success Manager",
+          "Custom integrations (ERP, finance, BI)",
+          "SLA & uptime guarantees",
+          "Unlimited users and matters",
+        ],
+      },
+      bottomCTA: {
+        headline: "Book a scoping call.",
+        subheadline: "We'll map your current stack, identify the integration points, and put together a tailored proposal — typically within a week of the first call.",
+      },
+    }} />
+  </main>
+  <Footer />
+</Base>

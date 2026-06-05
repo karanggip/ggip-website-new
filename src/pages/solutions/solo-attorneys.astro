@@ -1,0 +1,91 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+import SolutionTemplate from "../../components/solutions/SolutionTemplate";
+---
+
+<Base
+  title="For Solo Attorneys · Professional IP Docketing Without the Price Tag"
+  description="Modern, automated IP docketing built for solo IP practitioners and small practices. $99/month, no per-user fees, onboard in a day."
+>
+  <Nav client:load />
+  <main>
+    <SolutionTemplate client:visible config={{
+      audienceIcon: "scale",
+      eyebrow: "For Solo Attorneys",
+      headline: "Professional-grade docketing without the professional-grade price tag.",
+      subheadline: "Modern automated docketing built for solo IP practitioners and 2-to-5 person practices. Onboard in a day. No per-user fees. No six-figure enterprise contract.",
+      accent: { c: "#5B7FFF", rgb: "91,127,255", gradFrom: "#EEEDFA", gradTo: "#EEF2FF" },
+      painPoints: [
+        {
+          icon: "dollar",
+          title: "Enterprise tools cost more than your office rent.",
+          body: "Legacy IP platforms quote $50k+ to start. You can't justify that for a 50-asset portfolio — but you've outgrown spreadsheets too.",
+        },
+        {
+          icon: "layers",
+          title: "You wear every hat at the firm.",
+          body: "There's no paralegal team to babysit a complex system. The software needs to work for one person, not a department.",
+        },
+        {
+          icon: "globe",
+          title: "Your clients are filing internationally.",
+          body: "Even solo practices increasingly handle multi-jurisdiction matters. Most solo-friendly tools only cover the US.",
+        },
+      ],
+      solution: {
+        headline: "Real software, sized for your practice.",
+        intro: "DocketEngine starts at $99/month for up to 100 matters — with no per-user fees, no setup costs, and full coverage of every major IP office worldwide.",
+        capabilities: [
+          {
+            icon: "sync",
+            title: "100+ IP offices, day one",
+            body: "Direct sync with USPTO, EUIPO, WIPO, JPO, KIPO, and every major office. International matters work the same as domestic ones.",
+          },
+          {
+            icon: "bell",
+            title: "Deadlines you can trust",
+            body: "Automated calculation, escalating reminders, calendar sync. Your docket is always current — you don't check it, it tells you.",
+          },
+          {
+            icon: "layers",
+            title: "Onboards in hours, not weeks",
+            body: "Bulk import your existing portfolio in minutes. Free migration. No professional services engagement — you'll be productive on day one.",
+          },
+          {
+            icon: "user",
+            title: "Built for one user (or five)",
+            body: "Modern, minimal interface. No training required. No dashboards full of features you'll never touch. Just the docket, well-managed.",
+          },
+        ],
+      },
+      proofPoints: [
+        { value: "$99",   label: "Per month, all in" },
+        { value: "Day 1", label: "Typical time to go live" },
+        { value: "100+",  label: "IP offices covered" },
+        { value: "$0",    label: "Migration & setup fees" },
+      ],
+      recommendation: {
+        plan: "Start",
+        price: "$99",
+        period: "/month",
+        reasoning: "Up to 100 matters, up to 5 users. Everything you need to run a modern solo or small IP practice — without the enterprise overhead.",
+        href: "/pricing",
+        bullets: [
+          "Real-time sync with 100+ IP offices",
+          "Automated deadline tracking & alerts",
+          "Bulk import & free migration",
+          "Calendar sync (Google Calendar)",
+          "Basic portfolio reporting",
+          "Email support",
+        ],
+      },
+      bottomCTA: {
+        headline: "See if it fits your practice.",
+        subheadline: "Start a free 14-day trial or book a quick call — most solo attorneys are onboarded within a day.",
+      },
+    }} />
+  </main>
+  <Footer />
+</Base>

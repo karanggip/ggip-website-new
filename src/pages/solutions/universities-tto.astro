@@ -1,0 +1,91 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+import SolutionTemplate from "../../components/solutions/SolutionTemplate";
+---
+
+<Base
+  title="For Universities & TTOs · From Invention Disclosure to Patent Protection"
+  description="Modern IP management for university technology transfer offices and research institutions. Education pricing. Faculty self-service. Stakeholder-ready reporting."
+>
+  <Nav client:load />
+  <main>
+    <SolutionTemplate client:visible config={{
+      audienceIcon: "graduation",
+      eyebrow: "For Universities & TTOs",
+      headline: "From invention disclosure to patent protection — managed in one place.",
+      subheadline: "Built for university technology transfer offices and research institutions managing licensable IP across faculty, departments, and industry partners.",
+      accent: { c: "#4A47A3", rgb: "74,71,163", gradFrom: "#EEEDFA", gradTo: "#E0DCFA" },
+      painPoints: [
+        {
+          icon: "file",
+          title: "Manual disclosure intake doesn't scale.",
+          body: "Faculty submit inventions via paper forms, email, and Word docs. You can't track them centrally, and high-value disclosures get lost in your inbox.",
+        },
+        {
+          icon: "dollar",
+          title: "Limited budget. Procurement-heavy buying cycle.",
+          body: "Six-figure enterprise IP platforms aren't going to clear committee. You need real software, sized for an academic operations budget.",
+        },
+        {
+          icon: "chart",
+          title: "Stakeholder reporting is exhausting.",
+          body: "The Provost wants one view. Industry sponsors want another. NIH and NSF auditors want a third. Each one currently takes days of manual exporting.",
+        },
+      ],
+      solution: {
+        headline: "Modern IP infrastructure, sized for academia.",
+        intro: "DocketEngine covers the full patent lifecycle — from filing through registration through renewal. Education pricing available. Stakeholder reporting that doesn't require a custom export every time.",
+        capabilities: [
+          {
+            icon: "sparkles",
+            title: "Faculty self-service (roadmap)",
+            body: "InventionEngine — currently on our roadmap — will give faculty a clean web form for invention disclosure, with automatic routing to your TTO's review queue.",
+          },
+          {
+            icon: "engine",
+            title: "Patent lifecycle in DocketEngine",
+            body: "Real-time sync with USPTO and 100+ international offices. Track every disclosure-to-patent pipeline. Calculate deadlines, manage prosecution, surface risks.",
+          },
+          {
+            icon: "chart",
+            title: "Stakeholder-ready reports",
+            body: "Pre-built views for Provost, sponsors, and audit purposes. Custom exports for grant reporting. The reports your office runs every quarter — without the weekly prep work.",
+          },
+          {
+            icon: "shield",
+            title: "Education pricing",
+            body: "We offer discounted pricing for accredited universities, public research institutions, and non-profit research labs. Talk to us about your portfolio size.",
+          },
+        ],
+      },
+      proofPoints: [
+        { value: "Education", label: "Pricing for universities & non-profits" },
+        { value: "100+",      label: "IP offices for patent prosecution" },
+        { value: "Audit",     label: "Ready trails for NIH/NSF reporting" },
+        { value: "Roadmap",   label: "InventionEngine for faculty intake" },
+      ],
+      recommendation: {
+        plan: "Growth",
+        price: "$399",
+        period: "/month (or less)",
+        reasoning: "For active TTOs managing 100-500 IP assets across faculty disclosures, patent prosecution, and licensing. Education pricing typically brings the effective cost meaningfully below list.",
+        href: "/pricing",
+        bullets: [
+          "100+ IP office coverage including USPTO",
+          "AI portfolio health (in progress)",
+          "Custom reporting & exports",
+          "API access for institutional reporting",
+          "Education pricing on request",
+          "Priority support",
+        ],
+      },
+      bottomCTA: {
+        headline: "Talk to us about your TTO.",
+        subheadline: "Most universities can get onboarded for under what they currently spend on their docketing licence. We'll work out the numbers together.",
+      },
+    }} />
+  </main>
+  <Footer />
+</Base>

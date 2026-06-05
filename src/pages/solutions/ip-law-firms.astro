@@ -1,0 +1,92 @@
+---
+import Base from "../../layouts/Base.astro";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+import SolutionTemplate from "../../components/solutions/SolutionTemplate";
+---
+
+<Base
+  title="For IP Law Firms · Enterprise Capability, Mid-Size Firm Economics"
+  description="Modern IP management built for mid-size IP firms (5-50 attorneys). Stop choosing between bloated enterprise suites and brittle point solutions."
+>
+  <Nav client:load />
+  <main>
+    <SolutionTemplate client:visible config={{
+      audienceIcon: "building",
+      eyebrow: "For IP Law Firms",
+      headline: "Enterprise capability. Mid-size firm economics. Built for how your team actually works.",
+      subheadline: "For 5-to-50 attorney IP practices growing internationally and tired of choosing between bloated enterprise suites and brittle point solutions.",
+      accent: { c: "#2D2A6E", rgb: "45,42,110", gradFrom: "#EEEDFA", gradTo: "#E8E4F8" },
+      painPoints: [
+        {
+          icon: "scale",
+          title: "You're stuck in the dead zone.",
+          body: "Enterprise suites quote $80k+ for capability you don't need. Point solutions can't grow with your practice. Nobody built for mid-size firms.",
+        },
+        {
+          icon: "user",
+          title: "Your team's productivity is leaking.",
+          body: "Paralegals bridge gaps between tools manually — re-entering data, reconciling status, exporting reports. That's your margin disappearing.",
+        },
+        {
+          icon: "dollar",
+          title: "You're losing renewal margin to third parties.",
+          body: "Traditional renewal providers take 20%+ of every renewal — work you could capture yourself if the infrastructure existed.",
+        },
+      ],
+      solution: {
+        headline: "One platform. Both engines. Shared infrastructure.",
+        intro: "DocketEngine handles your portfolio. RenewalEngine captures the renewal margin you currently pass to providers. Both run on the same data layer — no silos, no re-entry, no sync drift.",
+        capabilities: [
+          {
+            icon: "engine",
+            title: "DocketEngine Growth",
+            body: "Up to 500 matters, AI portfolio health insights, competitor watch, advanced reporting, and API access. $399/month — less than a single paralegal's monthly cost.",
+          },
+          {
+            icon: "renewal",
+            title: "RenewalEngine, on the same data",
+            body: "27.7% average savings vs traditional providers, and you keep the client relationship and the margin. Wraps your services around our infrastructure.",
+          },
+          {
+            icon: "ai",
+            title: "Intelligence that compounds",
+            body: "Portfolio health scoring, risk detection, predictive insights — all running on the structured data layer. Available on Growth and Scale plans.",
+          },
+          {
+            icon: "user",
+            title: "Team-shaped pricing",
+            body: "Priced by matter count, not per user. Your whole team — attorneys, paralegals, clients with view access — is always included. No per-seat math.",
+          },
+        ],
+      },
+      proofPoints: [
+        { value: "27.7%",   label: "Average renewal savings" },
+        { value: "$35k+",   label: "Annual margin uplift on 100 renewals" },
+        { value: "<1 week", label: "Typical onboarding time" },
+        { value: "$399",    label: "Growth plan — covers 500 matters" },
+      ],
+      recommendation: {
+        plan: "Growth",
+        price: "$399",
+        period: "/month",
+        reasoning: "Built for growing IP firms with international portfolios. Covers 100-500 matters, includes the AI/intelligence layer (in progress), and pairs naturally with RenewalEngine for full lifecycle coverage.",
+        href: "/pricing",
+        bullets: [
+          "Everything in Start, plus:",
+          "AI portfolio health scoring (in progress)",
+          "Risk detection & compliance alerts (in progress)",
+          "Competitor watch (in progress)",
+          "Advanced reporting & custom exports",
+          "API access for integrations",
+          "Priority support",
+        ],
+      },
+      bottomCTA: {
+        headline: "See it in action with your portfolio.",
+        subheadline: "Book a demo with our team — we'll walk through DocketEngine and RenewalEngine and run the renewal-margin numbers for your specific portfolio.",
+      },
+    }} />
+  </main>
+  <Footer />
+</Base>
