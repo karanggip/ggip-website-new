@@ -3,7 +3,7 @@ import { url } from "../utils/url";
 const COLUMNS = [
   { title: "Products",  links: [{ label: "DocketEngine", href: "/products/docketengine" }, { label: "RenewalEngine", href: "/products/renewalengine" }, { label: "Platform", href: "/platform" }, { label: "Pricing", href: "/pricing" }] },
   { title: "Solutions", links: [{ label: "Solo Attorneys", href: "/solutions/solo-attorneys" }, { label: "IP Law Firms", href: "/solutions/ip-law-firms" }, { label: "Corporate In-House", href: "/solutions/corporate-in-house" }, { label: "Universities & TTOs", href: "/solutions/universities-tto" }, { label: "Managed Services", href: "/solutions/managed-services" }] },
-  { title: "Resources", links: [{ label: "Blog & Insights", href: "/blog" }, { label: "Help Docs", href: "/docs" }, { label: "Trust Center", href: "/trust" }] },
+  { title: "Resources", links: [{ label: "Blog & Insights", href: "/blog/" }, { label: "Help Docs", href: "/docs/" }, { label: "Trust Center", href: "/trust/" }] },
   { title: "Company",   links: [{ label: "Our Story", href: "/company" }, { label: "Careers", href: "/company/careers" }, { label: "Contact", href: "/contact" }] },
 ];
 

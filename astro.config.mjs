@@ -6,6 +6,7 @@ export default defineConfig({
   output: "static",
   site: "https://karanggip.github.io",
   base: "/ggip-website-new",
+  trailingSlash: "always",
   integrations: [
     react(),
     tailwind({

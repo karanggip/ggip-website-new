@@ -204,7 +204,7 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                 {activeDropdown === "resources" && (
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
                     {[
-                      { icon: "book" as const, title: "Blog & Insights", href: url("/blog"), desc: "Thought leadership, product updates, and IP strategy.", items: blogItems.map(p => ({ label: p.title, href: url(`/blog/${p.slug}/`) })), color: "#5B7FFF" },
+                      { icon: "book" as const, title: "Blog & Insights", href: url("/blog/"), desc: "Thought leadership, product updates, and IP strategy.", items: blogItems.map(p => ({ label: p.title, href: url(`/blog/${p.slug}/`) })), color: "#5B7FFF" },
                       { icon: "file" as const, title: "Help Docs", href: url("/docs"), desc: "Step-by-step guides, API reference, and setup.", items: [{ label: "Getting Started Guide", href: url("/docs") }, { label: "DocketEngine Setup", href: url("/docs") }, { label: "API Documentation", href: url("/docs") }], color: "#A78BFA" },
                       { icon: "shield" as const, title: "Trust Center", href: url("/trust"), desc: "Security, compliance, and data handling.", items: [{ label: "Security Overview", href: url("/trust") }, { label: "SOC2 Compliance", href: url("/trust") }, { label: "Data Handling & Privacy", href: url("/trust") }], color: "#4ADE80" },
                     ].map((r, i) => (
@@ -322,7 +322,7 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                         )}
                         {item.key === "resources" && (
                           <>
-                            <a href={url("/blog")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Blog & Insights</a>
+                            <a href={url("/blog/")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Blog & Insights</a>
                             <a href={url("/docs")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Help Docs</a>
                             <a href={url("/trust")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Trust Center</a>
                           </>
