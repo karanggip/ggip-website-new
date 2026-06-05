@@ -1,0 +1,123 @@
+---
+// OG card preview for the homepage.
+// Renders at exactly 1200×630 in a clean viewport (no nav/footer).
+// View in browser, screenshot, then save to /public/assets/og-home.png
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>OG · Home preview · 1200×630</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; padding: 0; background: #1a1a2e; }
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .card {
+      width: 1200px; height: 630px;
+      position: relative; overflow: hidden;
+      background: #050510;
+      color: #fff;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+    }
+    .mesh {
+      position: absolute; inset: 0;
+      background: conic-gradient(from 45deg at 40% 35%, rgba(45,42,110,0.55), rgba(91,127,255,0.15), rgba(167,139,250,0.22), rgba(45,42,110,0.4), rgba(91,127,255,0.28));
+      filter: blur(48px);
+    }
+    .orb1 { position: absolute; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(45,42,110,0.65) 0%, transparent 65%); top: -120px; left: -80px; filter: blur(60px); }
+    .orb2 { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(91,127,255,0.45) 0%, transparent 65%); bottom: -120px; right: -60px; filter: blur(60px); }
+    .orb3 { position: absolute; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(167,139,250,0.32) 0%, transparent 65%); top: 30%; right: 18%; filter: blur(50px); }
+    .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(91,127,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(91,127,255,0.06) 1px, transparent 1px); background-size: 60px 60px; }
+    .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, rgba(5,5,16,0.15) 0%, rgba(5,5,16,0.55) 70%, #050510 100%); }
+
+    .content { position: absolute; inset: 0; padding: 72px 88px; display: flex; flex-direction: column; justify-content: space-between; }
+
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand img { width: 38px; height: 38px; transform: translateY(-6px); }
+    .brand span { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+
+    .badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 9999px; background: rgba(91,127,255,0.12); border: 1px solid rgba(91,127,255,0.28); font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.78); width: fit-content; margin-bottom: 28px; }
+    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #16A34A; box-shadow: 0 0 10px rgba(22,163,74,0.6); }
+
+    h1 { font-size: 82px; font-weight: 800; letter-spacing: -0.045em; line-height: 0.98; max-width: 1000px; margin: 0; }
+    .gradient { background: linear-gradient(135deg, #5B7FFF 0%, #A78BFA 50%, #5B7FFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .tagline { font-size: 22px; color: rgba(255,255,255,0.5); font-weight: 500; max-width: 700px; }
+    .stats { display: flex; gap: 28px; }
+    .stat { text-align: right; }
+    .stat .num { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(135deg, #5B7FFF, #A78BFA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat .lbl { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+
+    .url { font-size: 16px; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.02em; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="mesh"></div>
+    <div class="orb1"></div>
+    <div class="orb2"></div>
+    <div class="orb3"></div>
+    <div class="grid"></div>
+    <div class="vignette"></div>
+
+    <div class="content">
+      <!-- Top: brand + badge -->
+      <div>
+        <div class="brand">
+          <img src={`${base}/assets/icon-white.svg`} alt="" />
+          <span>Guarded Growth</span>
+        </div>
+      </div>
+
+      <!-- Middle: headline -->
+      <div>
+        <div class="badge">
+          <span class="dot"></span>
+          The data infrastructure for global IP
+        </div>
+        <h1>
+          The data infrastructure<br>
+          for global <span class="gradient">intellectual property.</span>
+        </h1>
+      </div>
+
+      <!-- Bottom: tagline + stats + url -->
+      <div>
+        <div class="footer-row">
+          <div class="tagline">
+            Automated docketing. Transparent renewals. One platform.
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <div class="num">100+</div>
+              <div class="lbl">IP Offices</div>
+            </div>
+            <div class="stat">
+              <div class="num">190+</div>
+              <div class="lbl">Jurisdictions</div>
+            </div>
+            <div class="stat">
+              <div class="num">27.7%</div>
+              <div class="lbl">Avg Savings</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center;">
+          <span class="url">guardedgrowthip.com</span>
+          <span style="display: inline-flex; align-items: center; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.05em;">
+            DOCKETENGINE
+            <span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 9999px; background: rgba(22,163,74,0.16); border: 1px solid rgba(22,163,74,0.35); color: #4ADE80; font-size: 11px; font-weight: 800; letter-spacing: 0.08em;">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background: #16A34A; box-shadow: 0 0 6px rgba(22,163,74,0.7);"></span>
+              LIVE
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

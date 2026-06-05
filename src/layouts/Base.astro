@@ -29,8 +29,8 @@ const faviconHref = `${base}/assets/icon-color.svg`;
 const siteOrigin = (Astro.site?.toString() || "https://karanggip.github.io").replace(/\/$/, "");
 const canonical = `${siteOrigin}${Astro.url.pathname}`;
 const ogImageUrl = ogImage
-  ? (ogImage.startsWith("http") ? ogImage : `${siteOrigin}${ogImage}`)
-  : `${siteOrigin}${base}/assets/icon-color.svg`;
+  ? (ogImage.startsWith("http") ? ogImage : `${siteOrigin}${base}${ogImage}`)
+  : `${siteOrigin}${base}/assets/og-home.png`;
 
 // Global schemas — present on every page
 const organizationLd = {
@@ -89,7 +89,10 @@ const allLd = [organizationLd, websiteLd, ...extraLd];
     <meta property="og:description" content={description} />
     <meta property="og:url"         content={canonical} />
     <meta property="og:image"       content={ogImageUrl} />
-    <meta property="og:locale"      content="en_US" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type"   content="image/png" />
+    <meta property="og:locale"       content="en_US" />
 
     {/* Twitter */}
     <meta name="twitter:card"        content="summary_large_image" />

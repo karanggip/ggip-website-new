@@ -1,0 +1,139 @@
+---
+// OG card preview for DocketEngine product page. 1200×630.
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>OG · DocketEngine preview · 1200×630</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; padding: 0; background: #1a1a2e; }
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .card {
+      width: 1200px; height: 630px;
+      position: relative; overflow: hidden;
+      background: #050510;
+      color: #fff;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+    }
+    .orb1 { position: absolute; width: 780px; height: 580px; border-radius: 50%; background: radial-gradient(circle, rgba(91,127,255,0.32) 0%, transparent 65%); top: -120px; left: 50%; transform: translateX(-50%); filter: blur(70px); }
+    .orb2 { position: absolute; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(45,42,110,0.55) 0%, transparent 65%); top: 50px; left: -120px; filter: blur(60px); }
+    .orb3 { position: absolute; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(167,139,250,0.32) 0%, transparent 65%); bottom: -100px; right: -80px; filter: blur(50px); }
+    .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(91,127,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(91,127,255,0.07) 1px, transparent 1px); background-size: 60px 60px; }
+
+    .content {
+      position: absolute; inset: 0; padding: 72px 88px;
+      display: grid; grid-template-columns: 1fr 360px; gap: 56px; align-items: center;
+    }
+
+    .left { display: flex; flex-direction: column; height: 100%; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand img { width: 34px; height: 34px; transform: translateY(-10px); }
+    .brand span { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; opacity: 0.85; }
+
+    /* Prominent price badge — top right of the card */
+    .price-badge {
+      position: absolute; top: 60px; right: 80px;
+      display: inline-flex; flex-direction: column; align-items: flex-end; gap: 2px;
+      padding: 14px 22px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(91,127,255,0.22), rgba(45,42,110,0.55));
+      border: 1px solid rgba(91,127,255,0.4);
+      box-shadow: 0 10px 30px rgba(45,42,110,0.45), 0 0 24px rgba(91,127,255,0.18);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      z-index: 3;
+    }
+    .price-badge .lbl { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.65); letter-spacing: 0.1em; text-transform: uppercase; }
+    .price-badge .val { display: flex; align-items: baseline; gap: 4px; }
+    .price-badge .val .num { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -0.025em; line-height: 1; }
+    .price-badge .val .per { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.6); }
+
+    .product-label { display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border-radius: 9999px; background: rgba(91,127,255,0.14); border: 1px solid rgba(91,127,255,0.3); font-size: 13px; font-weight: 700; color: #5B7FFF; letter-spacing: 0.08em; text-transform: uppercase; width: fit-content; margin-bottom: 22px; }
+
+    h1 { font-size: 76px; font-weight: 800; letter-spacing: -0.045em; line-height: 0.98; margin: 0 0 22px; }
+    .gradient { background: linear-gradient(135deg, #5B7FFF 0%, #A78BFA 50%, #5B7FFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .tagline { font-size: 22px; color: rgba(255,255,255,0.55); font-weight: 500; line-height: 1.4; max-width: 580px; }
+
+    .features { display: flex; gap: 18px; margin-top: 28px; }
+    .feature { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); }
+    .feature .check { width: 14px; height: 14px; border-radius: 50%; background: rgba(22,163,74,0.2); border: 1px solid rgba(22,163,74,0.4); display: inline-flex; align-items: center; justify-content: center; color: #4ADE80; font-size: 10px; font-weight: 700; }
+
+    .footer-row { display: flex; justify-content: space-between; align-items: center; }
+    .url { font-size: 16px; color: rgba(255,255,255,0.45); font-weight: 600; }
+    .trial { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* Engine icon tile — large, glowing */
+    .right { display: flex; align-items: center; justify-content: center; position: relative; }
+    .glow { position: absolute; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(91,127,255,0.35) 0%, transparent 65%); filter: blur(30px); }
+    .ring { position: absolute; width: 280px; height: 280px; border-radius: 50%; border: 1px solid rgba(91,127,255,0.25); }
+    .ring2 { width: 360px; height: 360px; border-color: rgba(91,127,255,0.15); }
+    .ring3 { width: 440px; height: 440px; border-color: rgba(91,127,255,0.08); }
+    .tile {
+      width: 200px; height: 200px;
+      border-radius: 44px;
+      background: #2D2A6E;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 32px 64px rgba(45,42,110,0.5), 0 0 0 1px rgba(91,127,255,0.25);
+      position: relative; z-index: 2;
+    }
+    .tile img { width: 160px; height: 160px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="orb2"></div>
+    <div class="orb1"></div>
+    <div class="orb3"></div>
+    <div class="grid"></div>
+
+    {/* Prominent price badge — top-right */}
+    <div class="price-badge">
+      <div class="lbl">Starting at</div>
+      <div class="val"><span class="num">$99</span><span class="per">/month</span></div>
+    </div>
+
+    <div class="content">
+      <div class="left">
+        <div class="brand">
+          <img src={`${base}/assets/icon-white.svg`} alt="" />
+          <span>Guarded Growth</span>
+        </div>
+
+        <div>
+          <div class="product-label">DocketEngine</div>
+          <h1>
+            Automated IP docketing.<br>
+            <span class="gradient">100+ jurisdictions.</span>
+          </h1>
+          <div class="tagline">
+            Real-time sync with USPTO, EUIPO, WIPO, JPO, KIPO and every major IP office.
+          </div>
+          <div class="features">
+            <div class="feature"><span class="check">✓</span> Free migration</div>
+            <div class="feature"><span class="check">✓</span> 14-day trial</div>
+            <div class="feature"><span class="check">✓</span> No per-user fees</div>
+          </div>
+        </div>
+
+        <div class="footer-row">
+          <span class="url">guardedgrowthip.com/products/docketengine</span>
+          <span class="trial">14-day free trial</span>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="glow"></div>
+        <div class="ring ring3"></div>
+        <div class="ring ring2"></div>
+        <div class="ring"></div>
+        <div class="tile">
+          <img src={`${base}/assets/docketengine-white.svg`} alt="DocketEngine" />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
