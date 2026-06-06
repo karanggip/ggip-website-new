@@ -20,4 +20,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://karanggip.github.io/ggip-website-new/sitemap-index.xml
+Sitemap: https://guardedgrowthip.com/sitemap-index.xml
