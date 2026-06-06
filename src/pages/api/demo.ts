@@ -29,9 +29,9 @@ export const prerender = false;
 
 const DEMO_INBOX = "info@guardedgrowthip.com";
 
-// You must verify a sending domain in Resend before emails will deliver.
-// Until then, the onboarding.resend.dev sender lets you test in the Resend dashboard.
-const FROM = "Guarded Growth <onboarding@resend.dev>";
+// Sender on the Resend-verified guardedgrowthip.com domain.
+// Replies route back to the submitter via the `replyTo` header below.
+const FROM = "Guarded Growth <hello@guardedgrowthip.com>";
 
 function escapeHtml(s: string): string {
   return s.replace(/[&<>"']/g, (c) =>

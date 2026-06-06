@@ -34,9 +34,9 @@ const SUBJECT_TO: Record<string, string> = {
   General:      "info@guardedgrowthip.com",
 };
 
-// You must verify a sending domain in Resend before emails will deliver.
-// Once verified, set this to e.g. "Guarded Growth <contact@mail.guardedgrowthip.com>"
-const FROM = "Guarded Growth <onboarding@resend.dev>";
+// Sender on the Resend-verified guardedgrowthip.com domain.
+// Replies route back to the submitter via the `replyTo` header below.
+const FROM = "Guarded Growth <hello@guardedgrowthip.com>";
 
 function escapeHtml(s: string): string {
   return s.replace(/[&<>"']/g, (c) =>
