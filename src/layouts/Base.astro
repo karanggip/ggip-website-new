@@ -23,6 +23,11 @@ const {
   jsonLd,
 } = Astro.props;
 
+// Third-party loader IDs. Undefined values short-circuit the loader entirely,
+// so dev / preview environments without these vars just don't load the scripts.
+const GA_ID         = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const WHELP_APP_ID  = import.meta.env.PUBLIC_WHELP_APP_ID;
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const faviconHref = `${base}/assets/icon-color.svg`;
 
@@ -120,5 +125,75 @@ const allLd = [organizationLd, websiteLd, ...extraLd];
     <slot />
     <CookieBanner client:idle />
     <DemoModal client:idle />
+
+    {/* Google Analytics 4 — Consent Mode v2. Loads with everything denied by
+        default and is upgraded to "granted" only when the user accepts the
+        Analytics (or Marketing) category in the cookie banner. The CookieBanner
+        component dispatches `cookie-consent` events that we listen to here. */}
+    {GA_ID && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+        <script is:inline define:vars={{ GA_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+          window.gtag = gtag;
+
+          // Defaults: deny everything until consent is granted.
+          gtag("consent", "default", {
+            ad_storage: "denied",
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            analytics_storage: "denied",
+            wait_for_update: 500,
+          });
+
+          gtag("js", new Date());
+          gtag("config", GA_ID, { anonymize_ip: true });
+
+          function applyConsent(c) {
+            gtag("consent", "update", {
+              analytics_storage:  c.analytics ? "granted" : "denied",
+              ad_storage:         c.marketing ? "granted" : "denied",
+              ad_user_data:       c.marketing ? "granted" : "denied",
+              ad_personalization: c.marketing ? "granted" : "denied",
+            });
+          }
+
+          // Honor any existing choice the user already made.
+          try {
+            var raw = localStorage.getItem("ggip-cookie-consent");
+            if (raw) {
+              var parsed;
+              if (raw === "accepted")      parsed = { analytics: true,  marketing: true  };
+              else if (raw === "rejected") parsed = { analytics: false, marketing: false };
+              else                         parsed = JSON.parse(raw);
+              if (parsed) applyConsent(parsed);
+            }
+          } catch (e) { /* localStorage unavailable, leave defaults */ }
+
+          // React to live changes from the cookie preferences panel.
+          window.addEventListener("cookie-consent", function (e) {
+            if (e && e.detail) applyConsent(e.detail);
+          });
+        </script>
+      </>
+    )}
+
+    {/* Whelp live chat — always-on (treated as essential support tooling). */}
+    {WHELP_APP_ID && (
+      <script is:inline define:vars={{ WHELP_APP_ID }}>
+        (function () {
+          var s = document.createElement("script");
+          s.src = "https://widget.whelp.co/app.js";
+          s.async = true;
+          s.onload = function () {
+            if (typeof window.Whelp === "function") {
+              window.Whelp("init", { app_id: WHELP_APP_ID });
+            }
+          };
+          document.body.appendChild(s);
+        })();
+      </script>
+    )}
   </body>
 </html>

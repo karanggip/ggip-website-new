@@ -2,6 +2,7 @@
 import { useState } from "react";
 import FadeIn from "../ui/FadeIn";
 import Icon from "../ui/Icon";
+import { getRecaptchaToken, recaptchaEnabled } from "../../utils/recaptcha";
 
 // Form opens the user's email client with the message prefilled,
 // routing to the appropriate inbox based on the selected subject.
@@ -57,13 +58,16 @@ export default function ContactForm() {
 
     setSubmitting(true);
 
+    // Grab a reCAPTCHA v3 token (no-op in dev without a key).
+    const recaptchaToken = await getRecaptchaToken("contact");
+
     // Try the API endpoint first. On Railway + Resend this delivers the email
     // server-side. On GitHub Pages there's no API → 404 → fall through to mailto.
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ name, email, company, subject, message }),
+        body: JSON.stringify({ name, email, company, subject, message, recaptchaToken }),
       });
       // Static hosts often serve a 404 HTML page (not JSON). Check both status
       // and content-type so we don't mistakenly count a 404 page as success.
@@ -168,6 +172,16 @@ export default function ContactForm() {
         style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "14px 24px", borderRadius: 10, background: submitting ? "#5C5C6E" : "linear-gradient(135deg, #2D2A6E, #3D3A9E)", color: "#fff", fontSize: 14, fontWeight: 700, fontFamily: "'Plus Jakarta Sans', sans-serif", border: "none", cursor: submitting ? "wait" : "pointer", transition: "all 0.2s", boxShadow: "0 4px 16px rgba(45,42,110,0.2)" }}>
         {submitting ? "Sending..." : <>Send Message <Icon name="arrowRight" size={15} /></>}
       </button>
+
+      {recaptchaEnabled && (
+        <p style={{ fontSize: 11, color: "#A0A0B0", textAlign: "center", marginTop: 12, fontFamily: "'General Sans', sans-serif", lineHeight: 1.5 }}>
+          Protected by reCAPTCHA — Google's{" "}
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#5B7FFF", textDecoration: "underline" }}>Privacy Policy</a>{" "}
+          and{" "}
+          <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" style={{ color: "#5B7FFF", textDecoration: "underline" }}>Terms</a>{" "}
+          apply.
+        </p>
+      )}
     </form>
   );
 }

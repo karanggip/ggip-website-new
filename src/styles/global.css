@@ -253,3 +253,10 @@
     box-shadow: 0 8px 32px rgba(91,127,255,0.04);
   }
 }
+
+/* Hide the reCAPTCHA v3 floating badge. Google permits this as long as the
+   "This site is protected by reCAPTCHA" notice is visible near each form,
+   which we render under the submit button in DemoForm and ContactForm. */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}

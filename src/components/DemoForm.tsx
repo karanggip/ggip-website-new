@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { url } from "../utils/url";
+import { getRecaptchaToken, recaptchaEnabled } from "../utils/recaptcha";
 
 // Self-contained demo request form. Used by:
 //   - DemoModal.tsx          (variant="modal")  — inside the overlay dialog
@@ -44,7 +45,10 @@ export default function DemoForm({ variant = "inline", source = "demo-page", onS
     if (submitting) return;
     setSubmitting(true);
 
-    const payload = { name, email, company, phone, interests, message, source };
+    // Grab a reCAPTCHA v3 token (no-op in dev without a key).
+    const recaptchaToken = await getRecaptchaToken("demo");
+
+    const payload = { name, email, company, phone, interests, message, source, recaptchaToken };
 
     // 1) Real API (Resend on Railway, when wired up).
     try {
@@ -190,6 +194,23 @@ export default function DemoForm({ variant = "inline", source = "demo-page", onS
       }}>
         We'll reach out within 24 hours to schedule your personalized demo.
       </p>
+
+      {recaptchaEnabled && (
+        <p style={{
+          fontSize: 11,
+          color: "#A0A0B0",
+          textAlign: "center",
+          marginTop: 10,
+          fontFamily: "'General Sans', sans-serif",
+          lineHeight: 1.5,
+        }}>
+          Protected by reCAPTCHA — Google's{" "}
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "#5B7FFF", textDecoration: "underline" }}>Privacy Policy</a>{" "}
+          and{" "}
+          <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" style={{ color: "#5B7FFF", textDecoration: "underline" }}>Terms</a>{" "}
+          apply.
+        </p>
+      )}
     </form>
   );
 }

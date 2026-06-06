@@ -23,6 +23,7 @@
 
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
+import { verifyRecaptcha } from "../../lib/recaptcha";
 
 export const prerender = false;
 
@@ -69,6 +70,10 @@ export const POST: APIRoute = async ({ request }) => {
   if (!name || !email || !company) return bad("name, email, company are required");
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return bad("Invalid email");
   if (message.length > 5000) return bad("Message too long");
+
+  // Bot check
+  const recaptcha = await verifyRecaptcha(payload.recaptchaToken, "demo");
+  if (!recaptcha.ok) return bad(`reCAPTCHA failed: ${recaptcha.reason || "unknown"}`, 403);
 
   const interestsLabel = interests.length ? interests.join(", ") : "—";
   const subjectLine = `Demo request — ${name}${company ? ` / ${company}` : ""}`;
