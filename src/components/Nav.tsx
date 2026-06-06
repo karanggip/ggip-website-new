@@ -243,7 +243,11 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                         <span className="text-sm font-bold text-white">Get in Touch</span>
                       </div>
                       <div className="flex flex-col gap-2.5">
-                        {[{ label: "Support", email: "support@guardedgrowthip.com", href: url("/contact") }, { label: "General", email: "info@guardedgrowthip.com", href: url("/contact") }].map((contact, i) => (
+                        {[
+                          { label: "Support", email: "support@guardedgrowthip.com", href: url("/contact") },
+                          { label: "General", email: "info@guardedgrowthip.com", href: url("/contact") },
+                          { label: "Phone",   email: "+1 (281) 803-6492",         href: "tel:+12818036492" },
+                        ].map((contact, i) => (
                           <a key={i} href={contact.href} style={{ padding: "10px 12px", borderRadius: 10, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", textDecoration: "none", transition: "border-color 0.15s", display: "block" }}
                             onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(91,127,255,0.2)")}
                             onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)")}>
@@ -314,6 +318,7 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                             <a href={url("/company")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Our Story</a>
                             <a href={url("/company/careers")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Careers</a>
                             <a href={url("/contact")} className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Contact</a>
+                            <a href="tel:+12818036492" className="text-sm text-white/50 hover:text-white py-2 no-underline transition-colors" onClick={() => setMobileOpen(false)}>Call +1 (281) 803-6492</a>
                           </>
                         )}
                       </div>

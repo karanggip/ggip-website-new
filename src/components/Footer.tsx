@@ -24,9 +24,8 @@ const COLUMNS = [
 ];
 
 const legalLinks: Array<{ label: string; href: string; external: boolean; action?: "cookies" }> = [
-  { label: "Privacy Policy",              href: url("/privacy-policy/"), external: false },
-  { label: "Terms of Use (DocketEngine)", href: url("/terms/"),          external: false },
-  { label: "Cookie Settings",             href: "#cookie-settings",      external: false, action: "cookies" },
+  { label: "Privacy Policy",  href: url("/privacy-policy/"), external: false },
+  { label: "Cookie Settings", href: "#cookie-settings",      external: false, action: "cookies" },
 ];
 
 export default function Footer() {
@@ -43,9 +42,19 @@ export default function Footer() {
             <p style={{ fontSize: 14, lineHeight: 1.6, color: "rgba(255,255,255,0.3)", maxWidth: 280, fontFamily: "'General Sans', sans-serif", marginBottom: 16 }}>
               The data infrastructure for global intellectual property.
             </p>
-            <p style={{ fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.25)", fontFamily: "'General Sans', sans-serif", marginBottom: 16 }}>
+            <p style={{ fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.25)", fontFamily: "'General Sans', sans-serif", marginBottom: 8 }}>
               5900 Balcones Drive #28582<br />
               Austin, TX 78731
+            </p>
+            <p style={{ fontSize: 12, lineHeight: 1.6, color: "rgba(255,255,255,0.3)", fontFamily: "'General Sans', sans-serif", marginBottom: 16 }}>
+              <a
+                href="tel:+12818036492"
+                style={{ color: "inherit", textDecoration: "none", transition: "color 0.15s" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.3)")}
+              >
+                +1 (281) 803-6492
+              </a>
             </p>
             <a
               href="https://www.linkedin.com/company/guardedgrowth/"

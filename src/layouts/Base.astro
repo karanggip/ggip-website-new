@@ -54,7 +54,19 @@ const organizationLd = {
   "url": `${siteOrigin}${base}/`,
   "logo": `${siteOrigin}${base}/assets/icon-color.svg`,
   "email": "info@guardedgrowthip.com",
-  "foundingDate": "2024",
+  "telephone": "+1-281-803-6492",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "telephone": "+1-281-803-6492",
+      "email": "info@guardedgrowthip.com",
+      "areaServed": "Worldwide",
+      "availableLanguage": ["English"],
+    },
+  ],
+  "sameAs": ["https://www.linkedin.com/company/guardedgrowth/"],
+  "foundingDate": "2025",
   "description": "Modern IP management platform — the data infrastructure layer for global intellectual property.",
   "address": {
     "@type": "PostalAddress",
@@ -181,21 +193,19 @@ const allLd = [organizationLd, websiteLd, ...extraLd];
       </>
     )}
 
-    {/* Whelp live chat — always-on (treated as essential support tooling). */}
+    {/* Whelp live chat — always-on (treated as essential support tooling).
+        Uses Whelp's exact two-tag install pattern: the loader declares
+        `let Whelp` at script scope, which is NOT on window — so the init
+        call has to live in a sibling inline <script> in the same scope. */}
     {WHELP_APP_ID && (
-      <script is:inline define:vars={{ WHELP_APP_ID }}>
-        (function () {
-          var s = document.createElement("script");
-          s.src = "https://widget.whelp.co/app.js";
-          s.async = true;
-          s.onload = function () {
-            if (typeof window.Whelp === "function") {
-              window.Whelp("init", { app_id: WHELP_APP_ID });
-            }
-          };
-          document.body.appendChild(s);
-        })();
-      </script>
+      <>
+        <script is:inline src="https://widget.whelp.co/app.js"></script>
+        <script is:inline define:vars={{ WHELP_APP_ID }}>
+          if (typeof Whelp === "function") {
+            Whelp("init", { app_id: WHELP_APP_ID });
+          }
+        </script>
+      </>
     )}
   </body>
 </html>

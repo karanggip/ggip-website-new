@@ -16,6 +16,14 @@ const channels = [
     email: "info@guardedgrowthip.com",
     accent: "#16A34A",
   },
+  {
+    icon: "user" as const,
+    label: "Phone",
+    desc: "Prefer to talk it through? Give us a call.",
+    email: "+1 (281) 803-6492",
+    href: "tel:+12818036492",
+    accent: "#5B7FFF",
+  },
 ];
 
 export default function ContactInfo() {
@@ -23,9 +31,9 @@ export default function ContactInfo() {
     <div className="flex flex-col gap-4">
       <FadeIn>
         <div>
-          <h2 className="font-display font-bold mb-2" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Or email us directly</h2>
+          <h2 className="font-display font-bold mb-2" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Or reach us directly</h2>
           <p style={{ fontSize: 14, color: "#5C5C6E", fontFamily: "'General Sans', sans-serif", lineHeight: 1.6 }}>
-            We monitor both inboxes. Use the one that fits your question.
+            Pick the channel that fits your question.
           </p>
         </div>
       </FadeIn>
@@ -33,7 +41,7 @@ export default function ContactInfo() {
       {channels.map((c, i) => (
         <FadeIn key={c.label} delay={i * 80}>
           <a
-            href={`mailto:${c.email}`}
+            href={(c as any).href ?? `mailto:${c.email}`}
             style={{ display: "block", padding: "20px 22px", borderRadius: 14, border: "1px solid #E2E2EA", background: "#fff", textDecoration: "none", transition: "all 0.2s" }}
             onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = c.accent + "55"; el.style.background = "#F6F6F9"; el.style.transform = "translateY(-2px)"; el.style.boxShadow = `0 6px 16px ${c.accent}11`; }}
             onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "#E2E2EA"; el.style.background = "#fff"; el.style.transform = "translateY(0)"; el.style.boxShadow = "none"; }}
