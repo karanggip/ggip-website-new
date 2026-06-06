@@ -5,6 +5,7 @@ author: Karan S Kumar
 category: Renewals
 excerpt: Traditional renewal providers take your client relationship and your margin. The flip — what it looks like when you keep both — adds $35k+ in annual profit on a typical 100-renewal portfolio.
 coverColor: violet
+coverImage: /assets/blog/renewals-profit-centre.svg
 readTime: 6
 published: true
 ---

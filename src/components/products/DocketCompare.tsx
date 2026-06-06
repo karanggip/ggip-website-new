@@ -7,7 +7,7 @@ const rows = [
   { feature: "Entry price",               docket: "$99/mo",        altlegal: "$99/user/mo",    appcoll: "$45/user/mo",    clarivate: "$50k+/yr" },
   { feature: "AI portfolio health",       docket: "In progress",   altlegal: false,            appcoll: false,            clarivate: "Limited" },
   { feature: "Free migration",            docket: true,            altlegal: false,            appcoll: false,            clarivate: false },
-  { feature: "Competitor watch",          docket: true,            altlegal: false,            appcoll: false,            clarivate: true },
+  { feature: "Competitor watch",          docket: "In progress",   altlegal: false,            appcoll: false,            clarivate: true },
   { feature: "Calendar sync",             docket: true,            altlegal: true,             appcoll: true,             clarivate: true },
   { feature: "Self-serve onboarding",     docket: true,            altlegal: true,             appcoll: true,             clarivate: false },
   { feature: "Platform extensibility",    docket: "DocketEngine + RenewalEngine + more", altlegal: "Docketing only", appcoll: "Docketing only", clarivate: "Suite (bundled)" },

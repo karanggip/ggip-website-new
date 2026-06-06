@@ -101,7 +101,7 @@ export default function OpenRoles({ roles }: Props) {
                 {roles.length > 0 ? "Don't see your role? We hire across" : "Areas we hire across"}
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}
-                className="max-md:grid-cols-1">
+                className="max-md:!grid-cols-1">
                 {interestAreas.map((a, i) => (
                   <div key={i} style={{ padding: "12px 16px", borderRadius: 10, border: "1px solid #E2E2EA", background: "#F6F6F9" }}>
                     <div style={{ fontSize: 14, fontWeight: 700, color: "#0C0C0E", marginBottom: 3 }}>{a.area}</div>

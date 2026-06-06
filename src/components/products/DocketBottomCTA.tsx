@@ -29,7 +29,7 @@ export default function DocketBottomCTA() {
             Start your free trial today. Most firms are fully onboarded within a week — no professional services, no downtime.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
-            <Button href="/demo">Start Free Trial <Icon name="arrowRight" size={16} /></Button>
+            <Button href="https://docket.guardedgrowthip.com/signup">Start Free Trial <Icon name="arrowRight" size={16} /></Button>
             <Button variant="ghost" href="/contact">Talk to Sales</Button>
           </div>
         </FadeIn>

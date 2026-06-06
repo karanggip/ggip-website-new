@@ -42,7 +42,7 @@ export default function DocketHowItWorks() {
         </FadeIn>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, maxWidth: 900, margin: "0 auto" }}
-          className="max-md:grid-cols-1 max-md:gap-4">
+          className="max-md:!grid-cols-1 max-md:!gap-4">
           {steps.map((step, i) => (
             <FadeIn key={i} delay={i * 150}>
               <div style={{ position: "relative" }}>

@@ -124,7 +124,7 @@ export default function ContactForm() {
       </p>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}
-        className="max-md:grid-cols-1">
+        className="max-md:!grid-cols-1">
         <div>
           <label htmlFor="name" style={labelStyle}>Name *</label>
           <input id="name" name="name" type="text" required autoComplete="name" style={fieldStyle}

@@ -104,7 +104,7 @@ export default function ManagedServices() {
           </FadeIn>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20 }}
-            className="max-md:grid-cols-1">
+            className="max-md:!grid-cols-1">
             {included.map((item, i) => (
               <FadeIn key={i} delay={i * 80}>
                 <div style={{ padding: "28px 30px", borderRadius: 16, border: "1px solid #E2E2EA", background: "#fff", height: "100%", transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)" }}
@@ -139,7 +139,7 @@ export default function ManagedServices() {
           </FadeIn>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20 }}
-            className="max-md:grid-cols-1">
+            className="max-md:!grid-cols-1">
             {whoItsFor.map((item, i) => (
               <FadeIn key={i} delay={i * 80}>
                 <div style={{ padding: "28px 30px", borderRadius: 16, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", height: "100%", transition: "border-color 0.25s" }}

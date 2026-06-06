@@ -23,7 +23,7 @@ export default function UseCases() {
             </h2>
           </div>
         </FadeIn>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }} className="max-md:grid-cols-2 max-sm:grid-cols-1">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }} className="max-md:!grid-cols-2 max-sm:!grid-cols-1">
           {cases.map((uc, i) => (
             <FadeIn key={i} delay={i * 100}>
               <a href={uc.href} className="no-underline block h-full">

@@ -36,4 +36,4 @@ That's the premise DocketEngine is built on. Not a sophisticated filing system f
 
 The difference isn't a feature list. It's the difference between managing your perception of deadlines and managing the deadlines themselves.
 
-Start your free trial at [app.docketengine.com](https://app.docketengine.com/) — most firms are fully onboarded in under a week.
+Start your free trial at [docket.guardedgrowthip.com/signup](https://docket.guardedgrowthip.com/signup) — most firms are fully onboarded in under a week.

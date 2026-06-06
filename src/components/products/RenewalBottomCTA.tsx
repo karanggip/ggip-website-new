@@ -26,7 +26,7 @@ export default function RenewalBottomCTA() {
             Ready to transform your renewals<span style={{ color: "#A78BFA" }}>?</span>
           </h2>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.45)", maxWidth: 460, margin: "0 auto 40px", fontFamily: "'General Sans', sans-serif", lineHeight: 1.65 }}>
-            We'll build a custom quote showing your exact savings within 24 hours — no commitment required.
+            We'll build a custom quote showing your exact savings — no commitment required.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
             <a href={url("/contact")} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "13px 28px", borderRadius: 10, background: "linear-gradient(135deg, #A78BFA, #7C3AED)", color: "#fff", fontSize: 14, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", boxShadow: "0 0 24px rgba(167,139,250,0.25)" }}>

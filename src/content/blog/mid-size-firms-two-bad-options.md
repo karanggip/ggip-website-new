@@ -34,4 +34,4 @@ The cost of a docketing error isn't just the malpractice claim. It's the client 
 
 That cost is wildly underestimated — until it isn't.
 
-DocketEngine syncs directly with 100+ IP offices in real time — no manual data entry, no stale records, no gap between your docket and reality. [See it in action →](https://app.docketengine.com/)
+DocketEngine syncs directly with 100+ IP offices in real time — no manual data entry, no stale records, no gap between your docket and reality. [See it in action →](https://docket.guardedgrowthip.com/signup)

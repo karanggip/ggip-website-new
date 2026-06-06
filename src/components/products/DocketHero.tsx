@@ -59,7 +59,7 @@ export default function DocketHero() {
             DocketEngine syncs directly with USPTO, EUIPO, WIPO, JPO, KIPO, and 100+ IP offices worldwide. No manual data entry. AI-powered portfolio health insights. A modern interface your team adopts in hours.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
-            <Button href="/demo">Start Free Trial <Icon name="arrowRight" size={16} /></Button>
+            <Button href="https://docket.guardedgrowthip.com/signup">Start Free Trial <Icon name="arrowRight" size={16} /></Button>
             <Button variant="ghost" href="/demo">See DocketEngine in Action</Button>
           </div>
         </div>
@@ -81,10 +81,10 @@ export default function DocketHero() {
         </div>
 
         {/* Product mockup */}
-        <div style={{ maxWidth: 1000, margin: "0 auto", padding: 3, borderRadius: 23, background: "conic-gradient(from var(--angle, 0deg), transparent 40%, #5B7FFF 55%, #A78BFA 68%, #5B7FFF 80%, transparent 90%)", animation: "borderSpin 5s linear infinite", boxShadow: "0 32px 80px rgba(0,0,0,0.5)" } as React.CSSProperties}>
+        <div className="docket-mockup-frame" style={{ maxWidth: 1000, margin: "0 auto", padding: 3, borderRadius: 23, background: "conic-gradient(from var(--angle, 0deg), transparent 40%, #5B7FFF 55%, #A78BFA 68%, #5B7FFF 80%, transparent 90%)", animation: "borderSpin 5s linear infinite", boxShadow: "0 32px 80px rgba(0,0,0,0.5)" } as React.CSSProperties}>
         <div style={{ position: "relative", zIndex: 1, borderRadius: 20, overflow: "hidden", background: "#0d0d1a" }}>
           {/* Browser chrome */}
-          <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "14px 18px", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
+          <div className="docket-mockup-chrome" style={{ display: "flex", alignItems: "center", gap: 8, padding: "14px 18px", borderBottom: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.02)" }}>
             <div className="flex gap-1.5">
               {["#FF5F57","#FFBD2E","#28CA42"].map(c => <div key={c} style={{ width: 11, height: 11, borderRadius: "50%", background: c, opacity: 0.8 }} />)}
             </div>
@@ -93,9 +93,9 @@ export default function DocketHero() {
             </div>
           </div>
           {/* Dashboard */}
-          <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", minHeight: 400 }}>
+          <div className="docket-mockup-dashboard" style={{ display: "grid", gridTemplateColumns: "200px 1fr", minHeight: 400 }}>
             {/* Sidebar */}
-            <div style={{ borderRight: "1px solid rgba(255,255,255,0.06)", padding: 16, background: "rgba(255,255,255,0.01)" }}>
+            <div className="docket-mockup-sidebar" style={{ borderRight: "1px solid rgba(255,255,255,0.06)", padding: 16, background: "rgba(255,255,255,0.01)" }}>
               <div className="flex items-center gap-2 mb-6">
                 <EngineIcon engine="docket" size={24} variant="dark" />
                 <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>DocketEngine</span>
@@ -107,7 +107,7 @@ export default function DocketHero() {
               ))}
             </div>
             {/* Main */}
-            <div style={{ padding: 24 }}>
+            <div className="docket-mockup-main" style={{ padding: 24 }}>
               <div className="flex justify-between items-center mb-5">
                 <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>Portfolio Overview</span>
                 <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", display: "flex", alignItems: "center", gap: 6 }}>
@@ -115,7 +115,7 @@ export default function DocketHero() {
                   Synced 2 min ago
                 </span>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 20 }}>
+              <div className="docket-mockup-stats" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 20 }}>
                 {statCards.map((s, i) => (
                   <div key={i} style={{ padding: 14, borderRadius: 10, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
                     <div style={{ fontSize: 24, fontWeight: 800, color: s.color, marginBottom: 2 }}>{s.value}</div>
@@ -138,6 +138,21 @@ export default function DocketHero() {
         </div>{/* inner zIndex:1 */}
         </div>{/* anim-border */}
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .docket-mockup-dashboard {
+            grid-template-columns: 1fr !important;
+            min-height: 0 !important;
+          }
+          .docket-mockup-sidebar { display: none !important; }
+          .docket-mockup-main { padding: 16px !important; }
+          .docket-mockup-stats {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .docket-mockup-chrome { padding: 10px 14px !important; }
+        }
+      `}</style>
     </section>
   );
 }

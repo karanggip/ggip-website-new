@@ -13,12 +13,11 @@ const { job } = Astro.props;
 const { Content } = await job.render();
 const data = job.data;
 
-const applyHref =
-  data.applyUrl
-    ? data.applyUrl
-    : data.applyEmail
-    ? `mailto:${data.applyEmail}?subject=${encodeURIComponent(`${data.title} Application`)}`
-    : "mailto:careers@guardedgrowthip.com";
+// If the job has an explicit external applyUrl, honor it. Otherwise the buttons
+// open the global CareersModal via the document-level click delegate (see
+// CareersModal.tsx — triggered by data-careers-apply or href="#apply-careers").
+const applyHref = data.applyUrl || "#apply-careers";
+const useExternalApply = !!data.applyUrl;
 
 const postedFmt = data.posted.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
@@ -118,7 +117,12 @@ const jobPostingLd = {
           <p style="font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 24px; font-family: 'General Sans', sans-serif; line-height: 1.65; max-width: 480px; margin-left: auto; margin-right: auto;">
             Send us a brief note about your background and why this role. We read every email and reply to anything that resonates.
           </p>
-          <a href={applyHref}
+          <a
+            href={applyHref}
+            data-careers-apply={useExternalApply ? undefined : "true"}
+            data-role={useExternalApply ? undefined : data.title}
+            target={useExternalApply ? "_blank" : undefined}
+            rel={useExternalApply ? "noopener noreferrer" : undefined}
             style="display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 10px; background: #fff; color: #2D2A6E; font-size: 14px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none; box-shadow: 0 4px 16px rgba(91,127,255,0.25);">
             Apply Now
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -131,7 +135,12 @@ const jobPostingLd = {
 
     {/* Floating Apply Now button — visible while reading, fades when inline CTA scrolls into view */}
     <div id="floating-apply" style="position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); opacity: 0; pointer-events: none; transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1); z-index: 900;">
-      <a href={applyHref}
+      <a
+        href={applyHref}
+        data-careers-apply={useExternalApply ? undefined : "true"}
+        data-role={useExternalApply ? undefined : data.title}
+        target={useExternalApply ? "_blank" : undefined}
+        rel={useExternalApply ? "noopener noreferrer" : undefined}
         style="display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; border-radius: 9999px; background: linear-gradient(135deg, #2D2A6E, #3D3A9E); color: #fff; font-size: 14px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none; box-shadow: 0 8px 24px rgba(45,42,110,0.35), 0 0 0 1px rgba(91,127,255,0.3);">
         Apply Now
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

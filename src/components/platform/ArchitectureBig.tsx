@@ -8,7 +8,7 @@ const layers = [
     label: "Purpose-built engines",
     tag: "APPLICATION LAYER",
     sub: "What your team touches",
-    body: "Each engine is purpose-built from the ground up — not bolted onto a legacy platform. DocketEngine for automated docketing. RenewalEngine for IP renewals. InventionEngine and others on the roadmap. Independently excellent, together more powerful.",
+    body: "Each engine is purpose-built from the ground up — not bolted onto a legacy platform. DocketEngine for automated docketing. RenewalEngine for IP renewals. Independently excellent, together more powerful.",
     grad: "linear-gradient(135deg, rgba(91,127,255,0.28), rgba(91,127,255,0.1))",
     bc: "rgba(91,127,255,0.4)",
     tc: "#5B7FFF",
@@ -32,7 +32,7 @@ const layers = [
     label: "Proprietary data infrastructure",
     tag: "FOUNDATION",
     sub: "The moat",
-    body: "A cloud-native data layer that ingests, cleans, and standardises IP data from 100+ offices globally. Every trademark, patent, and design registration — structured into a single, real-time source of truth. This is what nobody else has built.",
+    body: "A cloud-native data layer that ingests, cleans, and standardises IP data from 100+ offices globally. Every trademark, patent, and design registration — structured into a single, real-time source of truth.",
     grad: "linear-gradient(135deg, rgba(45,42,110,0.45), rgba(91,127,255,0.14))",
     bc: "rgba(91,127,255,0.45)",
     tc: "#7B9FFF",
@@ -56,6 +56,9 @@ export default function ArchitectureBig() {
       <div className="max-w-content mx-auto px-7 relative">
         <FadeIn>
           <div className="text-center mb-16">
+            <span style={{ display: "inline-block", fontSize: 11, fontWeight: 700, padding: "4px 12px", borderRadius: 9999, background: "rgba(217,119,6,0.12)", color: "#D97706", border: "1px solid rgba(217,119,6,0.28)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 18 }}>
+              In Progress
+            </span>
             <h2 className="font-display font-extrabold text-white mx-auto mb-5"
               style={{ fontSize: "clamp(32px, 3.5vw, 48px)", letterSpacing: "-0.03em", lineHeight: 1.1, maxWidth: 720 }}>
               Three layers. One platform.<br />
@@ -70,7 +73,7 @@ export default function ArchitectureBig() {
         <div style={{ maxWidth: 880, margin: "0 auto", position: "relative" }}>
           {layers.map((layer, i) => (
             <FadeIn key={i} delay={layer.delay}>
-              <div style={{ width: layer.w, margin: "0 auto 16px", position: "relative", zIndex: 2 }}>
+              <div className={`big-pyramid-layer big-pyramid-layer-${i}`} style={{ width: layer.w, margin: "0 auto 16px", position: "relative", zIndex: 2 }}>
                 <div style={{
                   position: "relative",
                   background: layer.grad,
@@ -91,12 +94,12 @@ export default function ArchitectureBig() {
                   ))}
 
                   {/* Header row */}
-                  <div className="flex items-center gap-4 mb-4" style={{ position: "relative", zIndex: 1 }}>
-                    <div style={{ width: 52, height: 52, borderRadius: 13, background: "rgba(0,0,0,0.25)", border: `1px solid ${layer.bc}`, display: "flex", alignItems: "center", justifyContent: "center", color: layer.tc, flexShrink: 0 }}>
+                  <div className="big-pyramid-header flex items-center gap-4 mb-4" style={{ position: "relative", zIndex: 1 }}>
+                    <div className="big-pyramid-icon" style={{ width: 52, height: 52, borderRadius: 13, background: "rgba(0,0,0,0.25)", border: `1px solid ${layer.bc}`, display: "flex", alignItems: "center", justifyContent: "center", color: layer.tc, flexShrink: 0 }}>
                       <Icon name={layer.icon} size={26} />
                     </div>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div className="flex items-center gap-2.5 mb-1 flex-wrap">
+                    <div className="big-pyramid-titles" style={{ flex: 1, minWidth: 0 }}>
+                      <div className="big-pyramid-title-row flex items-center gap-2.5 mb-1 flex-wrap">
                         <span style={{ fontSize: 19, fontWeight: 700, color: "#fff", letterSpacing: "-0.01em" }}>{layer.label}</span>
                         <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", color: layer.tc, padding: "3px 8px", borderRadius: 5, background: "rgba(0,0,0,0.3)", border: `1px solid ${layer.bc}` }}>{layer.tag}</span>
                       </div>
@@ -105,7 +108,7 @@ export default function ArchitectureBig() {
                   </div>
 
                   {/* Body */}
-                  <p style={{ position: "relative", zIndex: 1, fontSize: 15, lineHeight: 1.7, color: "rgba(255,255,255,0.6)", fontFamily: "'General Sans', sans-serif", maxWidth: 680 }}>
+                  <p className="big-pyramid-body" style={{ position: "relative", zIndex: 1, fontSize: 15, lineHeight: 1.7, color: "rgba(255,255,255,0.6)", fontFamily: "'General Sans', sans-serif", maxWidth: 680 }}>
                     {layer.body}
                   </p>
                 </div>
@@ -118,6 +121,34 @@ export default function ArchitectureBig() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          /* Bump pyramid widths so stacked content has room to breathe */
+          .big-pyramid-layer-0 { width: 76% !important; }
+          .big-pyramid-layer-1 { width: 88% !important; }
+          .big-pyramid-layer-2 { width: 100% !important; }
+
+          /* Stack icon on top, center everything */
+          .big-pyramid-header {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 12px !important;
+          }
+          .big-pyramid-titles {
+            flex: 0 1 auto !important;
+            width: 100% !important;
+          }
+          .big-pyramid-title-row {
+            justify-content: center !important;
+          }
+          .big-pyramid-body {
+            text-align: center !important;
+            margin: 0 auto !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

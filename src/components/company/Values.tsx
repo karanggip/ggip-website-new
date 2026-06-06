@@ -45,7 +45,7 @@ export default function Values() {
         </FadeIn>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}
-          className="max-md:grid-cols-1">
+          className="max-md:!grid-cols-1">
           {values.map((v, i) => (
             <FadeIn key={i} delay={i * 100}>
               <div style={{ padding: "36px 32px", borderRadius: 16, border: "1px solid #E2E2EA", background: "#fff", height: "100%", transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)" }}

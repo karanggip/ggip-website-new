@@ -7,7 +7,7 @@ const flywheelSteps = [
   { icon: "data" as const,     label: "Data layer more complete",      desc: "Broader coverage means richer signal for every workflow built on top." },
   { icon: "ai" as const,       label: "AI gets more accurate",         desc: "More structured data trains better models — risk scores, predictions, alerts." },
   { icon: "engine" as const,   label: "Engines become more valuable",  desc: "Every engine inherits the improved intelligence layer automatically." },
-  { icon: "building" as const, label: "More firms adopt the platform", desc: "Better engines attract more firms — who bring more data variety." },
+  { icon: "building" as const, label: "More firms adopt the platform", desc: "Better engines attract more firms — compounding value for everyone." },
 ];
 
 export default function Moat() {

@@ -2,33 +2,39 @@ import FadeIn from "../ui/FadeIn";
 
 const milestones = [
   {
-    year: "2024",
+    year: "2025",
     label: "Founded",
-    desc: "Guarded Growth IP founded after a systematic audit of the IP management market revealed a fundamental infrastructure gap no one had solved.",
+    desc: "Guarded Growth IP founded with a clear mission: build the modern data infrastructure for global intellectual property management.",
     accent: "#5B7FFF",
   },
   {
     year: "2025",
+    label: "Diagnosed the real problem",
+    desc: "Extensive research, interviews, and a systematic market audit converged on the same diagnosis — the IP management industry's failures aren't an application problem or a UX problem. They're a data infrastructure problem. The layer underneath every workflow is the gap nobody had filled.",
+    accent: "#5B7FFF",
+  },
+  {
+    year: "2026",
     label: "DocketEngine launched",
     desc: "DocketEngine goes live — automated IP docketing with real-time sync across 100+ IP offices. First firms onboard within weeks.",
-    accent: "#5B7FFF",
-  },
-  {
-    year: "2025",
-    label: "100+ IP offices",
-    desc: "Data infrastructure reaches coverage of 100+ IP offices globally, including USPTO, EUIPO, WIPO, JPO, KIPO, and all major regional offices.",
     accent: "#A78BFA",
   },
   {
     year: "2026",
     label: "RenewalEngine launched",
-    desc: "RenewalEngine goes live — IP renewals with full cost transparency across 190+ jurisdictions. 27.7% average savings vs traditional providers.",
+    desc: "RenewalEngine goes live — patent and trademark renewals across 190+ jurisdictions, delivered in strategic partnership with a market leader in the renewals space. Renewals shift from cost passthrough to revenue line.",
     accent: "#A78BFA",
   },
   {
-    year: "Next",
+    year: "2026",
+    label: "DocketEngine: 100+ IP offices",
+    desc: "DocketEngine coverage reaches 100+ IP offices globally — USPTO, EUIPO, WIPO, JPO, KIPO, and every major regional office. Real-time sync live across each one.",
+    accent: "#A78BFA",
+  },
+  {
+    year: "2026",
     label: "What's next",
-    desc: "InventionEngine and more. Every engine built on the same shared data infrastructure. One data layer. One platform. Growing with your firm.",
+    desc: "Complete the data infrastructure. Complete the platform. Every engine built on the same shared data layer. One data layer. One platform. Growing with your firm.",
     accent: "rgba(255,255,255,0.2)",
     future: true,
   },

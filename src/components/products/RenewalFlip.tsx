@@ -44,7 +44,7 @@ export default function RenewalFlip() {
             </div>
           </FadeIn>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginTop: 48 }}
-            className="max-md:grid-cols-1">
+            className="max-md:!grid-cols-1">
             {painPoints.map((p, i) => (
               <FadeIn key={i} delay={i * 100}>
                 <div style={{ padding: 32, borderRadius: 16, border: "1px solid #E2E2EA", background: "#fff", height: "100%", transition: "all 0.3s cubic-bezier(0.16,1,0.3,1)" }}
@@ -69,7 +69,7 @@ export default function RenewalFlip() {
 
         <div className="max-w-content mx-auto px-7 relative">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}
-            className="max-md:grid-cols-1 max-md:gap-12">
+            className="max-md:!grid-cols-1 max-md:!gap-12">
             <FadeIn>
               <div>
                 <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", color: "#A78BFA", textTransform: "uppercase", display: "block", marginBottom: 16 }}>The Flip</span>

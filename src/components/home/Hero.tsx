@@ -113,13 +113,13 @@ export default function Hero() {
 
         <h1 className="hero-animate delay-150 font-display font-extrabold text-white mx-auto mb-7"
           style={{ fontSize: "clamp(40px, 5.5vw, 72px)", letterSpacing: "-0.04em", lineHeight: 1.05, maxWidth: 820 }}>
-          The data infrastructure for global intellectual{" "}
+          Building the data infrastructure for global intellectual{" "}
           <span className="gradient-text">property</span>
         </h1>
 
         <p className="hero-animate delay-300 font-body mx-auto mb-10"
           style={{ fontSize: 18, lineHeight: 1.7, color: "rgba(255,255,255,0.45)", maxWidth: 520 }}>
-          Cloud-native data layer spanning 100+ IP offices. AI intelligence and purpose-built engines on top. Modern docketing. Automated renewals. One platform.
+          Data layer spanning 100+ IP offices. AI intelligence and purpose-built engines on top. Modern docketing. Automated renewals. One platform.
         </p>
 
         <div className="hero-animate delay-450 flex gap-3.5 justify-center flex-wrap">

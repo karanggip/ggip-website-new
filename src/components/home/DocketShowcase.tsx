@@ -9,7 +9,7 @@ const sidebarItems = [
   { icon: "docket" as const, label: "Portfolio" },
   { icon: "bell" as const, label: "Deadlines" },
   { icon: "globe" as const, label: "Jurisdictions" },
-  { icon: "eye" as const, label: "Competitor Watch" },
+  { icon: "check" as const, label: "Audit Log" },
   { icon: "file" as const, label: "Reports" },
 ];
 
@@ -29,9 +29,9 @@ const portfolioRows = [
 
 const features = [
   { icon: "sync" as const,   title: "Real-time sync",   desc: "100+ IP offices, always current" },
-  { icon: "ai" as const,     title: "AI insights",      desc: "Portfolio health & risk scoring" },
-  { icon: "eye" as const,    title: "Competitor watch", desc: "Track filings automatically" },
+  { icon: "data" as const,   title: "Zero data entry",  desc: "Office data flows direct to your docket" },
   { icon: "layers" as const, title: "Free migration",   desc: "Onboard in under a week" },
+  { icon: "ai" as const,     title: "AI insights",      desc: "Portfolio health & risk scoring" },
 ];
 
 export default function DocketShowcase() {
@@ -84,9 +84,9 @@ export default function DocketShowcase() {
                 </div>
               </div>
               {/* Dashboard */}
-              <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", minHeight: 380 }}>
+              <div className="home-mockup-dashboard" style={{ display: "grid", gridTemplateColumns: "200px 1fr", minHeight: 380 }}>
                 {/* Sidebar */}
-                <div style={{ borderRight: "1px solid rgba(255,255,255,0.06)", padding: 16, background: "rgba(255,255,255,0.01)" }}>
+                <div className="home-mockup-sidebar" style={{ borderRight: "1px solid rgba(255,255,255,0.06)", padding: 16, background: "rgba(255,255,255,0.01)" }}>
                   <div className="flex items-center gap-2 mb-6">
                     <EngineIcon engine="docket" size={24} variant="dark" />
                     <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>DocketEngine</span>
@@ -99,7 +99,7 @@ export default function DocketShowcase() {
                   ))}
                 </div>
                 {/* Main */}
-                <div style={{ padding: 20 }}>
+                <div className="home-mockup-main" style={{ padding: 20 }}>
                   <div className="flex justify-between items-center mb-4">
                     <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>Portfolio Overview</span>
                     <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", display: "flex", alignItems: "center", gap: 6 }}>
@@ -107,7 +107,7 @@ export default function DocketShowcase() {
                       Synced 2 min ago
                     </span>
                   </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 16 }}>
+                  <div className="home-mockup-stats" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 16 }}>
                     {statCards.map((s, i) => (
                       <div key={i} style={{ padding: 14, borderRadius: 10, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
                         <div style={{ fontSize: 22, fontWeight: 800, color: s.color, marginBottom: 2 }}>{s.value}</div>
@@ -134,7 +134,7 @@ export default function DocketShowcase() {
         {/* Feature highlights */}
         <FadeIn delay={300}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginTop: 40, maxWidth: 1000, marginLeft: "auto", marginRight: "auto" }}
-            className="max-md:grid-cols-2">
+            className="max-md:!grid-cols-2">
             {features.map((f, i) => (
               <div key={i} className="text-center">
                 <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(91,127,255,0.1)", border: "1px solid rgba(91,127,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", color: "#5B7FFF", margin: "0 auto 12px" }}>
@@ -153,6 +153,20 @@ export default function DocketShowcase() {
           </div>
         </FadeIn>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .home-mockup-dashboard {
+            grid-template-columns: 1fr !important;
+            min-height: 0 !important;
+          }
+          .home-mockup-sidebar { display: none !important; }
+          .home-mockup-main { padding: 14px !important; }
+          .home-mockup-stats {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import type React from "react";
 import FadeIn from "../ui/FadeIn";
 import Icon from "../ui/Icon";
@@ -13,6 +15,7 @@ const InProgressBadge = () => (
 const tiers = [
   {
     name: "Start",
+    monthlyValue: 99,
     price: "$99",
     period: "/month",
     desc: "For solo attorneys and small practices.",
@@ -20,7 +23,7 @@ const tiers = [
     users: "Up to 5 users",
     highlight: false,
     cta: "Start Free Trial",
-    ctaHref: "/demo",
+    ctaHref: "https://docket.guardedgrowthip.com/signup",
     features: [
       "Real-time sync with 100+ IP offices",
       "Automated deadline tracking & alerts",
@@ -32,6 +35,7 @@ const tiers = [
   },
   {
     name: "Growth",
+    monthlyValue: 399,
     price: "$399",
     period: "/month",
     desc: "For growing practices that need AI insights and more capacity.",
@@ -40,14 +44,14 @@ const tiers = [
     highlight: true,
     badge: "Most Popular",
     cta: "Start Free Trial",
-    ctaHref: "/demo",
+    ctaHref: "https://docket.guardedgrowthip.com/signup",
+    secondaryCta: "Request a Demo",
+    secondaryCtaHref: "/demo",
     features: [
       "Everything in Start",
       "AI portfolio health scoring",
-      "Risk detection & compliance alerts",
       "Competitor watch & filing alerts",
       "Advanced reporting & custom exports",
-      "API access",
       "Priority support",
     ],
   },
@@ -63,6 +67,7 @@ const tiers = [
     ctaHref: "/contact",
     features: [
       "Everything in Growth",
+      "Risk detection",
       "SSO / SAML",
       "SOC2-aligned security",
       "Dedicated customer success manager",
@@ -96,16 +101,8 @@ const matrixGroups = [
     group: "Intelligence",
     rows: [
       { label: "AI portfolio health scoring",  values: [false, "progress", "progress"] },
-      { label: "Risk detection & alerts",      values: [false, "progress", "progress"] },
+      { label: "Risk detection",               values: [false, false, "progress"] },
       { label: "Competitor watch",             values: [false, "progress", "progress"] },
-    ],
-  },
-  {
-    group: "Reporting & API",
-    rows: [
-      { label: "Basic reporting",              values: [true, true, true] },
-      { label: "Advanced reporting & exports", values: [false, true, true] },
-      { label: "API access",                   values: [false, true, true] },
     ],
   },
   {
@@ -144,6 +141,13 @@ function MatrixCell({ value }: { value: boolean | string }) {
 }
 
 export default function PricingPlans() {
+  const [billing, setBilling] = useState<"monthly" | "annual">("monthly");
+
+  // 2 months free on annual: monthly equivalent = monthly × 10/12
+  function annualMonthlyEquiv(monthlyValue: number): number {
+    return Math.round(monthlyValue * 10 / 12);
+  }
+
   return (
     <section style={{ paddingTop: 80, paddingBottom: 80, background: "#fff", color: "#0C0C0E" }}>
       <div className="max-w-content mx-auto px-7">
@@ -159,10 +163,62 @@ export default function PricingPlans() {
           </div>
         </FadeIn>
 
+        {/* Billing toggle */}
+        <FadeIn delay={40}>
+          <div className="flex items-center gap-3 mb-8" style={{ justifyContent: "center" }}>
+            <div role="tablist" aria-label="Billing period" style={{
+              display: "inline-flex",
+              padding: 4,
+              borderRadius: 9999,
+              border: "1px solid #E2E2EA",
+              background: "#F6F6F9",
+            }}>
+              {(["monthly", "annual"] as const).map((mode) => {
+                const active = billing === mode;
+                return (
+                  <button
+                    key={mode}
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setBilling(mode)}
+                    style={{
+                      padding: "7px 18px",
+                      borderRadius: 9999,
+                      border: "none",
+                      background: active ? "#2D2A6E" : "transparent",
+                      color: active ? "#fff" : "#5C5C6E",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      cursor: "pointer",
+                      transition: "all 0.15s",
+                      letterSpacing: "0.01em",
+                    }}
+                  >
+                    {mode === "monthly" ? "Monthly" : "Annual"}
+                    {mode === "annual" && (
+                      <span style={{
+                        marginLeft: 8,
+                        fontSize: 10,
+                        fontWeight: 700,
+                        padding: "2px 7px",
+                        borderRadius: 9999,
+                        background: active ? "rgba(255,255,255,0.18)" : "rgba(22,163,74,0.12)",
+                        color: active ? "#fff" : "#16A34A",
+                        letterSpacing: "0.04em",
+                      }}>2 MONTHS FREE</span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </FadeIn>
+
         {/* Tier cards */}
         <FadeIn delay={80}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 48 }}
-            className="max-md:grid-cols-1">
+            className="max-md:!grid-cols-1">
             {tiers.map((tier, i) => {
               const cardInner = (
                 <div style={{
@@ -179,10 +235,32 @@ export default function PricingPlans() {
                     </div>
                   )}
                   <div style={{ fontSize: 13, fontWeight: 700, color: tier.highlight ? "rgba(255,255,255,0.5)" : "#5C5C6E", marginBottom: 6, letterSpacing: "0.02em" }}>{tier.name}</div>
-                  <div className="flex items-baseline gap-1 mb-2">
-                    <span style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-0.04em", color: tier.highlight ? "#fff" : "#0C0C0E" }}>{tier.price}</span>
-                    {tier.period && <span style={{ fontSize: 14, color: tier.highlight ? "rgba(255,255,255,0.45)" : "#5C5C6E", fontFamily: "'General Sans', sans-serif" }}>{tier.period}</span>}
-                  </div>
+                  {(() => {
+                    const showAnnual = billing === "annual" && tier.monthlyValue != null;
+                    const dimmedColor = tier.highlight ? "rgba(255,255,255,0.45)" : "#5C5C6E";
+                    if (showAnnual) {
+                      const annualEquiv = annualMonthlyEquiv(tier.monthlyValue!);
+                      const annualTotal = tier.monthlyValue! * 10;
+                      return (
+                        <>
+                          <div className="flex items-baseline gap-2 mb-1" style={{ flexWrap: "wrap" }}>
+                            <span style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-0.04em", color: tier.highlight ? "#fff" : "#0C0C0E" }}>${annualEquiv}</span>
+                            <span style={{ fontSize: 14, color: dimmedColor, fontFamily: "'General Sans', sans-serif" }}>/month</span>
+                            <span style={{ fontSize: 14, color: dimmedColor, fontFamily: "'General Sans', sans-serif", textDecoration: "line-through", textDecorationThickness: 1.5 }}>{tier.price}</span>
+                          </div>
+                          <div style={{ fontSize: 12, color: dimmedColor, fontFamily: "'General Sans', sans-serif", marginBottom: 10 }}>
+                            Billed annually as ${annualTotal.toLocaleString()}
+                          </div>
+                        </>
+                      );
+                    }
+                    return (
+                      <div className="flex items-baseline gap-1 mb-2">
+                        <span style={{ fontSize: 40, fontWeight: 800, letterSpacing: "-0.04em", color: tier.highlight ? "#fff" : "#0C0C0E" }}>{tier.price}</span>
+                        {tier.period && <span style={{ fontSize: 14, color: dimmedColor, fontFamily: "'General Sans', sans-serif" }}>{tier.period}</span>}
+                      </div>
+                    );
+                  })()}
                   <p style={{ fontSize: 13, color: tier.highlight ? "rgba(255,255,255,0.5)" : "#5C5C6E", lineHeight: 1.5, marginBottom: 16, fontFamily: "'General Sans', sans-serif" }}>{tier.desc}</p>
                   <div style={{ padding: "10px 0", borderTop: `1px solid ${tier.highlight ? "rgba(255,255,255,0.1)" : "#E2E2EA"}`, borderBottom: `1px solid ${tier.highlight ? "rgba(255,255,255,0.1)" : "#E2E2EA"}`, marginBottom: 16 }}>
                     {[tier.matters, tier.users].map((line, j) => (
@@ -199,10 +277,26 @@ export default function PricingPlans() {
                       </div>
                     ))}
                   </div>
-                  <a href={url(tier.ctaHref)}
-                    style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "12px 20px", borderRadius: 10, fontSize: 14, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", transition: "all 0.2s", background: tier.highlight ? "#fff" : "#2D2A6E", color: tier.highlight ? "#2D2A6E" : "#fff" }}>
-                    {tier.cta} <Icon name="arrowRight" size={14} />
-                  </a>
+                  <div className="flex flex-col gap-2">
+                    <a href={url(tier.ctaHref)}
+                      target={/^https?:\/\//i.test(tier.ctaHref) ? "_blank" : undefined}
+                      rel={/^https?:\/\//i.test(tier.ctaHref) ? "noopener noreferrer" : undefined}
+                      style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "12px 20px", borderRadius: 10, fontSize: 14, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", transition: "all 0.2s", background: tier.highlight ? "#fff" : "#2D2A6E", color: tier.highlight ? "#2D2A6E" : "#fff" }}>
+                      {tier.cta} <Icon name="arrowRight" size={14} />
+                    </a>
+                    {tier.secondaryCta && tier.secondaryCtaHref && (
+                      <a href={url(tier.secondaryCtaHref)}
+                        style={{
+                          display: "flex", alignItems: "center", justifyContent: "center", gap: 6, width: "100%", padding: "10px 20px", borderRadius: 10,
+                          fontSize: 13, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", transition: "all 0.2s",
+                          background: "transparent",
+                          color: tier.highlight ? "rgba(255,255,255,0.85)" : "#5C5C6E",
+                          border: `1px solid ${tier.highlight ? "rgba(255,255,255,0.2)" : "#E2E2EA"}`,
+                        }}>
+                        {tier.secondaryCta} <Icon name="arrowRight" size={13} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               );
               return (
@@ -221,7 +315,7 @@ export default function PricingPlans() {
         </FadeIn>
 
         <p style={{ fontSize: 13, color: "#8B8B9E", marginBottom: 48, fontFamily: "'General Sans', sans-serif" }}>
-          All plans include a 14-day free trial. Annual billing available — save 2 months.{" "}
+          All plans include a 14-day free trial. No credit card required to start.{" "}
           <a href={url("/contact")} style={{ color: "#5B7FFF", textDecoration: "none", fontWeight: 600 }}>Talk to us about custom pricing →</a>
         </p>
 

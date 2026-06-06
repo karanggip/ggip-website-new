@@ -48,7 +48,7 @@ export default function TrustStrip() {
     <section style={{ paddingTop: 0, paddingBottom: 64, background: "#050510" }}>
       <div className="max-w-content mx-auto px-7">
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)", paddingTop: 40, paddingBottom: 40 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }} className="max-md:grid-cols-2">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }} className="max-md:!grid-cols-2">
             {STATS.map((stat, i) => (
               <FadeIn key={i} delay={i * 100}>
                 <div className="text-center">

@@ -12,9 +12,9 @@ const products = [
   },
   {
     engine: "renewal" as const, name: "RenewalEngine",
-    tagline: "IP renewals transformed from cost center to margin driver.",
-    desc: "Full cost transparency across 190+ jurisdictions. Keep client ownership while running on automated infrastructure — and capture the margin yourself instead of passing it to a third party.",
-    features: ["190+ jurisdictions with transparent pricing", "27.7% average savings vs traditional providers", "One-click renew/hold/lapse with forecasting"],
+    tagline: "Patent and trademark renewals across 100+ jurisdictions.",
+    desc: "A modern renewal layer designed to keep client ownership with you — and let firms capture the margin instead of passing it to a third party.",
+    features: ["100+ jurisdictions — patents and trademarks", "Line-item pricing, no opaque markups", "One-click renew / hold / lapse with forecasting"],
     accent: "167,139,250", accentHex: "#A78BFA", cta: "Explore RenewalEngine", href: "/products/renewalengine",
   },
 ];
@@ -29,7 +29,7 @@ export default function Products() {
             One platform. Two engines. More to come.
           </h2>
         </FadeIn>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }} className="max-md:grid-cols-1">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }} className="max-md:!grid-cols-1">
           {products.map((p, i) => (
             <FadeIn key={i} delay={i * 150}>
               <div

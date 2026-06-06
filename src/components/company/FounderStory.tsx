@@ -62,7 +62,7 @@ export default function FounderStory() {
 
         {/* Founder cards */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 48 }}
-          className="max-md:grid-cols-1">
+          className="max-md:!grid-cols-1">
           {founders.map((f, i) => (
             <FadeIn key={i} delay={i * 150}>
               <div style={{ padding: "40px 36px", borderRadius: 20, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", height: "100%", display: "flex", flexDirection: "column" }}>

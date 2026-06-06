@@ -28,7 +28,7 @@ export default function RenewalPricing() {
         </FadeIn>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}
-          className="max-md:grid-cols-1">
+          className="max-md:!grid-cols-1">
 
           {/* Left: explanation */}
           <FadeIn delay={80}>
@@ -42,9 +42,8 @@ export default function RenewalPricing() {
               <div className="flex flex-col gap-3 mb-8">
                 {[
                   "No hidden markups or opaque FX fees",
-                  "Full cost breakdown per asset and jurisdiction",
+                  "Line-item cost breakdown per asset and jurisdiction",
                   "We show you the savings before you sign",
-                  "Quote delivered within 24 hours",
                 ].map((point, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <span style={{ color: "#A78BFA", display: "flex", flexShrink: 0, marginTop: 2 }}>

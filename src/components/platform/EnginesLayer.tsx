@@ -26,12 +26,6 @@ const engines = [
   },
 ];
 
-const futureEngines = [
-  { name: "InventionEngine",  desc: "Invention disclosure capture and patent prosecution workflow." },
-  { name: "OppositionEngine", desc: "Trademark opposition tracking, response management, and outcome analytics." },
-  { name: "LicensingEngine",  desc: "License management, royalty tracking, and contract intelligence." },
-];
-
 export default function EnginesLayer() {
   return (
     <section style={{ paddingTop: 80, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
@@ -54,7 +48,7 @@ export default function EnginesLayer() {
 
         {/* Live engines */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 40 }}
-          className="max-md:grid-cols-1">
+          className="max-md:!grid-cols-1">
           {engines.map((e, i) => (
             <FadeIn key={i} delay={i * 100}>
               <a href={url(e.href)} style={{ display: "block", padding: "32px 30px", borderRadius: 18, background: `rgba(${e.accent},0.04)`, border: `1px solid rgba(${e.accent},0.2)`, textDecoration: "none", transition: "all 0.25s" }}
@@ -79,27 +73,6 @@ export default function EnginesLayer() {
           ))}
         </div>
 
-        {/* Future engines */}
-        <FadeIn delay={250}>
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "rgba(255,255,255,0.35)", textTransform: "uppercase" }}>On the roadmap</span>
-              <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.08)" }} />
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}
-              className="max-md:grid-cols-1">
-              {futureEngines.map((e, i) => (
-                <div key={i} style={{ padding: "20px 24px", borderRadius: 14, background: "rgba(255,255,255,0.02)", border: "1px dashed rgba(255,255,255,0.1)" }}>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span style={{ fontSize: 14, fontWeight: 700, color: "rgba(255,255,255,0.7)" }}>{e.name}</span>
-                    <span style={{ fontSize: 9, fontWeight: 700, padding: "1px 6px", borderRadius: 9999, background: "rgba(255,255,255,0.04)", color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.08)", letterSpacing: "0.05em" }}>COMING</span>
-                  </div>
-                  <p style={{ fontSize: 13, lineHeight: 1.6, color: "rgba(255,255,255,0.35)", fontFamily: "'General Sans', sans-serif" }}>{e.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );

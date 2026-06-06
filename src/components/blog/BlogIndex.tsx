@@ -86,7 +86,7 @@ export default function BlogIndex({ posts }: Props) {
               style={{ display: "block", marginBottom: 48, borderRadius: 20, overflow: "hidden", border: "1px solid #E2E2EA", background: "#fff", textDecoration: "none", transition: "all 0.25s", boxShadow: "0 4px 16px rgba(0,0,0,0.04)" }}
               onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = "translateY(-4px)"; el.style.boxShadow = "0 16px 40px rgba(0,0,0,0.08)"; el.style.borderColor = "#5B7FFF44"; }}
               onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = "translateY(0)"; el.style.boxShadow = "0 4px 16px rgba(0,0,0,0.04)"; el.style.borderColor = "#E2E2EA"; }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 0 }} className="max-md:grid-cols-1">
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 0 }} className="max-md:!grid-cols-1">
                 <div style={{ background: coverGradients[featured.coverColor] || coverGradients.indigo, minHeight: 280, position: "relative", overflow: "hidden" }}>
                   {featured.coverImage && (
                     <img src={url(featured.coverImage)} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
@@ -118,7 +118,7 @@ export default function BlogIndex({ posts }: Props) {
         {/* Grid of remaining posts */}
         {rest.length > 0 && (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}
-            className="max-md:grid-cols-1">
+            className="max-md:!grid-cols-1">
             {rest.map((post, i) => (
               <FadeIn key={post.slug} delay={i * 80}>
                 <a href={url(`/blog/${post.slug}/`)}

@@ -18,17 +18,19 @@ export default function CareersCTA() {
               Tell us about you.
             </h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", marginBottom: 28, fontFamily: "'General Sans', sans-serif", lineHeight: 1.7 }}>
-              Send a brief note — what you've built, what you're interested in, and why Guarded Growth. We read every email and reply to anything that resonates.
+              Even if there's no open role that fits — drop us your details and a short note about what you've built and what you're interested in. We read every application and reply to anything that resonates.
             </p>
-            <a href="mailto:careers@guardedgrowthip.com"
+            <a
+              href="#apply-careers"
+              data-careers-apply="true"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "13px 28px", borderRadius: 10, background: "#fff", color: "#2D2A6E", fontSize: 15, fontWeight: 700, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", transition: "all 0.2s", boxShadow: "0 4px 16px rgba(91,127,255,0.2)" }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 24px rgba(91,127,255,0.3)"; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px rgba(91,127,255,0.2)"; }}>
               <Icon name="mail" size={16} />
-              careers@guardedgrowthip.com
+              Apply / Get in touch
             </a>
             <p style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginTop: 24, fontFamily: "'General Sans', sans-serif" }}>
-              No formal application form. No ATS. Just an email.
+              No ATS. No black hole. We read every application ourselves.
             </p>
           </div>
         </FadeIn>

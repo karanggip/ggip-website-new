@@ -20,25 +20,27 @@ const tiers = [
       "Email support",
     ],
     cta: "Start Free Trial",
+    ctaHref: "https://docket.guardedgrowthip.com/signup",
     highlight: false,
   },
   {
     name: "Growth",
     price: "$399",
     period: "/month",
-    desc: "For growing IP practices that need AI insights, API access, and more capacity.",
+    desc: "For growing IP practices that need AI insights and more capacity.",
     matters: "100–500 matters",
     users: "Up to 10 users",
     features: [
       "Everything in Start",
       "AI portfolio health scoring",
-      "Risk detection & compliance alerts",
       "Competitor watch & filing alerts",
       "Advanced reporting & custom exports",
-      "API access",
       "Priority support",
     ],
     cta: "Start Free Trial",
+    ctaHref: "https://docket.guardedgrowthip.com/signup",
+    secondaryCta: "Request a Demo",
+    secondaryCtaHref: "/demo",
     highlight: true,
     badge: "Most Popular",
   },
@@ -51,6 +53,7 @@ const tiers = [
     users: "Unlimited users",
     features: [
       "Everything in Growth",
+      "Risk detection",
       "SSO / SAML",
       "SOC2-aligned security",
       "Dedicated customer success manager",
@@ -58,6 +61,7 @@ const tiers = [
       "SLA & uptime guarantees",
     ],
     cta: "Talk to Sales",
+    ctaHref: "/contact",
     highlight: false,
   },
 ];
@@ -79,7 +83,7 @@ export default function DocketPricing() {
         </FadeIn>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, alignItems: "start" }}
-          className="max-md:grid-cols-1">
+          className="max-md:!grid-cols-1">
           {tiers.map((tier, i) => {
             const cardInner = (
               <div style={{
@@ -117,10 +121,26 @@ export default function DocketPricing() {
                     </div>
                   ))}
                 </div>
-                <a href={tier.cta === "Talk to Sales" ? "/contact" : "/demo"}
-                  style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "13px 24px", borderRadius: 10, fontSize: 14, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", transition: "all 0.2s", background: tier.highlight ? "#fff" : "#2D2A6E", color: tier.highlight ? "#2D2A6E" : "#fff" }}>
-                  {tier.cta} <Icon name="arrowRight" size={15} />
-                </a>
+                <div className="flex flex-col gap-2">
+                  <a href={tier.ctaHref}
+                    target={/^https?:\/\//i.test(tier.ctaHref) ? "_blank" : undefined}
+                    rel={/^https?:\/\//i.test(tier.ctaHref) ? "noopener noreferrer" : undefined}
+                    style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, width: "100%", padding: "13px 24px", borderRadius: 10, fontSize: 14, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", transition: "all 0.2s", background: tier.highlight ? "#fff" : "#2D2A6E", color: tier.highlight ? "#2D2A6E" : "#fff" }}>
+                    {tier.cta} <Icon name="arrowRight" size={15} />
+                  </a>
+                  {tier.secondaryCta && tier.secondaryCtaHref && (
+                    <a href={tier.secondaryCtaHref}
+                      style={{
+                        display: "flex", alignItems: "center", justifyContent: "center", gap: 6, width: "100%", padding: "11px 24px", borderRadius: 10,
+                        fontSize: 13, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", transition: "all 0.2s",
+                        background: "transparent",
+                        color: tier.highlight ? "rgba(255,255,255,0.85)" : "#5C5C6E",
+                        border: `1px solid ${tier.highlight ? "rgba(255,255,255,0.2)" : "#E2E2EA"}`,
+                      }}>
+                      {tier.secondaryCta} <Icon name="arrowRight" size={13} />
+                    </a>
+                  )}
+                </div>
               </div>
             );
             return (

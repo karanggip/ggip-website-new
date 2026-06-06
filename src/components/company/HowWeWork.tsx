@@ -54,7 +54,7 @@ export default function HowWeWork() {
         </FadeIn>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}
-          className="max-md:grid-cols-1">
+          className="max-md:!grid-cols-1">
           {principles.map((p, i) => (
             <FadeIn key={i} delay={i * 80}>
               <div style={{ padding: "28px 26px", borderRadius: 14, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", height: "100%", transition: "border-color 0.25s" }}

@@ -2,10 +2,11 @@ import FadeIn from "../ui/FadeIn";
 import Icon from "../ui/Icon";
 
 const stats = [
-  { value: "100+",  label: "IP offices connected",  c: "#5B7FFF" },
-  { value: "70M+",  label: "Trademark records",     c: "#A78BFA" },
-  { value: "Real-time", label: "Sync cadence",      c: "#5B7FFF" },
-  { value: "24/7", label: "Continuous ingestion",   c: "#A78BFA" },
+  { value: "190+",      label: "IP offices",            c: "#5B7FFF" },
+  { value: "20M+",      label: "Patents globally",      c: "#A78BFA" },
+  { value: "70M+",      label: "Trademark records",     c: "#5B7FFF" },
+  { value: "Real-time", label: "Sync cadence",          c: "#A78BFA" },
+  { value: "24/7",      label: "Continuous ingestion",  c: "#5B7FFF" },
 ];
 
 // Globe of IP offices as a visual element
@@ -37,19 +38,19 @@ export default function DataLayer() {
               Proprietary data infrastructure.
             </h2>
             <p style={{ fontSize: 17, lineHeight: 1.75, color: "#5C5C6E", fontFamily: "'General Sans', sans-serif" }}>
-              We ingest, clean, and standardise IP data from 100+ offices worldwide — each with its own formats, protocols, and update cadences. The result is a normalised schema that lets us build any IP workflow on top of a single source of truth.
+              We ingest, clean, and standardise IP data from 190+ offices worldwide — each with its own formats, protocols, and update cadences. The result is a normalised schema that lets us build any IP workflow on top of a single source of truth.
             </p>
           </div>
         </FadeIn>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }}
-          className="max-md:grid-cols-1 max-md:gap-10">
+          className="max-md:!grid-cols-1 max-md:!gap-10">
 
           {/* Left: capability list */}
           <FadeIn delay={100}>
             <div className="flex flex-col gap-4">
               {[
-                { icon: "globe" as const,  title: "Global ingestion",        desc: "100+ IP offices across every major jurisdiction — Americas, Europe, Asia-Pacific. Each office connector built and maintained by our infrastructure team." },
+                { icon: "globe" as const,  title: "Global ingestion",        desc: "190+ IP offices across every major jurisdiction — Americas, Europe, Asia-Pacific. Each office connector built and maintained by our infrastructure team." },
                 { icon: "sync" as const,   title: "Real-time synchronisation", desc: "Continuous polling and webhook ingestion where supported. Status changes appear in your dashboard within minutes of being posted by the office." },
                 { icon: "layers" as const, title: "Normalised schema",       desc: "Inconsistent formats from every office mapped into a single standardised data model — so every engine, every report, every export works the same way." },
                 { icon: "shield" as const, title: "Verified at the source",  desc: "All data sourced directly from official IP office APIs and bulletins — never scraped, never aggregated through third parties. Audit-ready provenance." },
@@ -87,7 +88,7 @@ export default function DataLayer() {
                 ))}
               </div>
               <div style={{ marginTop: 14, padding: "10px 14px", borderRadius: 8, background: "rgba(91,127,255,0.06)", border: "1px solid rgba(91,127,255,0.15)", textAlign: "center" }}>
-                <span style={{ fontSize: 12, color: "#5B7FFF", fontWeight: 600 }}>+ 88 more offices · Adding ~2 per month</span>
+                <span style={{ fontSize: 12, color: "#5B7FFF", fontWeight: 600 }}>+ 178 more offices · Adding ~2 per month</span>
               </div>
             </div>
           </FadeIn>
@@ -95,8 +96,8 @@ export default function DataLayer() {
 
         {/* Stats strip */}
         <FadeIn delay={250}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, marginTop: 56, padding: "32px 0", borderTop: "1px solid #E2E2EA", borderBottom: "1px solid #E2E2EA" }}
-            className="max-md:grid-cols-2">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 20, marginTop: 56, padding: "32px 0", borderTop: "1px solid #E2E2EA", borderBottom: "1px solid #E2E2EA" }}
+            className="max-md:!grid-cols-2">
             {stats.map((s, i) => (
               <div key={i}>
                 <div style={{ fontSize: 32, fontWeight: 800, letterSpacing: "-0.03em", color: s.c, lineHeight: 1, marginBottom: 6 }}>{s.value}</div>

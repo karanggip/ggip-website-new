@@ -64,7 +64,7 @@ export default function Architecture() {
               Engines on top.
             </h2>
             <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.4)", maxWidth: 480, margin: "0 auto", fontFamily: "'General Sans', sans-serif" }}>
-              We didn't start by building features. We started by building the foundation.
+              We're not only building the applications. We're building the foundation.
             </p>
           </div>
         </FadeIn>
@@ -72,8 +72,8 @@ export default function Architecture() {
         <div style={{ maxWidth: 760, margin: "0 auto", position: "relative" }}>
           {layers.map((layer, i) => (
             <FadeIn key={i} delay={layer.delay}>
-              <div style={{ width: layer.w, margin: "0 auto 12px", position: "relative", zIndex: 2 }}>
-                <div style={{
+              <div className={`pyramid-layer pyramid-layer-${i}`} style={{ width: layer.w, margin: "0 auto 12px", position: "relative", zIndex: 2 }}>
+                <div className="pyramid-layer-card" style={{
                   position: "relative", background: layer.grad, backdropFilter: "blur(16px)",
                   border: `1px solid ${layer.bc}`, borderRadius: 16, padding: "24px 28px",
                   display: "flex", alignItems: "center", gap: 18, overflow: "hidden",
@@ -100,8 +100,8 @@ export default function Architecture() {
                   </div>
 
                   {/* Text */}
-                  <div style={{ position: "relative", zIndex: 1, flex: 1, minWidth: 0 }}>
-                    <div className="flex items-center gap-2.5 mb-1 flex-wrap">
+                  <div className="pyramid-layer-text" style={{ position: "relative", zIndex: 1, flex: 1, minWidth: 0 }}>
+                    <div className="pyramid-layer-header flex items-center gap-2.5 mb-1 flex-wrap">
                       <span style={{ fontSize: 17, fontWeight: 700, color: "#fff" }}>{layer.label}</span>
                       <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", color: layer.tc, padding: "3px 8px", borderRadius: 5, background: "rgba(0,0,0,0.3)", border: `1px solid ${layer.bc}` }}>{layer.tag}</span>
                     </div>
@@ -118,12 +118,37 @@ export default function Architecture() {
           <FadeIn delay={650}>
             <div className="text-center mt-7">
               <p style={{ fontSize: 14, color: "rgba(255,255,255,0.4)", maxWidth: 520, margin: "0 auto", lineHeight: 1.6, fontFamily: "'General Sans', sans-serif" }}>
-                <span style={{ color: "#fff", fontWeight: 600 }}>The architecture is the moat.</span> Every jurisdiction added makes the data layer more complete. Every engine built on top compounds the advantage.
+                Every jurisdiction added makes the data layer more complete. Every engine built on top compounds the advantage.
               </p>
             </div>
           </FadeIn>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          /* Bump pyramid widths so stacked content has room to breathe */
+          .pyramid-layer-0 { width: 72% !important; }
+          .pyramid-layer-1 { width: 86% !important; }
+          .pyramid-layer-2 { width: 100% !important; }
+
+          /* Stack icon on top of text, both centered */
+          .pyramid-layer-card {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 12px !important;
+            padding: 20px 18px !important;
+          }
+          .pyramid-layer-text {
+            flex: 0 1 auto !important;
+            width: 100% !important;
+          }
+          .pyramid-layer-header {
+            justify-content: center !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

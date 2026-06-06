@@ -17,7 +17,7 @@ export default function WhyUs() {
             Built, not bolted<span style={{ color: "#5B7FFF" }}>.</span>
           </h2>
         </FadeIn>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }} className="max-md:grid-cols-1">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }} className="max-md:!grid-cols-1">
           {items.map((item, i) => (
             <FadeIn key={i} delay={i * 120}>
               <div

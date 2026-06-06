@@ -103,7 +103,7 @@ export default function DemoForm({ variant = "inline", source = "demo-page", onS
     <form onSubmit={handleSubmit} style={{
       padding: isInline ? 0 : "26px 30px 28px",
     }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="max-md:grid-cols-1">
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="max-md:!grid-cols-1">
         <Field label="Name" required inline={isInline}>
           <input type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Jane Doe" style={inputStyle} />
         </Field>
@@ -122,7 +122,7 @@ export default function DemoForm({ variant = "inline", source = "demo-page", onS
         <Label inline={isInline}>
           Interested in <span style={{ fontWeight: 500, color: "#8B8B9E" }}>(select one or both)</span>
         </Label>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="max-md:grid-cols-1">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }} className="max-md:!grid-cols-1">
           <EngineTile
             label="DocketEngine"
             sub="IP docket management"

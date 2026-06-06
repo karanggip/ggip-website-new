@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import CookieBanner from "../components/CookieBanner";
 import DemoModal from "../components/DemoModal";
+import CareersModal from "../components/CareersModal";
 
 interface Props {
   title?: string;
@@ -125,6 +126,7 @@ const allLd = [organizationLd, websiteLd, ...extraLd];
     <slot />
     <CookieBanner client:idle />
     <DemoModal client:idle />
+    <CareersModal client:idle />
 
     {/* Google Analytics 4 — Consent Mode v2. Loads with everything denied by
         default and is upgraded to "granted" only when the user accepts the

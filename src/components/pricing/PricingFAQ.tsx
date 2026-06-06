@@ -6,11 +6,15 @@ import Icon from "../ui/Icon";
 const faqs = [
   {
     q: "What counts as a matter?",
-    a: "A matter is a single IP asset — one trademark, one patent, or one design registration. It doesn't matter how many jurisdictions that asset is filed in; each unique IP asset counts as one matter. For example, a trademark filed in 5 countries counts as 1 matter.",
+    a: "A matter is a single registered IP asset — one trademark, one patent, or one design registration. It doesn't matter how many jurisdictions that asset is filed in; each unique IP asset counts as one matter.",
   },
   {
     q: "Is there really a 14-day free trial?",
-    a: "Yes — all DocketEngine plans include a 14-day free trial with full access to every feature on your chosen plan. No credit card required to start. You can import your portfolio, test the sync, and explore the platform before committing.",
+    a: "Yes — all DocketEngine plans include a 14-day free trial with full access to every feature on your chosen plan. You can import your portfolio, test the sync, and explore the platform before committing.",
+  },
+  {
+    q: "Does DocketEngine handle patent docketing?",
+    a: "DocketEngine today handles trademark docketing across 100+ IP offices in real time. Patent docketing is on our near-term roadmap — firms that come aboard early help shape exactly what we build. In the meantime, RenewalEngine already handles patent renewals across 190+ jurisdictions, so if patent renewal cost is your bigger pain, you can capture that value today.",
   },
   {
     q: "What's included in the free migration?",
@@ -18,23 +22,31 @@ const faqs = [
   },
   {
     q: "Can I switch plans at any time?",
-    a: "Yes, you can upgrade or downgrade your plan at any time. Upgrades take effect immediately. Downgrades apply at the start of the next billing period. There are no penalties or lock-in periods.",
+    a: "You can upgrade at any time — upgrades take effect immediately. Downgrades require a quick support request so we can confirm your matter count fits the lower tier and walk you through the change. No penalties, no lock-in periods either way.",
   },
   {
-    q: "Do you offer annual billing?",
-    a: "Yes. Annual billing is available on all plans and saves you the equivalent of 2 months (a ~17% discount versus monthly billing). Contact us to set up annual billing.",
+    q: "How does annual billing work?",
+    a: "Toggle to Annual at the top of this page to see annual pricing. Annual billing saves you the equivalent of 2 months — a ~17% discount versus monthly billing. Available on every plan with a numeric price; the same 14-day free trial still applies.",
+  },
+  {
+    q: "Do you offer education pricing for universities and non-profits?",
+    a: "Yes. We offer discounted pricing for accredited universities, public research institutions, and non-profit research labs. The effective cost typically lands meaningfully below list. Tell us about your portfolio size and we'll send a tailored quote.",
   },
   {
     q: "What happens if I exceed my matter limit?",
     a: "We'll notify you as you approach your plan's matter limit. You won't be cut off — but we'll work with you to move to the appropriate plan. We never charge overage fees without notice.",
   },
   {
-    q: "When will AI Portfolio Health and Competitor Watch be available?",
-    a: "Both features are currently in active development. AI Portfolio Health and Competitor Watch are available on the Growth and Scale plans — and will activate automatically for all qualifying subscribers when they launch. No plan changes or additional fees required.",
+    q: "When will AI Portfolio Health, Risk Detection, and Competitor Watch be available?",
+    a: "These intelligence features are in active development. Where they're shown as 'In progress' in the comparison table, that means the capability is on its way for that plan — and will activate automatically for qualifying subscribers when it ships. No plan change or additional fee required at launch.",
   },
   {
     q: "Can I use both DocketEngine and RenewalEngine together?",
-    a: "Yes — and that's how they're designed to work. Both engines run on the same shared data infrastructure, so your portfolio data syncs seamlessly between them. Contact us for bundled pricing if you're interested in both.",
+    a: "Yes — and that's how they're designed to work. Both engines run on the same shared data layer, so your portfolio data flows between them without re-entry. Contact us for bundled pricing if you're interested in both.",
+  },
+  {
+    q: "How does RenewalEngine cover patent and trademark renewals across 190+ jurisdictions?",
+    a: "RenewalEngine runs in strategic partnership with a market leader in IP renewals — which means you get real coverage across 190+ jurisdictions on day one, with line-item pricing instead of opaque markups. Pricing is per-renewal and depends on jurisdiction and asset count; request a quote and we'll model your portfolio.",
   },
 ];
 

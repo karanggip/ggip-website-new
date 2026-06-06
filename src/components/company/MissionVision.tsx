@@ -5,7 +5,7 @@ export default function MissionVision() {
     <section style={{ paddingTop: 80, paddingBottom: 80, background: "#fff", color: "#0C0C0E" }}>
       <div className="max-w-content mx-auto px-7">
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }}
-          className="max-md:grid-cols-1 max-md:gap-12">
+          className="max-md:!grid-cols-1 max-md:!gap-12">
 
           <FadeIn>
             <div>

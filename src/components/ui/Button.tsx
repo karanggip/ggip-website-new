@@ -30,7 +30,17 @@ export default function Button({
 }: ButtonProps) {
   const cls = `${base} ${variants[variant]} ${className}`;
   if (href) {
-    return <a href={url(href)} className={cls}>{children}</a>;
+    const external = /^https?:\/\//i.test(href);
+    return (
+      <a
+        href={url(href)}
+        className={cls}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+      >
+        {children}
+      </a>
+    );
   }
   return (
     <button type={type} onClick={onClick} className={cls}>

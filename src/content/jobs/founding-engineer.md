@@ -4,7 +4,7 @@ department: Engineering
 location: Remote (US / EU timezones)
 type: Full-time
 summary: Help us build the data infrastructure layer for global IP — from office connectors to the AI/intelligence layer running on top.
-applyEmail: careers@guardedgrowthip.com
+applyEmail: info@guardedgrowthip.com
 posted: 2026-05-15
 published: true
 ---
@@ -48,10 +48,10 @@ This is an early-stage role with broad scope. You won't be siloed into one area.
 
 ## How to apply
 
-Send a short email to **careers@guardedgrowthip.com** with:
+Click **Apply Now** above to fill out a quick application form. It takes a minute, comes straight to us at **info@guardedgrowthip.com**, and asks for:
 
 1. A brief note on what you've built and what you're interested in
 2. Links to projects, code, writing — whatever shows your work best
-3. Your CV (optional but appreciated)
+3. Your contact details
 
-We read every email and reply to anything that resonates.
+We read every application and reply to anything that resonates.

@@ -18,7 +18,7 @@ export default function PricingBottomCTA() {
             Our team can walk you through the options and help you find the right fit for your practice size and workflow.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
-            <Button href="/demo">Start Free Trial <Icon name="arrowRight" size={16} /></Button>
+            <Button href="https://docket.guardedgrowthip.com/signup">Start Free Trial <Icon name="arrowRight" size={16} /></Button>
             <Button variant="ghost" href="/contact">Talk to Sales</Button>
           </div>
         </FadeIn>

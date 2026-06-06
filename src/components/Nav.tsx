@@ -116,7 +116,7 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                       { engine: "docket" as const, name: "DocketEngine", href: url("/products/docketengine"), color: "#5B7FFF", desc: "Automated IP docketing powered by global data infrastructure. Real-time sync across 100+ IP offices.", features: ["Real-time USPTO, EUIPO, WIPO sync", "AI portfolio health insights", "Bulk import & free migration", "Competitor watch"] },
                       { engine: "renewal" as const, name: "RenewalEngine", href: url("/products/renewalengine"), color: "#A78BFA", desc: "IP renewals that generate margin, not just cost. Full transparency across 190+ jurisdictions.", features: ["27.7% avg savings vs providers", "50% margin capture for firms", "One-click renew/hold/lapse", "Complete cost breakdowns"] },
                     ].map((p, i) => (
-                      <a key={i} href={p.href} style={{ padding: 28, borderRight: "1px solid rgba(255,255,255,0.06)", display: "block", textDecoration: "none", transition: "background 0.2s" }}
+                      <a key={i} href={p.href} style={{ padding: 28, borderRight: "1px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", textDecoration: "none", transition: "background 0.2s" }}
                         onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.03)")}
                         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
                         <div className="flex items-center gap-2.5 mb-3.5">
@@ -134,13 +134,13 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                             </div>
                           ))}
                         </div>
-                        <div className="mt-4 flex items-center gap-1.5" style={{ color: p.color }}>
+                        <div className="flex items-center gap-1.5" style={{ color: p.color, marginTop: "auto", paddingTop: 16 }}>
                           <span className="text-sm font-semibold">Explore {p.name}</span>
                           <Icon name="arrowRight" size={14} />
                         </div>
                       </a>
                     ))}
-                    <div style={{ padding: 28, background: "rgba(91,127,255,0.04)" }}>
+                    <div style={{ padding: 28, background: "rgba(91,127,255,0.04)", display: "flex", flexDirection: "column" }}>
                       <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "rgba(255,255,255,0.25)", textTransform: "uppercase", marginBottom: 16 }}>The platform</div>
                       <div style={{ width: "100%", padding: "16px 12px", borderRadius: 12, background: "linear-gradient(135deg, rgba(45,42,110,0.4), rgba(91,127,255,0.1))", border: "1px solid rgba(91,127,255,0.15)", marginBottom: 16, display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
                         {[{ l: "Engines", w: "55%" }, { l: "AI Layer", w: "75%" }, { l: "Data Infrastructure", w: "95%" }].map((layer, i) => (
@@ -148,7 +148,7 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                         ))}
                       </div>
                       <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", lineHeight: 1.6, marginBottom: 14, fontFamily: "'General Sans', sans-serif" }}>Proprietary data infrastructure with AI intelligence on top.</p>
-                      <a href={url("/platform")} className="flex items-center gap-1.5 no-underline" style={{ color: "#5B7FFF" }}>
+                      <a href={url("/platform")} className="flex items-center gap-1.5 no-underline" style={{ color: "#5B7FFF", marginTop: "auto", paddingTop: 16 }}>
                         <span className="text-sm font-semibold">Platform Overview</span>
                         <Icon name="arrowRight" size={14} />
                       </a>
@@ -217,12 +217,13 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                 )}
 
                 {activeDropdown === "company" && (
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 300px" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 280px" }}>
                     {[
                       { icon: "book" as const, title: "Our Story", href: url("/company"), desc: "Founded by an IP operations expert and a serial technology entrepreneur who saw the same gap from two directions.", cta: "Read Our Story", color: "#5B7FFF" },
                       { icon: "briefcase" as const, title: "Careers", href: url("/company/careers"), desc: "Build the infrastructure the IP industry needs. We're looking for exceptional people.", cta: "View Open Positions", color: "#A78BFA" },
+                      { icon: "mail" as const, title: "Contact", href: url("/contact"), desc: "Questions about pricing, demos, partnerships, or anything else — we read every message and reply quickly.", cta: "Send a Message", color: "#5B7FFF" },
                     ].map((c, i) => (
-                      <a key={i} href={c.href} style={{ padding: 28, borderRight: "1px solid rgba(255,255,255,0.06)", display: "block", textDecoration: "none", transition: "background 0.2s" }}
+                      <a key={i} href={c.href} style={{ padding: 28, borderRight: "1px solid rgba(255,255,255,0.06)", display: "flex", flexDirection: "column", textDecoration: "none", transition: "background 0.2s" }}
                         onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.02)")}
                         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}>
                         <div className="flex items-center gap-2.5 mb-3.5">
@@ -230,7 +231,7 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                           <span className="text-sm font-bold text-white">{c.title}</span>
                         </div>
                         <p style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", lineHeight: 1.65, marginBottom: 18, fontFamily: "'General Sans', sans-serif" }}>{c.desc}</p>
-                        <div className="flex items-center gap-1.5" style={{ color: c.color }}>
+                        <div className="flex items-center gap-1.5" style={{ color: c.color, marginTop: "auto" }}>
                           <span className="text-sm font-semibold">{c.cta}</span>
                           <Icon name="arrowRight" size={14} />
                         </div>

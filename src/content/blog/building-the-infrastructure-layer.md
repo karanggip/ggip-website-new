@@ -5,6 +5,7 @@ author: Guarded Growth Team
 category: Product Updates
 excerpt: Our launch story. Why we started with infrastructure instead of an application — and why every engine we ship makes the foundation more valuable.
 coverColor: indigo
+coverImage: /assets/blog/infrastructure-layer.svg
 readTime: 5
 published: true
 ---

@@ -40,9 +40,17 @@ export default function RenewalHero() {
             </span>
             , not just cost.
           </h1>
-          <p style={{ fontSize: 19, lineHeight: 1.7, color: "rgba(255,255,255,0.5)", maxWidth: 580, margin: "0 auto 36px", fontFamily: "'General Sans', sans-serif" }}>
+          <p style={{ fontSize: 19, lineHeight: 1.7, color: "rgba(255,255,255,0.5)", maxWidth: 580, margin: "0 auto 22px", fontFamily: "'General Sans', sans-serif" }}>
             RenewalEngine automates patent and trademark renewals across 190+ jurisdictions with full cost transparency. No hidden markups. Average savings of 27.7% — and 50% margin capture for your firm.
           </p>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 32, padding: "6px 14px", borderRadius: 9999, background: "rgba(167,139,250,0.06)", border: "1px solid rgba(167,139,250,0.14)" }}>
+            <span style={{ display: "flex", color: "#A78BFA", opacity: 0.8 }}>
+              <Icon name="handshake" size={14} />
+            </span>
+            <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.55)", letterSpacing: "0.01em", fontFamily: "'General Sans', sans-serif" }}>
+              In strategic partnership with a market leader in IP renewals
+            </span>
+          </div>
           <div className="flex gap-3 justify-center flex-wrap">
             <a href={url("/contact")}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "13px 28px", borderRadius: 10, background: "linear-gradient(135deg, #A78BFA, #7C3AED)", color: "#fff", fontSize: 14, fontWeight: 600, fontFamily: "'Plus Jakarta Sans', sans-serif", textDecoration: "none", transition: "all 0.2s", boxShadow: "0 0 24px rgba(167,139,250,0.25)" }}>
@@ -75,9 +83,9 @@ export default function RenewalHero() {
               </div>
             </div>
             {/* Dashboard */}
-            <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", minHeight: 400 }}>
+            <div className="renewal-mockup-dashboard" style={{ display: "grid", gridTemplateColumns: "200px 1fr", minHeight: 400 }}>
               {/* Sidebar */}
-              <div style={{ borderRight: "1px solid rgba(255,255,255,0.06)", padding: 16, background: "rgba(255,255,255,0.01)" }}>
+              <div className="renewal-mockup-sidebar" style={{ borderRight: "1px solid rgba(255,255,255,0.06)", padding: 16, background: "rgba(255,255,255,0.01)" }}>
                 <div className="flex items-center gap-2 mb-6">
                   <EngineIcon engine="renewal" size={24} variant="dark" />
                   <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>RenewalEngine</span>
@@ -89,13 +97,13 @@ export default function RenewalHero() {
                 ))}
               </div>
               {/* Main */}
-              <div style={{ padding: 24 }}>
+              <div className="renewal-mockup-main" style={{ padding: 24 }}>
                 <div className="flex justify-between items-center mb-5">
                   <span style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>Renewal Overview</span>
                   <span style={{ fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: 9999, background: "rgba(22,163,74,0.12)", color: "#4ADE80", border: "1px solid rgba(22,163,74,0.2)" }}>Q2 2026</span>
                 </div>
                 {/* Stats */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 20 }}>
+                <div className="renewal-mockup-stats" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 20 }}>
                   {[
                     { l: "Due This Quarter", v: "47",    c: "#A78BFA" },
                     { l: "Avg Savings",      v: "27.7%", c: "#16A34A" },
@@ -109,11 +117,11 @@ export default function RenewalHero() {
                   ))}
                 </div>
                 {/* Renewal rows */}
-                <div style={{ fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.25)", letterSpacing: "0.08em", display: "grid", gridTemplateColumns: "1.4fr 0.8fr 0.8fr 0.8fr 0.8fr 0.6fr 0.8fr", padding: "0 14px 8px", gap: 8 }}>
+                <div className="renewal-mockup-rows-head" style={{ fontSize: 10, fontWeight: 600, color: "rgba(255,255,255,0.25)", letterSpacing: "0.08em", display: "grid", gridTemplateColumns: "1.4fr 0.8fr 0.8fr 0.8fr 0.8fr 0.6fr 0.8fr", padding: "0 14px 8px", gap: 8 }}>
                   <span>ASSET</span><span>OFFICE</span><span>OFFICIAL FEE</span><span>PROVIDER</span><span>OURS</span><span>SAVING</span><span>ACTION</span>
                 </div>
                 {renewalRows.map((r, i) => (
-                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1.4fr 0.8fr 0.8fr 0.8fr 0.8fr 0.6fr 0.8fr", alignItems: "center", padding: "9px 14px", borderRadius: 8, background: "rgba(255,255,255,0.02)", marginBottom: 4, fontSize: 12, gap: 8 }}>
+                  <div key={i} className="renewal-mockup-row" style={{ display: "grid", gridTemplateColumns: "1.4fr 0.8fr 0.8fr 0.8fr 0.8fr 0.6fr 0.8fr", alignItems: "center", padding: "9px 14px", borderRadius: 8, background: "rgba(255,255,255,0.02)", marginBottom: 4, fontSize: 12, gap: 8 }}>
                     <span style={{ fontWeight: 600, color: "#fff" }}>{r.mark}</span>
                     <span style={{ color: "rgba(255,255,255,0.4)" }}>{r.jurisdiction}</span>
                     <span style={{ color: "rgba(255,255,255,0.4)" }}>{r.official}</span>
@@ -128,6 +136,31 @@ export default function RenewalHero() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .renewal-mockup-dashboard {
+            grid-template-columns: 1fr !important;
+            min-height: 0 !important;
+          }
+          .renewal-mockup-sidebar { display: none !important; }
+          .renewal-mockup-main { padding: 16px !important; }
+          .renewal-mockup-stats {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .renewal-mockup-rows-head { display: none !important; }
+          .renewal-mockup-row {
+            grid-template-columns: 1fr auto auto !important;
+            font-size: 11px !important;
+            padding: 8px 10px !important;
+          }
+          .renewal-mockup-row > span:nth-child(3),
+          .renewal-mockup-row > span:nth-child(4),
+          .renewal-mockup-row > span:nth-child(5) {
+            display: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -166,6 +166,7 @@ export default function CookieBanner() {
 function BannerCard({ onAccept, onReject, onCustomize }: { onAccept: () => void; onReject: () => void; onCustomize: () => void }) {
   return (
     <div
+      className="ggip-banner-card"
       style={{
         pointerEvents: "auto",
         maxWidth: 720,
@@ -181,8 +182,8 @@ function BannerCard({ onAccept, onReject, onCustomize }: { onAccept: () => void;
         gap: 14,
       }}
     >
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 14, flexWrap: "wrap" }}>
-        <div style={{ flex: 1, minWidth: 240 }}>
+      <div className="ggip-banner-row" style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Plus Jakarta Sans', sans-serif", marginBottom: 6 }}>
             We use cookies
           </div>
@@ -197,12 +198,28 @@ function BannerCard({ onAccept, onReject, onCustomize }: { onAccept: () => void;
             </a>.
           </p>
         </div>
-        <div style={{ display: "flex", gap: 8, flexShrink: 0, flexWrap: "wrap" }}>
+        <div className="ggip-banner-actions" style={{ display: "flex", gap: 8, flexShrink: 0 }}>
           <button onClick={onCustomize} style={ghostBtn}>Customize</button>
           <button onClick={onReject} style={ghostBtn}>Reject all</button>
           <button onClick={onAccept} style={primaryBtn}>Accept all</button>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .ggip-banner-card { padding: 16px 18px !important; }
+          .ggip-banner-row { flex-direction: column !important; }
+          .ggip-banner-actions {
+            width: 100% !important;
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 8px !important;
+          }
+          .ggip-banner-actions > button:last-child {
+            grid-column: 1 / -1 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -280,11 +297,25 @@ function PrefsCard(p: {
         />
       </div>
 
-      <div style={{ padding: "18px 26px 22px", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "flex-end" }}>
+      <div className="ggip-prefs-actions" style={{ padding: "18px 26px 22px", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "flex-end" }}>
         <button onClick={p.onRejectAll} style={ghostBtn}>Reject all</button>
         <button onClick={p.onAcceptAll} style={ghostBtn}>Accept all</button>
         <button onClick={p.onSave} style={primaryBtn}>Save preferences</button>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .ggip-prefs-actions {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 8px !important;
+            padding: 16px 18px 20px !important;
+          }
+          .ggip-prefs-actions > button:last-child {
+            grid-column: 1 / -1 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

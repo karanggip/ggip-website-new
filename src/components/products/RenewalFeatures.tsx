@@ -155,7 +155,7 @@ export default function RenewalFeatures() {
           {features.map((f, i) => (
             <FadeIn key={i} delay={i * 60}>
               <div style={{ display: "grid", gridTemplateColumns: f.side === "right" ? "1fr 420px" : "420px 1fr", gap: 56, alignItems: "center", padding: "52px 48px", borderRadius: 20, border: "1px solid #E2E2EA", background: "#fff", transition: "box-shadow 0.2s" }}
-                className="max-md:grid-cols-1 max-md:gap-8 max-md:p-8"
+                className="max-md:!grid-cols-1 max-md:!gap-8 max-md:p-8"
                 onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.06)")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.boxShadow = "none")}>
                 <div style={{ order: f.side === "right" ? 1 : 2 }} className="max-md:!order-1">

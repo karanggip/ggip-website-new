@@ -120,7 +120,7 @@ function TeamsMockup() {
     { name: "Sarah K.",  role: "Admin",     color: "#5B7FFF" },
     { name: "James M.",  role: "Attorney",  color: "#A78BFA" },
     { name: "Lisa R.",   role: "Paralegal", color: "#16A34A" },
-    { name: "Client A.", role: "View only", color: "rgba(255,255,255,0.3)" },
+    { name: "Alex T.",   role: "Read only", color: "rgba(255,255,255,0.3)" },
   ];
   return (
     <div style={{ background: "#0d0d1a", borderRadius: 14, padding: 20, border: "1px solid rgba(255,255,255,0.07)" }}>
@@ -185,7 +185,7 @@ const features = [
   {
     icon: "sync" as const,
     title: "Real-Time Sync Across 100+ Offices",
-    body: "Direct integration with every major IP office. Automatic status updates, document retrieval, and deadline calculation. Your docket is always current — no manual checking, no stale data.",
+    body: "Direct integration with every major IP office. Automatic status updates and deadline calculation. Your docket is always current — no manual checking, no stale data.",
     side: "right",
     mockupKey: "sync",
   },
@@ -199,14 +199,14 @@ const features = [
   {
     icon: "bell" as const,
     title: "Workflow Automation",
-    body: "Daily and weekly docket digests. Two-way calendar sync with Google Calendar. Automated client notices. Smart reminders that escalate as deadlines approach. The administrative work runs itself.",
+    body: "Daily and weekly docket digests. One-way calendar sync with Google Calendar. Smart reminders that escalate as deadlines approach. The administrative work runs itself.",
     side: "right",
     mockupKey: "automation",
   },
   {
     icon: "user" as const,
     title: "Built for Teams",
-    body: "Role-based permissions. Client-level access controls. Custom reporting for stakeholders. Scales from solo practice to 50-person IP departments without configuration headaches.",
+    body: "Role-based permissions. Custom reporting for stakeholders. Scales from solo practice to 50-person IP departments without configuration headaches.",
     side: "left",
     mockupKey: "teams",
   },
@@ -270,7 +270,7 @@ export default function DocketFeatures() {
                 background: f.inProgress ? "#FFFBEB" : "#fff",
                 transition: "box-shadow 0.2s",
               }}
-                className="max-md:grid-cols-1 max-md:gap-8 max-md:p-8"
+                className="max-md:!grid-cols-1 max-md:!gap-8 max-md:p-8"
                 onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.06)")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.boxShadow = "none")}
               >
