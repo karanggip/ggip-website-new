@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
+    "dev:fresh": "rm -rf node_modules/.vite .astro && astro dev --force",
     "build": "astro build",
     "preview": "astro preview",
     "start": "node dist/server/entry.mjs",
