@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a1e"/>
+      <stop offset="50%" stop-color="#2D2A6E"/>
+      <stop offset="100%" stop-color="#4A47A3"/>
+    </linearGradient>
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#5B7FFF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#5B7FFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5B7FFF"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <pattern id="grid3" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#5B7FFF" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg3)"/>
+  <rect width="1600" height="900" fill="url(#grid3)"/>
+
+  <!-- Central glow -->
+  <circle cx="800" cy="450" r="360" fill="url(#coreGlow)"/>
+
+  <!-- Concentric "moat" rings (layered defensibility) -->
+  <g fill="none" stroke="url(#ringGrad)" stroke-opacity="0.7">
+    <circle cx="800" cy="450" r="120" stroke-width="2"/>
+    <circle cx="800" cy="450" r="200" stroke-width="1.5" stroke-dasharray="8 6" stroke-opacity="0.55"/>
+    <circle cx="800" cy="450" r="290" stroke-width="1.5" stroke-dasharray="4 10" stroke-opacity="0.45"/>
+    <circle cx="800" cy="450" r="380" stroke-width="1" stroke-dasharray="2 12" stroke-opacity="0.35"/>
+  </g>
+
+  <!-- Core hexagon (the protected innovation) -->
+  <g transform="translate(800,450)">
+    <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45"
+             fill="#A78BFA" fill-opacity="0.18"
+             stroke="#A78BFA" stroke-width="2"/>
+    <polygon points="0,-55 48,-28 48,28 0,55 -48,28 -48,-28"
+             fill="#5B7FFF" fill-opacity="0.35"
+             stroke="#ffffff" stroke-opacity="0.5" stroke-width="1.5"/>
+  </g>
+
+  <!-- Orbiting interaction nodes (components forming the system) -->
+  <g fill="#ffffff">
+    <g opacity="0.9">
+      <circle cx="800" cy="250" r="9"/>
+      <circle cx="800" cy="650" r="9"/>
+      <circle cx="600" cy="450" r="9"/>
+      <circle cx="1000" cy="450" r="9"/>
+    </g>
+    <g opacity="0.55">
+      <circle cx="660" cy="310" r="6"/>
+      <circle cx="940" cy="310" r="6"/>
+      <circle cx="660" cy="590" r="6"/>
+      <circle cx="940" cy="590" r="6"/>
+    </g>
+  </g>
+
+  <!-- Connecting lines (the interaction is the moat) -->
+  <g stroke="#A78BFA" stroke-opacity="0.55" stroke-width="1.2">
+    <line x1="800" y1="250" x2="800" y2="450"/>
+    <line x1="800" y1="650" x2="800" y2="450"/>
+    <line x1="600" y1="450" x2="800" y2="450"/>
+    <line x1="1000" y1="450" x2="800" y2="450"/>
+    <line x1="660" y1="310" x2="800" y2="450" stroke-opacity="0.35"/>
+    <line x1="940" y1="310" x2="800" y2="450" stroke-opacity="0.35"/>
+    <line x1="660" y1="590" x2="800" y2="450" stroke-opacity="0.35"/>
+    <line x1="940" y1="590" x2="800" y2="450" stroke-opacity="0.35"/>
+  </g>
+
+  <!-- Corner decorative marks -->
+  <g stroke="#5B7FFF" stroke-opacity="0.4" stroke-width="1.2" fill="none">
+    <path d="M 80 80 L 80 140 L 140 140"/>
+    <path d="M 1520 760 L 1520 820 L 1460 820"/>
+  </g>
+</svg>

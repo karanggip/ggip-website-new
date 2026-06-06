@@ -60,21 +60,22 @@ In Railway → Settings → Domains, add your domain and follow the DNS instruct
  });
 ```
 
-### Activate the API endpoint
+### Activate the API endpoints
+
+Both endpoints (contact form + demo request) are staged as `.disabled` files. Activate both together:
 
 ```bash
 mv src/pages/api/contact.ts.disabled src/pages/api/contact.ts
+mv src/pages/api/demo.ts.disabled    src/pages/api/demo.ts
 ```
 
 ### Install Resend
 
-```bash
-npm install resend
-```
+Already installed (`resend` is in `package.json` as of the demo-form work). No action needed — but if a fresh clone, `npm install` will pick it up.
 
-### Update the Resend `from` address
+### Update the Resend `from` address (both endpoints)
 
-In `src/pages/api/contact.ts`, change:
+In both `src/pages/api/contact.ts` and `src/pages/api/demo.ts`, change:
 
 ```ts
 const FROM = "Guarded Growth <onboarding@resend.dev>";
@@ -85,6 +86,8 @@ to your verified domain sender, e.g.:
 ```ts
 const FROM = "Guarded Growth <contact@mail.guardedgrowthip.com>";
 ```
+
+The `RESEND_API_KEY` is already stored locally in `.env` (gitignored). Add the same value to Railway's environment variables for production.
 
 ### Remove the GitHub Pages workflow (optional)
 

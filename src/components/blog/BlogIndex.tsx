@@ -12,6 +12,7 @@ export interface PostCard {
   category: string;
   excerpt: string;
   coverColor: string;
+  coverImage?: string;
   readTime: number;
 }
 
@@ -87,8 +88,11 @@ export default function BlogIndex({ posts }: Props) {
               onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = "translateY(0)"; el.style.boxShadow = "0 4px 16px rgba(0,0,0,0.04)"; el.style.borderColor = "#E2E2EA"; }}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 0 }} className="max-md:grid-cols-1">
                 <div style={{ background: coverGradients[featured.coverColor] || coverGradients.indigo, minHeight: 280, position: "relative", overflow: "hidden" }}>
-                  <div className="grid-bg absolute inset-0 opacity-30" />
-                  <div style={{ position: "absolute", top: 20, left: 20, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "rgba(255,255,255,0.6)", textTransform: "uppercase", padding: "4px 10px", borderRadius: 9999, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)" }}>Featured</div>
+                  {featured.coverImage && (
+                    <img src={url(featured.coverImage)} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                  )}
+                  {!featured.coverImage && <div className="grid-bg absolute inset-0 opacity-30" />}
+                  <div style={{ position: "absolute", top: 20, left: 20, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: "rgba(255,255,255,0.75)", textTransform: "uppercase", padding: "4px 10px", borderRadius: 9999, background: "rgba(5,5,16,0.45)", border: "1px solid rgba(255,255,255,0.18)", backdropFilter: "blur(6px)" }}>Featured</div>
                 </div>
                 <div style={{ padding: "40px 44px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                   <div className="flex items-center gap-3 mb-4">
@@ -121,8 +125,12 @@ export default function BlogIndex({ posts }: Props) {
                   style={{ display: "flex", flexDirection: "column", borderRadius: 16, overflow: "hidden", border: "1px solid #E2E2EA", background: "#fff", textDecoration: "none", height: "100%", transition: "all 0.25s" }}
                   onMouseEnter={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = "translateY(-4px)"; el.style.boxShadow = "0 12px 32px rgba(0,0,0,0.06)"; el.style.borderColor = "#5B7FFF44"; }}
                   onMouseLeave={(e) => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = "translateY(0)"; el.style.boxShadow = "none"; el.style.borderColor = "#E2E2EA"; }}>
-                  <div style={{ background: coverGradients[post.coverColor] || coverGradients.indigo, height: 140, position: "relative", overflow: "hidden" }}>
-                    <div className="grid-bg absolute inset-0 opacity-25" />
+                  <div style={{ background: coverGradients[post.coverColor] || coverGradients.indigo, height: 160, position: "relative", overflow: "hidden" }}>
+                    {post.coverImage ? (
+                      <img src={url(post.coverImage)} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                    ) : (
+                      <div className="grid-bg absolute inset-0 opacity-25" />
+                    )}
                   </div>
                   <div style={{ padding: "22px 24px", display: "flex", flexDirection: "column", flex: 1 }}>
                     <div className="flex items-center gap-2 mb-3 flex-wrap">

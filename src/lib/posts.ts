@@ -8,6 +8,7 @@ export interface PostListItem {
   category: string;
   excerpt: string;
   coverColor: string;
+  coverImage?: string;
   readTime: number;
 }
 
@@ -24,6 +25,7 @@ export async function getAllPosts(): Promise<PostListItem[]> {
       category:   p.data.category,
       excerpt:    p.data.excerpt,
       coverColor: p.data.coverColor,
+      coverImage: p.data.coverImage,
       readTime:   p.data.readTime,
     }));
 }

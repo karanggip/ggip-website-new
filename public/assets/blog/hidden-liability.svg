@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a1e"/>
+      <stop offset="50%" stop-color="#1e1b5e"/>
+      <stop offset="100%" stop-color="#4A47A3"/>
+    </linearGradient>
+    <radialGradient id="warnGlow" cx="80%" cy="70%" r="55%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#D97706" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="numGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5B7FFF" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#A78BFA" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#5B7FFF" stop-opacity="0.9"/>
+    </linearGradient>
+    <pattern id="grid2" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#5B7FFF" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <rect width="1600" height="900" fill="url(#grid2)"/>
+  <ellipse cx="1280" cy="640" rx="540" ry="420" fill="url(#warnGlow)"/>
+
+  <!-- Cascading large stat numbers (faded, layered) -->
+  <g font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ffffff">
+    <text x="90" y="280" font-size="180" opacity="0.10" letter-spacing="-6">$160K</text>
+    <text x="420" y="500" font-size="280" opacity="0.07" letter-spacing="-10">34%</text>
+    <text x="820" y="760" font-size="220" opacity="0.08" letter-spacing="-8">$1M+</text>
+  </g>
+
+  <!-- Foreground headline figure with gradient stroke -->
+  <g font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" letter-spacing="-6">
+    <text x="120" y="540" font-size="320" fill="url(#numGrad)" opacity="0.95">27%</text>
+    <text x="120" y="620" font-size="28" fill="#ffffff" opacity="0.65" letter-spacing="6" font-weight="700">OF IP MALPRACTICE CLAIMS</text>
+  </g>
+
+  <!-- Subtle ascending bar marks (risk rising) -->
+  <g fill="#A78BFA" fill-opacity="0.45">
+    <rect x="1180" y="700" width="22" height="80" rx="3"/>
+    <rect x="1220" y="660" width="22" height="120" rx="3"/>
+    <rect x="1260" y="600" width="22" height="180" rx="3"/>
+    <rect x="1300" y="540" width="22" height="240" rx="3"/>
+    <rect x="1340" y="460" width="22" height="320" rx="3"/>
+    <rect x="1380" y="360" width="22" height="420" rx="3"/>
+  </g>
+
+  <!-- Warning dot top right -->
+  <circle cx="1480" cy="180" r="10" fill="#DC2626"/>
+  <circle cx="1480" cy="180" r="22" fill="#DC2626" fill-opacity="0.25"/>
+</svg>

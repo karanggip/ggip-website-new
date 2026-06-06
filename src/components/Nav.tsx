@@ -242,7 +242,7 @@ export default function Nav({ latestPosts }: NavProps = {}) {
                         <span className="text-sm font-bold text-white">Get in Touch</span>
                       </div>
                       <div className="flex flex-col gap-2.5">
-                        {[{ label: "Sales", email: "sales@guardedgrowthip.com", href: url("/contact") }, { label: "Support", email: "support@guardedgrowthip.com", href: url("/contact") }, { label: "General", email: "info@guardedgrowthip.com", href: url("/contact") }].map((contact, i) => (
+                        {[{ label: "Support", email: "support@guardedgrowthip.com", href: url("/contact") }, { label: "General", email: "info@guardedgrowthip.com", href: url("/contact") }].map((contact, i) => (
                           <a key={i} href={contact.href} style={{ padding: "10px 12px", borderRadius: 10, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", textDecoration: "none", transition: "border-color 0.15s", display: "block" }}
                             onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(91,127,255,0.2)")}
                             onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)")}>

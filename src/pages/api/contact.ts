@@ -22,11 +22,12 @@ import { Resend } from "resend";
 
 export const prerender = false;
 
-// Default catch-all and per-subject routing
+// All form mail routes to a single inbox for now. The Subject header still
+// carries the chosen category (Sales/Support/etc.) so triage is easy in-inbox.
 const FALLBACK_TO = "info@guardedgrowthip.com";
 const SUBJECT_TO: Record<string, string> = {
-  Sales:        "sales@guardedgrowthip.com",
-  Support:      "support@guardedgrowthip.com",
+  Sales:        "info@guardedgrowthip.com",
+  Support:      "info@guardedgrowthip.com",
   Partnerships: "info@guardedgrowthip.com",
   Press:        "info@guardedgrowthip.com",
   General:      "info@guardedgrowthip.com",

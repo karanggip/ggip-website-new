@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import DemoForm from "../components/DemoForm";
+import { getLatestPosts } from "../lib/posts";
+
+const latestPosts = await getLatestPosts(3);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const trust = [
+  { t: "Onboarded in under a week",     s: "Most firms go live in 5 business days" },
+  { t: "100+ IP offices, real-time",    s: "Direct sync — no manual entry" },
+  { t: "Transparent pricing",            s: "From $99/mo, no hidden fees" },
+];
+---
+
+<Base
+  title="Request a demo · Guarded Growth"
+  description="See DocketEngine and RenewalEngine in action. We'll reach out within 24 hours to schedule your personalized walkthrough."
+>
+  <Nav client:load latestPosts={latestPosts} />
+
+  <main>
+    {/* Hero band */}
+    <section style="position: relative; overflow: hidden; background: #050510; padding-top: 130px; padding-bottom: 56px;">
+      <div style="position: absolute; width: 760px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgba(45,42,110,0.55) 0%, transparent 65%); top: -8%; left: 50%; transform: translateX(-50%); filter: blur(90px);"></div>
+      <div class="grid-bg-animated" style="position: absolute; inset: 0; opacity: 0.4;"></div>
+
+      <div class="max-w-content mx-auto px-7 relative" style="text-align: center; max-width: 760px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #5B7FFF; text-transform: uppercase; display: block; margin-bottom: 18px;">Demo Request</span>
+        <h1 class="font-display font-extrabold text-white" style="font-size: clamp(36px, 4.5vw, 52px); letter-spacing: -0.035em; line-height: 1.1; margin-bottom: 18px;">
+          See the platform in action.
+        </h1>
+        <p style="font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.55); font-family: 'General Sans', sans-serif; max-width: 540px; margin: 0 auto;">
+          A 30-minute walkthrough of DocketEngine and RenewalEngine, tailored to your firm. Most teams are fully onboarded within a week.
+        </p>
+      </div>
+    </section>
+
+    {/* Form card sits half-on-dark, half-on-light for a Stripe/Linear overlap */}
+    <section style="position: relative; background: linear-gradient(to bottom, #050510 0%, #050510 90px, #ffffff 90px, #ffffff 100%); padding-bottom: 80px;">
+      <div class="max-w-content mx-auto px-7 relative">
+        <div style="max-width: 720px; margin: 0 auto; background: #fff; border: 1px solid #E2E2EA; border-radius: 20px; box-shadow: 0 24px 60px rgba(5,5,16,0.18); overflow: hidden;">
+
+          {/* Form card header */}
+          <div style="display: flex; align-items: center; gap: 14px; padding: 22px 28px; border-bottom: 1px solid #F0F0F4; background: linear-gradient(135deg, #FBFBFD, #F6F6F9);">
+            <div style="width: 44px; height: 44px; border-radius: 11px; background: linear-gradient(135deg, #2D2A6E, #4A47A3); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 14px rgba(45,42,110,0.25); flex-shrink: 0;">
+              <img src={base + "/assets/icon-white.svg"} alt="" style="width: 26px; height: 26px;" />
+            </div>
+            <div>
+              <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: -0.01em; color: #0C0C0E;">
+                Tell us a bit about your team
+              </div>
+              <div style="font-size: 13px; color: #5C5C6E; font-family: 'General Sans', sans-serif; margin-top: 2px;">
+                We'll tailor the walkthrough to what matters for your firm.
+              </div>
+            </div>
+          </div>
+
+          {/* The form itself */}
+          <div style="padding: 28px 32px 30px;">
+            <DemoForm client:load variant="inline" source="demo-page" />
+          </div>
+        </div>
+
+        {/* Trust strip below the card */}
+        <div style="max-width: 720px; margin: 28px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="max-md:grid-cols-1">
+          {trust.map((it) => (
+            <div style="padding: 16px 18px; border-radius: 12px; background: #F6F6F9; border: 1px solid #E2E2EA;">
+              <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; color: #0C0C0E; letter-spacing: -0.01em;">{it.t}</div>
+              <div style="font-size: 12.5px; color: #5C5C6E; font-family: 'General Sans', sans-serif; margin-top: 4px; line-height: 1.5;">{it.s}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

@@ -23,10 +23,10 @@ const COLUMNS = [
   ]},
 ];
 
-const legalLinks = [
+const legalLinks: Array<{ label: string; href: string; external: boolean; action?: "cookies" }> = [
   { label: "Privacy Policy",              href: url("/privacy-policy/"), external: false },
   { label: "Terms of Use (DocketEngine)", href: url("/terms/"),          external: false },
-  { label: "Cookie Settings",             href: url("/privacy-policy/"), external: false },
+  { label: "Cookie Settings",             href: "#cookie-settings",      external: false, action: "cookies" },
 ];
 
 export default function Footer() {
@@ -73,9 +73,10 @@ export default function Footer() {
               <a
                 key={link.label}
                 href={link.href}
+                data-cookie-settings={link.action === "cookies" ? "true" : undefined}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                style={{ fontSize: 13, color: "rgba(255,255,255,0.2)", textDecoration: "none", transition: "color 0.15s" }}
+                style={{ fontSize: 13, color: "rgba(255,255,255,0.2)", textDecoration: "none", transition: "color 0.15s", cursor: "pointer" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.2)")}
               >

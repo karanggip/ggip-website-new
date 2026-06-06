@@ -7,9 +7,11 @@ import Icon from "../ui/Icon";
 // routing to the appropriate inbox based on the selected subject.
 const subjects = ["Sales", "Support", "Partnerships", "Press", "General"];
 
+// All inquiries route to a single inbox; the chosen subject category lives in
+// the Subject header for in-inbox triage.
 const subjectEmail: Record<string, string> = {
-  Sales:        "sales@guardedgrowthip.com",
-  Support:      "support@guardedgrowthip.com",
+  Sales:        "info@guardedgrowthip.com",
+  Support:      "info@guardedgrowthip.com",
   Partnerships: "info@guardedgrowthip.com",
   Press:        "info@guardedgrowthip.com",
   General:      "info@guardedgrowthip.com",

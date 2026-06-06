@@ -10,11 +10,11 @@ const faqs = [
   },
   {
     q: "Can I book a demo without going through the form?",
-    a: "Yes. Email sales@guardedgrowthip.com with a few sentences about your firm and what you're looking for, and we'll send a calendar link directly.",
+    a: "Yes. Email info@guardedgrowthip.com with a few sentences about your firm and what you're looking for, and we'll send a calendar link directly.",
   },
   {
     q: "Do you offer custom enterprise terms?",
-    a: "Yes — for firms on the Scale plan we offer SSO/SAML, SOC2-aligned controls, dedicated CSM, custom integrations, SLAs, and tailored pricing. Use the Sales channel and we'll set up a scoping conversation.",
+    a: "Yes — for firms on the Scale plan we offer SSO/SAML, SOC2-aligned controls, dedicated CSM, custom integrations, SLAs, and tailored pricing. Reach out via info@guardedgrowthip.com and we'll set up a scoping conversation.",
   },
   {
     q: "I'm an existing customer — should I use this form or in-app support?",

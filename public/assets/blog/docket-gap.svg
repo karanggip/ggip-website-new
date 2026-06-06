@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a1e"/>
+      <stop offset="55%" stop-color="#1a1740"/>
+      <stop offset="100%" stop-color="#2D2A6E"/>
+    </linearGradient>
+    <radialGradient id="gapGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5B7FFF" stop-opacity="0.85"/>
+      <stop offset="55%" stop-color="#A78BFA" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gapLine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5B7FFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#A78BFA" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#5B7FFF" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dotsL" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#5B7FFF" fill-opacity="0.55"/>
+    </pattern>
+    <pattern id="dotsR" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#A78BFA" fill-opacity="0.55"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <!-- Left grid (institution / records) -->
+  <rect x="80" y="140" width="660" height="620" fill="url(#dotsL)" opacity="0.9"/>
+  <!-- Right grid (docket / system) - slightly offset rows to suggest mismatch -->
+  <g transform="translate(860,160)">
+    <rect width="660" height="620" fill="url(#dotsR)" opacity="0.9"/>
+  </g>
+  <!-- Glow behind the gap -->
+  <ellipse cx="800" cy="450" rx="240" ry="420" fill="url(#gapGlow)"/>
+  <!-- The gap itself: vertical sliver -->
+  <rect x="795" y="120" width="10" height="660" fill="url(#gapLine)"/>
+  <!-- Small "error" markers in the gap -->
+  <circle cx="800" cy="320" r="6" fill="#D97706"/>
+  <circle cx="800" cy="470" r="6" fill="#DC2626"/>
+  <circle cx="800" cy="610" r="6" fill="#D97706"/>
+  <!-- Faint connector lines crossing the gap, broken -->
+  <g stroke="#A78BFA" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4 8">
+    <line x1="600" y1="260" x2="760" y2="260"/>
+    <line x1="840" y1="260" x2="1020" y2="260"/>
+    <line x1="600" y1="540" x2="760" y2="540"/>
+    <line x1="840" y1="540" x2="1020" y2="540"/>
+    <line x1="600" y1="680" x2="760" y2="680"/>
+    <line x1="840" y1="680" x2="1020" y2="680"/>
+  </g>
+</svg>

@@ -24,6 +24,7 @@ const blog = defineCollection({
     category:   z.enum(["Docketing", "Renewals", "IP Strategy", "Product Updates"]),
     excerpt:    z.string(),
     coverColor: z.enum(["indigo", "violet", "blue", "slate"]).default("indigo"),
+    coverImage: z.string().optional(),
     readTime:   z.number().default(5),
     published:  z.boolean().default(true),
   }),

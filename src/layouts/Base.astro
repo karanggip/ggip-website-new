@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import CookieBanner from "../components/CookieBanner";
+import DemoModal from "../components/DemoModal";
 
 interface Props {
   title?: string;
@@ -118,5 +119,6 @@ const allLd = [organizationLd, websiteLd, ...extraLd];
   <body>
     <slot />
     <CookieBanner client:idle />
+    <DemoModal client:idle />
   </body>
 </html>

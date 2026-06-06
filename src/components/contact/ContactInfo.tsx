@@ -3,13 +3,6 @@ import Icon from "../ui/Icon";
 
 const channels = [
   {
-    icon: "dollar" as const,
-    label: "Sales",
-    desc: "Pricing, demos, and questions about which plan fits.",
-    email: "sales@guardedgrowthip.com",
-    accent: "#5B7FFF",
-  },
-  {
     icon: "shield" as const,
     label: "Support",
     desc: "Existing customer help and technical issues.",
@@ -19,7 +12,7 @@ const channels = [
   {
     icon: "mail" as const,
     label: "General",
-    desc: "Partnerships, press, careers, or anything else.",
+    desc: "Sales, demos, partnerships, press, careers, or anything else.",
     email: "info@guardedgrowthip.com",
     accent: "#16A34A",
   },
@@ -32,7 +25,7 @@ export default function ContactInfo() {
         <div>
           <h2 className="font-display font-bold mb-2" style={{ fontSize: 22, letterSpacing: "-0.02em" }}>Or email us directly</h2>
           <p style={{ fontSize: 14, color: "#5C5C6E", fontFamily: "'General Sans', sans-serif", lineHeight: 1.6 }}>
-            We monitor all three inboxes. Use the one that fits your question.
+            We monitor both inboxes. Use the one that fits your question.
           </p>
         </div>
       </FadeIn>
