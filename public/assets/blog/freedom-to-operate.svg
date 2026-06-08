@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgFTO" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a1e"/>
+      <stop offset="50%" stop-color="#1e1b5e"/>
+      <stop offset="100%" stop-color="#4A47A3"/>
+    </linearGradient>
+    <radialGradient id="radarGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5B7FFF" stop-opacity="0.45"/>
+      <stop offset="55%" stop-color="#A78BFA" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sweepGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5B7FFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#5B7FFF" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="corridorGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#16A34A" stop-opacity="0.08"/>
+      <stop offset="50%" stop-color="#16A34A" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#16A34A" stop-opacity="0.08"/>
+    </linearGradient>
+    <pattern id="gridFTO" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#5B7FFF" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bgFTO)"/>
+  <rect width="1600" height="900" fill="url(#gridFTO)"/>
+
+  <!-- Center radar glow -->
+  <ellipse cx="800" cy="450" rx="540" ry="380" fill="url(#radarGlow)"/>
+
+  <!-- Concentric radar rings -->
+  <g fill="none" stroke="#5B7FFF" stroke-opacity="0.25" stroke-width="1">
+    <circle cx="800" cy="450" r="110"/>
+    <circle cx="800" cy="450" r="200" stroke-dasharray="4 6"/>
+    <circle cx="800" cy="450" r="290" stroke-dasharray="3 8"/>
+    <circle cx="800" cy="450" r="380" stroke-dasharray="2 10"/>
+  </g>
+
+  <!-- Crosshairs -->
+  <g stroke="#A78BFA" stroke-opacity="0.35" stroke-width="1">
+    <line x1="800" y1="40" x2="800" y2="860"/>
+    <line x1="220" y1="450" x2="1380" y2="450"/>
+  </g>
+
+  <!-- SAFE CORRIDOR (clear zone, vertical stripe through middle) -->
+  <rect x="740" y="120" width="120" height="660" rx="60" fill="url(#corridorGrad)"
+        stroke="#16A34A" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <text x="800" y="158" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif"
+        font-size="10" font-weight="800" fill="#16A34A" letter-spacing="3" opacity="0.85">CLEAR PATH</text>
+
+  <!-- PATENT SHAPES around the landscape — risk-tiered -->
+  <!-- High-risk (red/amber) clusters -->
+  <g>
+    <!-- Hex 1 — high risk -->
+    <g transform="translate(420,300)">
+      <polygon points="0,-44 38,-22 38,22 0,44 -38,22 -38,-22"
+               fill="#DC2626" fill-opacity="0.18" stroke="#DC2626" stroke-opacity="0.65" stroke-width="1.5"/>
+      <text x="0" y="-58" text-anchor="middle" font-family="'General Sans', sans-serif"
+            font-size="9" fill="#DC2626" letter-spacing="2" opacity="0.85">HIGH</text>
+      <circle cx="0" cy="0" r="4" fill="#DC2626"/>
+    </g>
+
+    <!-- Hex 2 — high risk -->
+    <g transform="translate(1180,330)">
+      <polygon points="0,-40 35,-20 35,20 0,40 -35,20 -35,-20"
+               fill="#DC2626" fill-opacity="0.16" stroke="#DC2626" stroke-opacity="0.55" stroke-width="1.5"/>
+      <text x="0" y="-54" text-anchor="middle" font-family="'General Sans', sans-serif"
+            font-size="9" fill="#DC2626" letter-spacing="2" opacity="0.8">HIGH</text>
+      <circle cx="0" cy="0" r="4" fill="#DC2626"/>
+    </g>
+
+    <!-- Hex 3 — medium risk amber -->
+    <g transform="translate(540,620)">
+      <polygon points="0,-36 31,-18 31,18 0,36 -31,18 -31,-18"
+               fill="#D97706" fill-opacity="0.18" stroke="#D97706" stroke-opacity="0.6" stroke-width="1.5"/>
+      <text x="0" y="-50" text-anchor="middle" font-family="'General Sans', sans-serif"
+            font-size="9" fill="#D97706" letter-spacing="2" opacity="0.8">MED</text>
+    </g>
+
+    <!-- Hex 4 — medium risk amber -->
+    <g transform="translate(1080,640)">
+      <polygon points="0,-32 28,-16 28,16 0,32 -28,16 -28,-16"
+               fill="#D97706" fill-opacity="0.16" stroke="#D97706" stroke-opacity="0.55" stroke-width="1.5"/>
+      <text x="0" y="-46" text-anchor="middle" font-family="'General Sans', sans-serif"
+            font-size="9" fill="#D97706" letter-spacing="2" opacity="0.75">MED</text>
+    </g>
+
+    <!-- Faded low-risk hexes scattered -->
+    <g fill="#5B7FFF" fill-opacity="0.08" stroke="#5B7FFF" stroke-opacity="0.25" stroke-width="1">
+      <polygon points="280,540 300,530 320,540 320,560 300,570 280,560" />
+      <polygon points="1300,510 1318,500 1336,510 1336,528 1318,538 1300,528" />
+      <polygon points="380,170 398,160 416,170 416,188 398,198 380,188" />
+      <polygon points="1230,180 1248,170 1266,180 1266,198 1248,208 1230,198" />
+      <polygon points="170,380 188,370 206,380 206,398 188,408 170,398" />
+      <polygon points="1410,400 1428,390 1446,400 1446,418 1428,428 1410,418" />
+      <polygon points="260,720 278,710 296,720 296,738 278,748 260,738" />
+      <polygon points="1340,700 1358,690 1376,700 1376,718 1358,728 1340,718" />
+    </g>
+  </g>
+
+  <!-- Center target — your product -->
+  <g transform="translate(800,450)">
+    <circle r="36" fill="#2D2A6E" stroke="#A78BFA" stroke-width="1.5"/>
+    <circle r="36" fill="none" stroke="#A78BFA" stroke-opacity="0.4" stroke-width="1">
+      <animate attributeName="r" values="36;52;36" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <text x="0" y="6" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif"
+          font-size="11" font-weight="800" fill="#fff" letter-spacing="2">YOU</text>
+  </g>
+
+  <!-- Sweeping line (visualization of "scanning") -->
+  <line x1="800" y1="450" x2="1180" y2="180"
+        stroke="url(#sweepGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Corner label -->
+  <g transform="translate(80,80)">
+    <rect x="0" y="0" width="220" height="48" rx="8"
+          fill="rgba(13,13,26,0.6)" stroke="rgba(167,139,250,0.45)" stroke-width="1"/>
+    <text x="110" y="20" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif"
+          font-size="11" font-weight="800" fill="#A78BFA" letter-spacing="3">FREEDOM TO OPERATE</text>
+    <text x="110" y="36" text-anchor="middle" font-family="'General Sans', sans-serif"
+          font-size="10" fill="rgba(255,255,255,0.55)" letter-spacing="1">RISK MAPPED</text>
+  </g>
+</svg>

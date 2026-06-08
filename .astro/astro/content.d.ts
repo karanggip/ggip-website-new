@@ -148,6 +148,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"freedom-to-operate-before-launch.md": {
+	id: "freedom-to-operate-before-launch.md";
+  slug: "freedom-to-operate-before-launch";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "hidden-cost-of-legacy-platforms.md": {
 	id: "hidden-cost-of-legacy-platforms.md";
   slug: "hidden-cost-of-legacy-platforms";
