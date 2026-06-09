@@ -125,9 +125,18 @@ const allLd = [organizationLd, websiteLd, ...extraLd];
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image"       content={ogImageUrl} />
 
-    {/* Favicons */}
-    <link rel="icon"            type="image/svg+xml" href={faviconHref} />
-    <link rel="apple-touch-icon" href={faviconHref} />
+    {/* Favicons — the SVG works on modern browsers; ICO + PNGs cover legacy
+        crawlers (Google's favicon fetcher in particular tends to fall back to
+        /favicon.ico if it can't validate the SVG). */}
+    <link rel="icon"             type="image/svg+xml" href={faviconHref} />
+    <link rel="alternate icon"   type="image/x-icon"  href={`${base}/favicon.ico`} />
+    <link rel="icon"             type="image/png"     sizes="96x96"   href={`${base}/favicon-96x96.png`} />
+    <link rel="icon"             type="image/png"     sizes="192x192" href={`${base}/web-app-manifest-192x192.png`} />
+    <link rel="icon"             type="image/png"     sizes="512x512" href={`${base}/web-app-manifest-512x512.png`} />
+    <link rel="apple-touch-icon" sizes="180x180"      href={`${base}/apple-touch-icon.png`} />
+    <link rel="shortcut icon"    href={`${base}/favicon.ico`} />
+    <link rel="manifest"         href={`${base}/site.webmanifest`} />
+    <meta name="theme-color"     content="#2D2A6E" />
 
     {/* JSON-LD structured data */}
     {allLd.map((obj) => (

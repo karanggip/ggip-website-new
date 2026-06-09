@@ -1,0 +1,6 @@
+---
+// Legacy Lovable-site URL — Google's index still surfaces /connect from the
+// old site. Redirect to the homepage so any remaining link value is preserved
+// and Google updates faster than waiting on a plain 404.
+return Astro.redirect("/", 301);
+---
