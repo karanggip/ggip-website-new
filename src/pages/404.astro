@@ -1,0 +1,144 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import Icon from "../components/ui/Icon";
+import { getLatestPosts } from "../lib/posts";
+
+const latestPosts = await getLatestPosts(3);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const destinations: Array<{
+  icon: "engine" | "renewal" | "dollar" | "book" | "building" | "mail";
+  title: string;
+  desc: string;
+  href: string;
+}> = [
+  { icon: "engine",   title: "DocketEngine",    desc: "Automated IP docketing across 100+ jurisdictions.",       href: "/products/docketengine/" },
+  { icon: "renewal",  title: "RenewalEngine",   desc: "Patent and trademark renewals across 190+ jurisdictions.", href: "/products/renewalengine/" },
+  { icon: "dollar",   title: "Pricing",         desc: "Transparent tiers, monthly or annual.",                    href: "/pricing/" },
+  { icon: "book",     title: "Blog & Insights", desc: "Writing on IP infrastructure, docketing, and renewals.",   href: "/blog/" },
+  { icon: "building", title: "Our Story",       desc: "How we got here — and where we're going.",                  href: "/company/" },
+  { icon: "mail",     title: "Contact",         desc: "Send a message or give us a call.",                          href: "/contact/" },
+];
+---
+
+<Base
+  title="Page not found · Guarded Growth"
+  description="The page you were looking for isn't here. Browse our products, pricing, blog, or get in touch."
+  noindex={true}
+>
+  <Nav client:load latestPosts={latestPosts} />
+
+  <main>
+    {/* Dark hero band */}
+    <section style="position: relative; overflow: hidden; background: #050510; padding-top: 140px; padding-bottom: 80px;">
+      {/* Aurora glow */}
+      <div style="position: absolute; width: 760px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(45,42,110,0.55) 0%, transparent 65%); top: -8%; left: 50%; transform: translateX(-50%); filter: blur(90px);"></div>
+      <div style="position: absolute; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgba(167,139,250,0.18) 0%, transparent 65%); top: 30%; left: 15%; filter: blur(70px);"></div>
+      <div style="position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(91,127,255,0.20) 0%, transparent 65%); top: 40%; right: 15%; filter: blur(70px);"></div>
+      <div class="grid-bg-animated" style="position: absolute; inset: 0; opacity: 0.45;"></div>
+
+      <div class="max-w-content mx-auto px-7 relative" style="text-align: center; max-width: 760px;">
+
+        {/* Eyebrow */}
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: #5B7FFF; text-transform: uppercase; display: block; margin-bottom: 22px;">
+          Error 404
+        </span>
+
+        {/* Giant gradient 404 */}
+        <div class="font-display font-extrabold not-found-figure" style="font-size: clamp(120px, 22vw, 220px); line-height: 0.85; letter-spacing: -0.08em; margin-bottom: 8px;">
+          <span style="background: linear-gradient(135deg, #5B7FFF 0%, #A78BFA 40%, #7C3AED 70%, #5B7FFF 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; animation: gs 5s ease-in-out infinite;">
+            404
+          </span>
+        </div>
+
+        {/* Headline */}
+        <h1 class="font-display font-extrabold text-white" style="font-size: clamp(28px, 3.5vw, 40px); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 18px;">
+          We can't find that page.
+        </h1>
+
+        {/* Subhead */}
+        <p style="font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.55); font-family: 'General Sans', sans-serif; max-width: 540px; margin: 0 auto 36px;">
+          It might be a broken link, a typo, or a page from our older site that no longer exists. Either way — let's get you somewhere useful.
+        </p>
+
+        {/* Primary actions */}
+        <div class="flex gap-3 justify-center flex-wrap" style="margin-bottom: 12px;">
+          <a href={base + "/"}
+            style="display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 10px; background: linear-gradient(135deg, #2D2A6E, #4A47A3); color: #fff; font-size: 14px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none; box-shadow: 0 8px 24px rgba(45,42,110,0.3); transition: transform 0.15s, box-shadow 0.15s;">
+            ← Back to home
+          </a>
+          <a href={base + "/contact/"}
+            style="display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 10px; background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); transition: all 0.15s;">
+            Talk to us
+          </a>
+        </div>
+
+        {/* Attempted URL (for the curious / debugging) */}
+        <p id="attempted-url"
+           style="font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'JetBrains Mono', monospace; margin-top: 18px; word-break: break-all; max-width: 520px; margin-left: auto; margin-right: auto;">
+        </p>
+      </div>
+    </section>
+
+    {/* Destinations grid */}
+    <section style="position: relative; background: #fff; color: #0C0C0E; padding: 80px 0;">
+      <div class="max-w-content mx-auto px-7">
+        <div style="text-align: center; margin-bottom: 40px;">
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #5B7FFF; text-transform: uppercase; display: block; margin-bottom: 12px;">
+            Try one of these
+          </span>
+          <h2 class="font-display font-extrabold" style="font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.025em; line-height: 1.15; color: #0C0C0E;">
+            Popular destinations
+          </h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 1000px; margin: 0 auto;" class="max-md:!grid-cols-1">
+          {destinations.map((d) => (
+            <a href={base + d.href}
+               class="not-found-card"
+               style="display: flex; flex-direction: column; padding: 22px 24px; border-radius: 14px; border: 1px solid #E2E2EA; background: #fff; text-decoration: none; transition: all 0.2s;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <div style="width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #EEEDFA, #EEF2FF); border: 1px solid #E2E2EA; display: flex; align-items: center; justify-content: center; color: #2D2A6E; flex-shrink: 0;">
+                  <Icon name={d.icon} size={18} />
+                </div>
+                <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: #0C0C0E;">{d.title}</div>
+              </div>
+              <p style="font-size: 13px; line-height: 1.55; color: #5C5C6E; font-family: 'General Sans', sans-serif; margin: 0;">{d.desc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <style is:global>
+    @keyframes gs {
+      0%, 100% { background-position: 0% 50%; }
+      50%      { background-position: 100% 50%; }
+    }
+    .not-found-card:hover {
+      border-color: #5B7FFF55 !important;
+      background: #F6F6F9 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(91,127,255,0.08);
+    }
+  </style>
+
+  <script is:inline>
+    // Show the URL the visitor tried to reach (helps with sharing the broken link)
+    (function () {
+      try {
+        var el = document.getElementById('attempted-url');
+        if (!el) return;
+        var path = window.location.pathname + window.location.search;
+        if (path && path !== '/') {
+          el.textContent = 'You tried: ' + path;
+        }
+      } catch (e) { /* noop */ }
+    })();
+  </script>
+</Base>
