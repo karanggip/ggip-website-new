@@ -1,0 +1,7 @@
+---
+// Legacy Lovable-site URL — Google's index still surfaces /our-story from
+// the old site. Redirect to /company/ (which is the current "Our Story"
+// page) so any remaining link value transfers and Google updates its
+// index entry.
+return Astro.redirect("/company/", 301);
+---
